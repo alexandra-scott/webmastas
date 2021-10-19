@@ -22,29 +22,7 @@ a:hover, a:focus {
 
 
 
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
 
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #017a5c;
-  font-family: "Inter", sans-serif;
-  font-size:15px;
-  min-width: 170px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown-content a {
-  color: white;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown:hover .dropdown-content {display: block;}
 
 
 
