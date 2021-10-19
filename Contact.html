@@ -1,0 +1,142 @@
+<!doctype html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>MAKE Travel</title>
+    	
+    <link href="travel-home.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata|Sarabun|Inter|Raleway|Lora|Bebas+Neue">
+    <style>
+        .formDiv {
+            font-size: 20pt;
+            line-height: 37px;
+            margin: 10px 80px 50px 100px;
+        }
+        
+        .item {
+            display: inline; white-space:nowrap;
+        }
+        
+    </style>
+    </head>
+
+    <body>
+    	<header>
+    		<nav>		
+    			<ul id="navlinks">
+    				<li ><a href="index.html"><img src="travel-logo-01.png" alt="Travel Logo" width="129" height="75"></a></li>
+    				<li class="text-link"><a href="index.html">Home</a></li>
+    				<li class="text-link"><a href="AboutUs.html">About Us</a></li>
+    				<li class="text-link"><a href="destinations.html">Destinations</a></li>
+    				<li class="text-link"><a href="Packages.html">Packages</a></li>
+    				<li class="contact-button"><a href="Contact.html">Contact Us</a></li>
+    			</ul>
+    		 </nav>
+    	</header>
+        
+        <div id="hero" class="has-button">
+            <h1 class="hero-text">Why Wait?</h1>
+            <h2 class="hero-text" style='line-height:1.3em;font-size:350%'>Book Your Dream Vacation Today</h2>
+        </div><!--  end hero -->
+    	<section id="main">
+            <h2>Contact Us</h2>
+        </section>
+        <div class="formDiv">
+            <form onsubmit="return validate()" name="data" method = "post">
+                First Name: <input type="text" name="first-name"><br>
+                Last Name: <input type="text" name="last-name"><br>
+                Email Address: <input type="text" name="email"'><br>
+                Phone Number: <input type="text" name="phone"'><br>
+                What destination(s) are you interested in getting more information about?
+                <br/>
+                    <input type="checkbox" name="check" id="dest1">
+                    <label for="dest1">Cozumel, Mexico</label><br/>
+                    <input type="checkbox" id="dest2">
+                    <label for="dest2">Venice, Italy</label><br/>
+                    <input type="checkbox" id="dest3">
+                    <label for="dest3">Athens, Greece</label><br/>
+                    <input type="checkbox" id="dest4">
+                    <label for="dest4">Madrid, Spain</label><br/>
+                    <input type="checkbox" id="dest5">
+                    <label for="dest5">Bangkok, Thailand</label><br/>
+                    <input type="checkbox" id="dest6">
+                    <label for="dest5">Berlin, Germany</label><br/>
+                <input type="submit" value="Submit" >
+            </form>
+            
+        </div>
+            
+    
+
+    	
+    	<footer>
+    		<img src="travel-logo-01.png" alt="Logo" width="211">
+    		<p>Location<br><br>
+    			389 Highland Ave<br>
+    			Somerville, Massachusetts<br>
+    			02144<br><br>
+    			Email: agents@maketravel.com<br>
+    			Phone: 617-525-3047
+    			</p>
+    		<ul>
+    			Hours<br><br>
+    			Monday:&nbsp	11AM–7PM<br>
+    			Tuesday:&nbsp	11AM–7PM<br>
+    			Wednesday:&nbsp 11AM–7PM<br>
+    			Thursday:&nbsp	11AM–7PM<br>
+    			Friday:&nbsp	11AM–7PM<br>
+    			Saturday:&nbsp	10AM–6PM<br>
+    			Sunday:&nbsp	10AM–6PM<br>
+    		</ul>
+    	</footer>
+        <script language='javascript'>
+            function validate() {
+                if (document.data.first-name.value=="") {
+                    alert("Please enter your first name");
+                    document.data.first-name.focus();
+                    document.data.first-name.select();
+                    return false;
+                }
+                
+                if (document.data.last-name.value=="") {
+                    alert("Please enter your last name");
+                    document.data.last-name.focus();
+                    document.data.last-name.select();
+                    return false;
+                }
+                
+                if (document.data.email.value==""){
+                    alert("Please enter your email");
+                    document.data.email.focus();
+                    document.data.email.select();
+                    return false;
+                }
+                
+                // test valid email format
+                
+                if (document.data.phone.value==""){
+                    alert("Please enter your phone number");
+                    document.data.phone.focus();
+                    document.data.phone.select();
+                    return false;
+                }
+                
+                if ((!document.getElementById("dest1").checked)
+                    && (!document.getElementById("dest2").checked)
+                    && (!document.getElementById("dest3").checked)
+                    && (!document.getElementById("dest4").checked)
+                    && (!document.getElementById("dest5").checked)
+                    && (!document.getElementById("dest6").checked)) {
+                        alert("Please select at least one destination");
+                        return false;
+                    }
+                
+                
+                
+                alert('Thank you. We will be in touch soon.');
+                return true;
+            }
+            
+        </script>
+    </body>
+</html>
