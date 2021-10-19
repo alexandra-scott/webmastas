@@ -33,6 +33,7 @@ a:hover, a:focus {
   background-color: #017a5c;
   font-family: "Inter", sans-serif;
   font-size:15px;
+  text-color: rgb(215, 101, 57);
   min-width: 170px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 }
