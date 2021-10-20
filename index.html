@@ -7,6 +7,16 @@
 <link href="travel-home.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata|Sarabun|Inter|Raleway|Lora|Bebas+Neue">
 
+<script language="javascript">	
+	
+window.onload = function() {
+	document.getElementById("button").onclick= function()
+	{
+		alert("Thank you, your email has been recorded!");
+	}
+}
+</script>
+
 </head>
 
 <body>
@@ -16,17 +26,7 @@
 				<li ><a href="index.html"><img src="travel-logo-01.png" alt="Travel Logo" width="129" height="75"></a></li>
 				<li class="text-link"><a href="index.html">Home</a></li>
 				<li class="text-link"><a href="AboutUs.html">About Us</a></li>
-				<div class="dropdown">
-  				<butn class="dropbtn">Destinations</butn>
-  				<div class="dropdown-content">
-    				<a href="Destinations-athens.html">Athens, Greece</a>
-				<a href="Destinations-bangkok.html">Bangkok, Thailand</a>
-				<a href="Destinations-berlin.html">Berlin, Germany</a>
-				<a href="Destinations-cozumel.html">Cozumel, Mexico</a>
-				<a href="Destinations-madrid.html">Madrid, Spain</a>
-				<a href="Destinations-venice.html">Venice, Italy</a>
-  				</div>
-				</div>
+				<li class="text-link"><a href="destinations.html">Destinations</a></li>
 				<li class="text-link"><a href="Packages.html">Packages</a></li>
 				<li class="contact-button"><a href="Contact.html">Contact Us</a></li>
 			</ul>
@@ -36,7 +36,8 @@
 	<div id="hero" class="has-button">
 			<h1 class="hero-text">You Could</h1>
 			<h1 class="hero-text">Be Here</h1>
-			<a class="hero-link" href="index.html">Book Your Vacation Today</a>
+		<div class="center-link">
+			<a class="hero-link" href="index.html">Book Your Vacation Today</a></div>
 	</div><!--  end hero -->
 	
 	<section id="main">
@@ -44,21 +45,63 @@
 	  <p>Our expert team is ready to give you the trip of your dreams. We will hand-craft a vacation that caters entirely to the needs of you and your family. We guarantee you will have the trip of a lifetime.</p>
 	</section>
 	
+	<div id="icons">
+		<div class="icon-parent"><a href="#">
+			<img src="airplane.png" width="125px">
+			<div class="icon-text">First-Class<br />Flights</div></a>
+		</div>
+		<div class="icon-parent"><a href="#">
+			<img src="restaurant.png" width="125px">
+			<div class="icon-text">Premium<br />Dining</div></a>
+		</div>
+		<div class="icon-parent"><a href="#">
+			<img src="camera.png" width="125px">
+			<div class="icon-text">Unforgettable<br />Experiences</div></a>
+		</div>
 	
-<div id="destinations" class="has-button">
+	</div>
+	
+	<div id="destinations">
+		<h2 id="inspiration">Need Some Travel Inspiration?</h2>
+		<p>Check out some of our clients' favorite destinations</p>
 		<div class="col">	
-			<img src="mexico.jpg" width="340px" height="226.66px">
-			<img src="germany.jpg" width="340px" height="226.66px">
-			<img src="greece.jpg" width="340px">
+			<div class="parent"><a href="#">
+				<img class="child-img" src="mexico.jpg" width="340px" height="226.66px">
+				<div class="text-box">Mexico</div></a>
+			</div>
+			<div class="parent"><a href="#">
+				<img class="child-img" src="germany.jpg" width="340px" height="226.66px">
+				<div class="text-box">Germany</div></a>
+			</div>
+			<div class="parent"><a href="#">
+				<img class="child-img" src="greece.jpg" width="340px">
+				<div class="text-box">Greece</div></a>
+			</div>
 		</div>
 		<div class="col">
-		  <img src="venice.jpg" width="340px" height="226.66px">
-		  <img src="thailand.jpg" width="340px">
-		  <img src="madrid.jpg" width="340px">
+		  	<div class="parent"><a href="Destinations.venice.html">
+				<img class="child-img" src="venice.jpg" width="340px" height="226.66px">
+		 		<div class="text-box">Venice</div></a>
+			</div>
+			<div class="parent"><a href="#">
+				<img class="child-img" src="thailand.jpg" width="340px">
+				<div class="text-box">Thailand</div></a>
+			</div>
+			<div class="parent"><a href="#">
+		  		<img class="child-img" src="madrid.jpg" width="340px">
+				<div class="text-box">Madrid</div></a>
+			</div>
 		</div>
-</div>
+	</div>
 	
-	
+	<section id="news">
+		<h2 id="newsletter">Subscribe to Our Newsletter</h2>
+		<p>Subscribe to be the first one to hear about special offers and promotions!</p>
+		<form id="form1" method="get">
+			<input type="text" name="user-email" placeholder="Email">
+			<input id="button" type="submit" value="Subscribe" >
+		</form>
+	</section>
 
 	
 	<footer>
@@ -69,7 +112,13 @@
 			02144<br><br>
 			Email: agents@maketravel.com<br>
 			Phone: 617-525-3047
-			</p>
+		</p>
+		<ul>Find Us:<br>
+			<a href="https://www.instagram.com/" target="_blank"><img src="instagram.png" width="30"></a><br>
+			<a href="https://www.facebook.com/" target="_blank"><img src="facebook.png" width="30"></a><br>
+			<a href="https://www.twitter.com/" target="_blank"><img src="twitter-logo.png" width="30"></a><br>
+			<a href="https://www.youtube.com/" target="_blank"><img src="youtube.png" width="30"></a><br>
+		</ul>
 		<ul>
 			Hours<br><br>
 			Monday:&nbsp	11AM–7PM<br>

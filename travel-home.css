@@ -3,7 +3,7 @@
 
 body {
 	margin: 0 auto;
-	font-family: "Lora", serif;
+	font-family: "Inter", sans-serif;
 }
 
 a:link {
@@ -20,48 +20,20 @@ a:hover, a:focus {
     text-decoration: none;	
 }
 
-
-
-.dropdown {
-  position: relative;
-  display: inline-block;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #017a5c;
-  font-family: "Inter", sans-serif;
-  font-size:15px;
-  text-color: rgb(215, 101, 57);
-  min-width: 170px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.dropdown-content a {
-  color: white;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-}
-
-.dropdown:hover .dropdown-content {display: block;}
-
-
-
-
 header {
 	position: fixed;
     z-index: 100;
     width: 100%;
     top: 0;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.13),rgba(0, 0, 0, 0.16)), url("hero-travel.jpg");
+	background-size: cover;
+	height: 95px;
 }
 
 #navlinks {
     display: flex;
 	justify-content: space-around;
 	text-justify: inter-word;
-/*    box-sizing: border-box;*/
     width: 100%;
 	font-family: "Inter", sans-serif;
     color: #000000;
@@ -75,10 +47,10 @@ header {
 .contact-button a {
 	color: #FFFFFF;
 	border-style: solid;
-    border-color: #017a5c;
-	background-color: #017a5c;
+    border-color: #d76539;
+	background-color: #d76539;
 /*    border-radius: 16px;*/
-    padding: 8px 19px;
+    padding: 4px 11px;
 	text-align: center;
     width: 230px;
 }
@@ -88,7 +60,7 @@ header {
 }
 
 #hero {
-	background-image: url("hero-travel.jpg");
+	background-image: linear-gradient(rgba(0, 0, 0, 0.15),rgba(0, 0, 0, 0.1)), url("hero-travel.jpg");
 	background-size: cover;
 	margin-top: -55px;
 	height: 700px;
@@ -102,27 +74,31 @@ header {
 	font-weight: 600;
 	line-height: 70px;
     color: #FFFFFF;
-    font-size: 80pt;
+    font-size: 70pt;
 	margin-bottom: 10px;
 	position: relative;
 	top: 325px;
-	margin: 0 75px 20px 0;
+	margin: 0 0px 20px 0;
+	text-align: center;
 }
 
 .has-button a {
-    font-size: 17pt;
+    font-size: 15pt;
     border-style: solid;
     border-color: #FFFFFF;
 	color: #000000;
     border-radius: 16px;
-    padding: 8px 19px;
+    padding: 7px 11px;
 	text-align: center;
     width: 230px;
-	margin-right: 75px;
 	position: relative;
 	top: 340px;
 	background-color: #FFFFFF;
-	font-family: "Lora", serif;
+	font-family: "Inter", sans-serif;
+}
+
+.center-link {
+	text-align: center;
 }
 
 #hero a:hover {
@@ -131,15 +107,44 @@ header {
 }
 
 #main h2 {
-	font-size: 30pt;
+	font-size: 25pt;
 	margin: 50px 80px 10px 100px;
 	font-family: "Inter", sans-serif;
 }
 
 #main p {
-	font-size: 20pt;
+	font-size: 16pt;
 	line-height: 37px;
 	margin: 10px 80px 50px 100px;
+}
+
+#icons {
+	display: flex;
+	justify-content: space-evenly;
+	font-family: "Inter", sans-serif;
+}
+
+.icon-text {
+	font-size: 16pt;
+	margin-top: 5px;
+}
+
+.icon-parent {
+	text-align: center;
+	font-size: 16pt;	
+}
+
+
+#inspiration {
+	font-size: 25pt;
+	font-family: "Inter bold", sans-serif;
+	text-transform: uppercase;
+	margin-bottom: 5px;
+}
+
+#destinations p {
+	font-size: 17pt;
+	margin-top: 5px;
 }
 
 #destinations {
@@ -149,28 +154,89 @@ header {
 	margin: 40px 0px;
 }
 
-.col img:hover {
+.parent:hover .child-img{
 	opacity: 0.3;
 	transition: .5s ease;
 }
 
-/*
-.middle {
-  transition: .2s ease;
-  opacity: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.child-img {
+	position: relative;
 }
 
-.text {
-  background-color: #4CAF50;
-  color: white;
-  font-size: 16px;
-  padding: 16px 32px;
+.parent:hover .text-box {
+	transition: .5s ease;
+	visibility: visible;
+	opacity: 1;
 }
-*/
+
+.parent {
+	display: inline-flex;
+}
+
+.text-box {
+	visibility: hidden;
+	font-size: 14pt;
+	padding: 8px 8px;
+	background-color: #d76539;
+	color: #FFFFFF;
+	position: relative;
+	text-align: center;
+	width: 27%;
+	left: 33%;
+	bottom: 277%;
+	z-index: 100;
+	border-radius: 6px;
+}
+
+.parent a {
+	height: 50px;
+}
+
+#news {
+	background-color: #d76539;
+	height: 150px;
+	font-family: "Inter", sans-serif;
+	text-align: center;
+	color: #FFFFFF;
+	padding: 20px 0px;
+}
+
+#newsletter {
+    font-size: 20pt;
+    text-transform: uppercase;	
+	font-family: "Inter bold", sans-serif;
+	margin-bottom: 5px;
+}
+
+input[type=text] {
+	border: 2px solid #FFFFFF;
+ 	border-radius: 4px;
+	background-color: #FFFFFF;
+}
+
+#button {
+	background-color: #FFFFFF;
+	color: #000000;
+	padding: 5px 12px;
+	border: none;
+	margin-left: 5px;
+	border-radius: 6px;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-family: "Inter", sans-serif;
+}
+
+form {
+	font-family: "Inter bold", sans-serif;
+	font-size: 15pt;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+
+#button:hover {
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 
 footer {
 	padding-top: 20px;
@@ -181,9 +247,11 @@ footer {
 	text-align: left;
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-start;
+	
 }
 
 footer img {
 	padding: 10px;
+	margin-right: 20px;
 }
