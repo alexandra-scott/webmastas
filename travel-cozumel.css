@@ -15,6 +15,12 @@ a:visited {
 	color: #000000;
 }
 
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
 button{
   background:rgb(215, 101, 57);
   color:#fff;
@@ -52,13 +58,14 @@ button:hover:before,button:hover:after{
 
 .browntext {
 	font-family: "Lora", serif;
-	line-height: 70px;
+	line-height: 1.6;
 	font-weight:300;
     	color: #FFFFFF;
     	font-size: 25pt;
 	margin-bottom: 10px;
 	position: relative;
-	margin: 0 75px 20px 0;}
+	margin: 0 75px 20px 0;
+	text-align: center;}
 
 .bar {
   display: flex;
@@ -130,7 +137,7 @@ header {
 }
 
 #hero {
-	background-image: linear-gradient( rgba(208, 156, 107, 0.3), rgba(208, 156, 107, 0.3) ), url("venice-banner.jpg");
+	background-image: linear-gradient( rgba(208, 156, 107, 0.3), rgba(208, 156, 107, 0.3) ), url("cozumel-banner.jpg");
 	background-size: cover;
 	margin-top: -55px;
 	height: 650px;
