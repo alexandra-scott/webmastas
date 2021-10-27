@@ -1,0 +1,111 @@
+@charset "UTF-8";
+/* CSS Document */
+
+body {
+	margin: 0 auto;
+	font-family: "Lora", serif;
+}
+
+a:link {
+    text-decoration: none;	
+	color: #000000;
+}
+
+a:visited {
+	color: #000000;
+}
+
+
+
+
+a:hover, a:focus {
+    color: #d76539;
+    text-decoration: none;	
+}
+
+header {
+	position: fixed;
+    z-index: 100;
+    width: 100%;
+    top: 0;
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.13),rgba(0, 0, 0, 0.16)), url("hero-travel.jpg");
+	background-size: cover;
+	height: 95px;
+}
+
+#navlinks {
+    display: flex;
+	justify-content: space-around;
+	text-justify: inter-word;
+/*    box-sizing: border-box;*/
+    width: 100%;
+	font-family: "Inter", sans-serif;
+    color: #000000;
+    font-size: 15pt;
+    list-style-type: none;
+	padding-left: 0;
+	height: 50px;
+	align-items: center;
+}
+
+.contact-button a {
+	color: #FFFFFF;
+	border-style: solid;
+    border-color: #d76539;
+	background-color: #d76539;
+/*    border-radius: 16px;*/
+    padding: 4px 11px;
+	text-align: center;
+    width: 230px;
+}
+
+.contact-button a:hover {
+	color: #D2D2D2;
+}
+
+#hero {
+	background-image: linear-gradient( rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ), url("hero-travel.jpg");
+	background-size: cover;
+	margin-top: -55px;
+	height: 650px;
+	width: 100%;
+	z-index: -100;
+	text-align: center;
+}
+
+.hero-text {
+	font-family: "Inter bold", sans-serif;
+	font-weight: 600;
+	line-height: 70px;
+    color: #FFFFFF;
+    font-size: 80pt;
+	margin-bottom: 10px;
+	position: relative;
+	top: 325px;
+	margin: 0 75px 20px 0;
+}
+
+
+
+footer {
+	padding-top: 20px;
+	padding-bottom: 20px;
+	background-color: #ededed;
+	color: #808080;
+	font-size: 0.8em;
+	text-align: left;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	
+}
+
+footer img {
+	padding: 10px;
+	margin-right: 20px;
+}
+
+
+
+
+437177
