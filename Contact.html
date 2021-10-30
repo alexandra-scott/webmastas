@@ -10,11 +10,87 @@
         .formDiv {
             font-size: 20pt;
             line-height: 37px;
-            margin: 10px 80px 50px 100px;
+            margin: auto;
+            width: 50%;     
+            max-width: 500px;
+            background-color: #ededed;
+            padding: 20px 20px;
+            text-transform: capitalize;
+        }
+        
+        form {
+        	text-transform: none;
+        }
+        
+        input[type=text]{
+            font-size: 15pt;
+            padding:10px;
+            margin: 10px 0;
+            border: 0;
+            width:90%;
+            border-bottom: 1px solid #000;
+        }
+        
+        input[type=submit]{
+            background-color: #FFFFFF;
+            color: #000000;
+            padding: 10px 12px;
+            border: none;
+            margin:auto;
+            margin-left: 5px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-family: "Inter", sans-serif;
+        }
+        
+        input[type=checkbox]{
+            text-transform: none;
+        }
+
+        
+        input, textarea {
+            font-family: inherit;
+            font-size: inherit;
         }
         
         .item {
             display: inline; white-space:nowrap;
+        }
+        
+        #questions {
+        	background-color: #d76539;
+        	height: 150px;
+        	font-family: "Inter", sans-serif;
+        	text-align: center;
+        	color: #FFFFFF;
+        	padding: 20px 0px;
+        }
+        
+        #contact {
+            font-size: 20pt;
+            text-transform: uppercase;	
+        	font-family: "Inter bold", sans-serif;
+        	margin-bottom: 5px;
+        }
+        
+        
+
+        .contact-buttons {
+            background-color: #FFFFFF;
+        	color: #000000;
+        	padding: 10px 12px;
+        	border: none;
+        	margin-left: 5px;
+        	border-radius: 6px;
+        	font-weight: 700;
+        	font-family: "Inter", sans-serif;
+        }
+        .form-text {
+            text-transform: none;
+            
+        }
+        #button-button:hover {
+        	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
         }
         
     </style>
@@ -36,17 +112,17 @@
         
         <div id="hero" class="has-button">
             <h1 class="hero-text">Why Wait?</h1>
-            <h2 class="hero-text" style='line-height:1.3em;font-size:350%'>Book Your Dream Vacation Today</h2>
+            <h2 class="hero-text" style='line-height:1.3em;font-size:350%'>Contact Us to Book Your Dream Vacation</h2>
         </div><!--  end hero -->
     	<section id="main">
-            <h2>Contact Us</h2>
+            <h2 style="text-align: center;">Contact Us</h2>
         </section>
         <div class="formDiv">
-            <form onsubmit="return validate()" name="data" method = "post">
-                First Name: <input type="text" name="first-name"><br>
-                Last Name: <input type="text" name="last-name"><br>
-                Email Address: <input type="text" name="email"'><br>
-                Phone Number: <input type="text" name="phone"'><br>
+            <form onsubmit="return validate()" name="data" method = "get">
+                <input type="text" placeholder="First Name" name="firstname"><br>
+                <input type="text" placeholder="Last Name" name="lastname"><br>
+                <input type="text" placeholder="Email" name="email"><br>
+                <input type="text" placeholder="Phone Number" name="phone"><br>
                 What destination(s) are you interested in getting more information about?
                 <br/>
                     <input type="checkbox" name="check" id="dest1">
@@ -66,56 +142,87 @@
             
         </div>
             
+        <section id="questions">
+            <h2 id="contact">Talk to One of Our Agents today.</h2>
+            <p>Call or Email us to start planning your trip.</p>
+
+            <a class="contact-buttons" href="mailto:agents@maketravel.com" target="_blank">agents@maketravel.com</a>
+            <a class="contact-buttons" href="tel:6175253047" target="_blank">617-525-3047</a>
+            
+        </section>
     
 
     	
-    	<footer>
-    		<img src="travel-logo-01.png" alt="Logo" width="211">
-    		<p>Location<br><br>
-    			389 Highland Ave<br>
-    			Somerville, Massachusetts<br>
-    			02144<br><br>
-    			Email: agents@maketravel.com<br>
-    			Phone: 617-525-3047
-    			</p>
-    		<ul>
-    			Hours<br><br>
-    			Monday:&nbsp	11AM–7PM<br>
-    			Tuesday:&nbsp	11AM–7PM<br>
-    			Wednesday:&nbsp 11AM–7PM<br>
-    			Thursday:&nbsp	11AM–7PM<br>
-    			Friday:&nbsp	11AM–7PM<br>
-    			Saturday:&nbsp	10AM–6PM<br>
-    			Sunday:&nbsp	10AM–6PM<br>
-    		</ul>
-    	</footer>
+        <footer>
+            <img src="travel-logo-01.png" alt="Logo" width="211">
+            <p>Location<br><br>
+                389 Highland Ave<br>
+                Somerville, Massachusetts<br>
+                02144<br><br>
+                Email: agents@maketravel.com<br>
+                Phone: 617-525-3047
+            </p>
+            <ul>Find Us:<br>
+                <a href="https://www.instagram.com/" target="_blank"><img src="instagram.png" width="30"></a><br>
+                <a href="https://www.facebook.com/" target="_blank"><img src="facebook.png" width="30"></a><br>
+                <a href="https://www.twitter.com/" target="_blank"><img src="twitter-logo.png" width="30"></a><br>
+                <a href="https://www.youtube.com/" target="_blank"><img src="youtube.png" width="30"></a><br>
+            </ul>
+            <ul>
+                Hours<br><br>
+                Monday:&nbsp	11AM–7PM<br>
+                Tuesday:&nbsp	11AM–7PM<br>
+                Wednesday:&nbsp 11AM–7PM<br>
+                Thursday:&nbsp	11AM–7PM<br>
+                Friday:&nbsp	11AM–7PM<br>
+                Saturday:&nbsp	10AM–6PM<br>
+                Sunday:&nbsp	10AM–6PM<br>
+            </ul>
+        </footer>
         <script language='javascript'>
             function validate() {
-                if (document.data.first-name.value=="") {
+                if (document.data.firstname.value=="") {
                     alert("Please enter your first name");
-                    document.data.first-name.focus();
-                    document.data.first-name.select();
+                    document.data.firstname.focus();
                     return false;
                 }
                 
-                if (document.data.last-name.value=="") {
+                if (document.data.lastname.value=="") {
                     alert("Please enter your last name");
-                    document.data.last-name.focus();
-                    document.data.last-name.select();
+                    document.data.lastname.focus();
                     return false;
                 }
                 
                 if (document.data.email.value==""){
                     alert("Please enter your email");
                     document.data.email.focus();
-                    document.data.email.select();
                     return false;
                 }
                 
                 // test valid email format
+                let reg_email = new RegExp('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}$');
+                if (!(reg_email.test(document.data.email.value))) {
+                    alert("Please enter a valid email");
+                    document.data.email.focus();
+                    document.data.email.select();
+                    return false;
+                }
+                
+                
+                
                 
                 if (document.data.phone.value==""){
                     alert("Please enter your phone number");
+                    document.data.phone.focus();
+                    return false;
+                }
+                
+                let reg_phone = new RegExp('([0-9]){3}-[0-9]{3}-[0-9]{4}');
+                let reg_phone2 = new RegExp('[0-9]{10}');
+                if (!(reg_phone.test(document.data.phone.value))
+                    && !(reg_phone2.test(document.data.phone.value))) 
+                {
+                    alert("Please enter a valid phone number in the form (123)-456-7890 or 1234567890");
                     document.data.phone.focus();
                     document.data.phone.select();
                     return false;
