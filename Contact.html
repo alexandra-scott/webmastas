@@ -11,15 +11,27 @@
         .is-mobile {display:none;}
 
         @media (max-width: 600px) {
-            .is-mobile {display:block; padding: 20px 20px;}
+            .is-mobile {display:block; padding: 20px 20px; font-size: 20%;}
             .no-mobile {display:none;}
         }
         
         .formDiv {
-            font-size: 30%;
+            font-size: 20pt;
             line-height: 37px;
             margin: auto;
             width: 50%;     
+            max-width: 500px;
+            background-color: #ededed;
+            padding: 40px 40px;
+            margin-bottom: 40px;
+            text-transform: capitalize;
+        }
+        
+        .formDivMobile {
+            font-size:30%;
+            line-height: 37px;
+            margin: auto;
+            width: 100%;     
             max-width: 500px;
             background-color: #ededed;
             padding: 40px 40px;
@@ -128,32 +140,61 @@
     	<section id="main">
             <h2 style="text-align: center;">Contact Us</h2>
         </section>
-        
-        <div class="formDiv">
-            <form onsubmit="return validate()" name="data" method = "get">
-                <input type="text" placeholder="First Name" name="firstname"><br>
-                <input type="text" placeholder="Last Name" name="lastname"><br>
-                <input type="text" placeholder="Email" name="email"><br>
-                <input type="text" placeholder="Phone Number" name="phone"><br>
-                <div id="select-dest">
-                What destination(s) are you interested in getting more information about?
-                <br/>
-                    <input type="checkbox" name="check" id="dest1">
-                    <label for="dest1">Cozumel, Mexico</label><br/>
-                    <input type="checkbox" id="dest2">
-                    <label for="dest2">Venice, Italy</label><br/>
-                    <input type="checkbox" id="dest3">
-                    <label for="dest3">Athens, Greece</label><br/>
-                    <input type="checkbox" id="dest4">
-                    <label for="dest4">Madrid, Spain</label><br/>
-                    <input type="checkbox" id="dest5">
-                    <label for="dest5">Bangkok, Thailand</label><br/>
-                    <input type="checkbox" id="dest6">
-                    <label for="dest5">Berlin, Germany</label><br/>
+            <div class="no-mobile">
+                <div class="formDiv">
+                    <form onsubmit="return validate()" name="data" method = "get">
+                        <input type="text" placeholder="First Name" name="firstname"><br>
+                        <input type="text" placeholder="Last Name" name="lastname"><br>
+                        <input type="text" placeholder="Email" name="email"><br>
+                        <input type="text" placeholder="Phone Number" name="phone"><br>
+                        <div id="select-dest">
+                        What destination(s) are you interested in getting more information about?
+                        <br/>
+                            <input type="checkbox" name="check" id="dest1">
+                            <label for="dest1">Cozumel, Mexico</label><br/>
+                            <input type="checkbox" id="dest2">
+                            <label for="dest2">Venice, Italy</label><br/>
+                            <input type="checkbox" id="dest3">
+                            <label for="dest3">Athens, Greece</label><br/>
+                            <input type="checkbox" id="dest4">
+                            <label for="dest4">Madrid, Spain</label><br/>
+                            <input type="checkbox" id="dest5">
+                            <label for="dest5">Bangkok, Thailand</label><br/>
+                            <input type="checkbox" id="dest6">
+                            <label for="dest5">Berlin, Germany</label><br/>
+                        </div>
+                        <input type="submit" value="Submit" >
+                    </form>
                 </div>
-                <input type="submit" value="Submit" >
-            </form>
-            
+            </div>
+        </div>
+        
+        <div class="is-mobile">
+            <div class="formDivMobile">
+                <form onsubmit="return validate()" name="data" method = "get">
+                    <input type="text" placeholder="First Name" name="firstname"><br>
+                    <input type="text" placeholder="Last Name" name="lastname"><br>
+                    <input type="text" placeholder="Email" name="email"><br>
+                    <input type="text" placeholder="Phone Number" name="phone"><br>
+                    <div id="select-dest">
+                    What destination(s) are you interested in getting more information about?
+                    <br/>
+                        <input type="checkbox" name="check" id="dest1">
+                        <label for="dest1">Cozumel, Mexico</label><br/>
+                        <input type="checkbox" id="dest2">
+                        <label for="dest2">Venice, Italy</label><br/>
+                        <input type="checkbox" id="dest3">
+                        <label for="dest3">Athens, Greece</label><br/>
+                        <input type="checkbox" id="dest4">
+                        <label for="dest4">Madrid, Spain</label><br/>
+                        <input type="checkbox" id="dest5">
+                        <label for="dest5">Bangkok, Thailand</label><br/>
+                        <input type="checkbox" id="dest6">
+                        <label for="dest5">Berlin, Germany</label><br/>
+                    </div>
+                    <input type="submit" value="Submit" >
+                </form>
+            </div>
         </div>
             
         <section id="questions">
