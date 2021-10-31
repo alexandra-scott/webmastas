@@ -1,13 +1,35 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 <title>MAKE Travel</title>
 	
 <link href="travel-home.css" rel="stylesheet" type="text/css">
+<link href="index-responsive.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata|Sarabun|Inter|Raleway|Lora|Bebas+Neue">
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script language="javascript">	
+
+$(document).ready(function() {
+	
+	$("#hamburger").click(function() {
+			$(".text-link").addClass("responsive");
+			$(".contact-button").addClass("responsive");
+			$("header").addClass("long-head");
+			$("#hamburger").hide();
+			$("#cross").show();
+	});	
+	
+	$("#cross").click(function() {
+			$(".text-link").removeClass("responsive");
+			$(".contact-button").removeClass("responsive");
+			$("header").removeClass("long-head");
+			$("#cross").hide();
+			$("#hamburger").show();
+	});
+
+});
 	
 window.onload = function() {
 	document.getElementById("button").onclick= function()
@@ -21,7 +43,8 @@ window.onload = function() {
 
 <body>
 	<header>
-		<nav>		
+		<nav>
+			
 			<ul id="navlinks">
 				<li ><a href="index.html"><img src="travel-logo-01.png" alt="Travel Logo" width="129" height="75"></a></li>
 				<li class="text-link"><a href="index.html">Home</a></li>
@@ -29,7 +52,10 @@ window.onload = function() {
 				<li class="text-link"><a href="destinations.html">Destinations</a></li>
 				<li class="text-link"><a href="Packages.html">Packages</a></li>
 				<li class="contact-button"><a href="Contact.html">Contact Us</a></li>
+				
 			</ul>
+				<button id="hamburger">&#9776;</button>
+  				<button id="cross">&#735;</button>
 		 </nav>
 	</header>
 	
@@ -77,8 +103,6 @@ window.onload = function() {
 				<img class="child-img" src="greece.jpg" width="340px">
 				<div class="text-box">Greece</div></a>
 			</div>
-		</div>
-		<div class="col">
 		  	<div class="parent"><a href="Destinations-venice.html">
 				<img class="child-img" src="venice.jpg" width="340px" height="226.66px">
 		 		<div class="text-box">Venice</div></a>
@@ -113,7 +137,7 @@ window.onload = function() {
 			Email: agents@maketravel.com<br>
 			Phone: 617-525-3047
 		</p>
-		<ul>Find Us:<br>
+		<ul id="socials">
 			<a href="https://www.instagram.com/" target="_blank"><img src="instagram.png" width="30"></a><br>
 			<a href="https://www.facebook.com/" target="_blank"><img src="facebook.png" width="30"></a><br>
 			<a href="https://www.twitter.com/" target="_blank"><img src="twitter-logo.png" width="30"></a><br>

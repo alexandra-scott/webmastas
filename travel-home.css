@@ -28,6 +28,7 @@ header {
 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.13),rgba(0, 0, 0, 0.16)), url("hero-travel.jpg");
 	background-size: cover;
 	height: 95px;
+	background-attachment: fixed;
 }
 
 #navlinks {
@@ -44,15 +45,45 @@ header {
 	align-items: center;
 }
 
+#hamburger {
+	background:none;
+	position: absolute;
+  	top: 20px;
+  	right: 0;
+	line-height:45px;
+  	padding:5px 15px 0px 15px;
+  	color:#000000;
+  	border:0;
+  	font-size: 17pt;
+  	font-weight: bold;
+  	cursor: pointer;
+  	outline: none;
+	display: none;
+}
+
+#cross {
+	background: none;
+	position: absolute;
+  	top: 10px;
+  	right: 0;
+	padding:10px 15px 0px 15px;
+  	color:#000000;
+  	border:0;
+  	font-size: 27pt;
+  	line-height: 65px;
+  	font-weight: bold;
+  	cursor: pointer;
+  	outline: none;
+	display: none;
+}
+
 .contact-button a {
 	color: #FFFFFF;
 	border-style: solid;
     border-color: #d76539;
 	background-color: #d76539;
-/*    border-radius: 16px;*/
     padding: 4px 11px;
 	text-align: center;
-    width: 230px;
 }
 
 .contact-button a:hover {
@@ -66,6 +97,7 @@ header {
 	height: 700px;
 	width: 100%;
 	z-index: -100;
+	box-sizing: border-box;
 	text-align: right;
 }
 
@@ -140,6 +172,11 @@ header {
 	font-family: "Inter bold", sans-serif;
 	text-transform: uppercase;
 	margin-bottom: 5px;
+}
+
+.col {
+	text-align: center;
+	max-width: 1300px;
 }
 
 #destinations p {
