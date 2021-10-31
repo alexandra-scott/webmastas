@@ -5,9 +5,31 @@
 <title>MAKE Travel</title>
 	
 <link href="travel-home.css" rel="stylesheet" type="text/css">
+<link href="index-responsive.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata|Sarabun|Inter|Raleway|Lora|Bebas+Neue">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script language="javascript">	
 
+$(document).ready(function() {
+    
+    $("#hamburger").click(function() {
+            $(".text-link").addClass("responsive");
+            $(".contact-button").addClass("responsive");
+            $("header").addClass("long-head");
+            $("#hamburger").hide();
+            $("#cross").show();
+    });	
+    
+    $("#cross").click(function() {
+            $(".text-link").removeClass("responsive");
+            $(".contact-button").removeClass("responsive");
+            $("header").removeClass("long-head");
+            $("#cross").hide();
+            $("#hamburger").show();
+    });
+
+});
+</script>
 <style>
 
     #icons {
