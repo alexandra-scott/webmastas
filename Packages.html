@@ -8,15 +8,6 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata|Sarabun|Inter|Raleway|Lora|Bebas+Neue">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-<script language="javascript">	
-	
-window.onload = function() {
-	document.getElementById("button").onclick= function()
-	{
-		alert("Thank you, your email has been recorded!");
-	}
-}
-</script>
 <style>
 
     #icons {
@@ -27,6 +18,9 @@ window.onload = function() {
     	margin-bottom: 20px;
     }
 
+    .is-mobile {
+        
+    }
     
     .button-p {
         background-color: #ffffff;
@@ -49,7 +43,10 @@ window.onload = function() {
     
     a {font-weight: bold;}
     
+    #navlinks a {font-weight:normal;}
+    
     .more-info {
+        display: none;
         width: 75%;
         margin: auto;
         text-align: center;
@@ -118,7 +115,6 @@ window.onload = function() {
 	</div>
 	
 	<div id="destinations">
-		
         <div class="parent-p">    
         	<button type="button" class="button-p" onclick="showDiv(1)">All-Inclusive</button>
             <div class="more-info" id="more-info1">
@@ -166,7 +162,7 @@ window.onload = function() {
         </div>
 			
     </div>
-	
+    
 	<footer>
 		<img src="travel-logo-01.png" alt="Logo" width="211">
 		<p>Location<br><br>
@@ -197,10 +193,20 @@ window.onload = function() {
 
 <script language='javascript'>
     $(document).ready(function(){
-        if($(window).width() < 600) {
-            $('#more-info').css('display', 'block');
-        } else{
-            $('#more-info').css('display', 'none');
+        if($(window).width() <= 600) {
+            $('.more-info').css('display', 'block');
+            $('.more-info ul').css('font-size', '4vw');
+            $('.no-mobile').css('display', 'none');
+        } else {
+            $('.more-info').css('display', 'none');
+        }
+    });
+
+    $(window).on('resize', function(){
+        if($(window).width() <= 600) {
+            $('.more-info').css('display', 'block');
+        } else {
+            $('.more-info').css('display', 'none');
         }
     });
     function showDiv(num){

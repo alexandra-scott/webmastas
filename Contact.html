@@ -7,16 +7,12 @@
     	
     <link href="travel-home.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata|Sarabun|Inter|Raleway|Lora|Bebas+Neue">
-    <style>
-    
-        .is-mobile {display:none;}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
-        @media (max-width: 600px) {
-            .is-mobile {display:block; padding: 20px 20px; font-size: 20%;}
-            .no-mobile {display:none;}
-        }
+    <style>
         
         .formDiv {
+            line-height: 37px;
             margin: auto;
             width: 50%;     
             max-width: 500px;
@@ -85,7 +81,7 @@
         	padding: 20px 0px;
         }
         
-        #contact {
+        .contact {
             font-size: 20pt;
             text-transform: uppercase;	
         	font-family: "Inter bold", sans-serif;
@@ -119,6 +115,7 @@
         }
         
         .is-mobile .questions{
+            background-color: #d76539;
             font-size: 4vw;
         	font-family: "Inter", sans-serif;
         	text-align: center;
@@ -155,7 +152,7 @@
     	<section id="main">
             <h2 style="text-align: center;">Contact Us</h2>
         </section>
-            <div class="no-mobile">
+            
                 <div class="formDiv">
                     <form onsubmit="return validate()" name="data" method = "get">
                         <input type="text" placeholder="First Name" name="firstname"><br>
@@ -181,57 +178,28 @@
                         <input type="submit" value="Submit" >
                     </form>
                 </div>
-                <div class="questions">
-                    <h2 id="contact">Talk to One of Our Agents today.</h2>
-                    <p>Call or Email us to start planning your trip.</p>
+                
+                <div class="no-mobile">
+                    <div class="questions">
+                        <h2 class="contact">Talk to One of Our Agents today.</h2>
+                        <p>Call or Email us to start planning your trip.</p>
 
-                    <a class="contact-buttons" href="mailto:agents@maketravel.com" target="_blank">agents@maketravel.com</a>
-                    <a class="contact-buttons" href="tel:6175253047" target="_blank">617-525-3047</a>
-                </div>
-            </div>
-        </div>
-        
-        <div class="is-mobile">
-            <div class="formDivMobile">
-                <form onsubmit="return validate()" name="data" method = "get">
-                    <input type="text" placeholder="First Name" name="firstname"><br>
-                    <input type="text" placeholder="Last Name" name="lastname"><br>
-                    <input type="text" placeholder="Email" name="email"><br>
-                    <input type="text" placeholder="Phone Number" name="phone"><br>
-                    <div id="select-dest">
-                    What destination(s) are you interested in getting more information about?
-                    <br/>
-                        <input type="checkbox" name="check" id="dest1">
-                        <label for="dest1">Cozumel, Mexico</label><br/>
-                        <input type="checkbox" id="dest2">
-                        <label for="dest2">Venice, Italy</label><br/>
-                        <input type="checkbox" id="dest3">
-                        <label for="dest3">Athens, Greece</label><br/>
-                        <input type="checkbox" id="dest4">
-                        <label for="dest4">Madrid, Spain</label><br/>
-                        <input type="checkbox" id="dest5">
-                        <label for="dest5">Bangkok, Thailand</label><br/>
-                        <input type="checkbox" id="dest6">
-                        <label for="dest5">Berlin, Germany</label><br/>
+                        <a class="contact-buttons" href="mailto:agents@maketravel.com" target="_blank">agents@maketravel.com</a>
+                        <a class="contact-buttons" href="tel:6175253047" target="_blank">617-525-3047</a>
                     </div>
-                    <input type="submit" value="Submit" >
-                </form>
+                </div>
                 
-                
-            </div>
-            <div class="questions">
-                <p>Talk to One of Our Agents today.</p>
-                <p>Call or Email us to start planning your trip.</p>
-
-                <a class="contact-buttons" href="mailto:agents@maketravel.com" target="_blank">agents@maketravel.com</a>
-                <br/>
-                <br/>
-                <a class="contact-buttons" href="tel:6175253047" target="_blank">617-525-3047</a>
-            </div>
-        </div>
-            
+                <div class = "is-mobile">
+                    <div class="questions">
+                        <h2 class="contact">Talk to One of Our Agents today.</h2>
+                        <p>Call or Email us to start planning your trip.</p>
+                        <a class="contact-buttons" href="mailto:agents@maketravel.com" target="_blank">agents@maketravel.com</a>
+                        <br/>
+                        <br/>
+                        <a class="contact-buttons" href="tel:6175253047" target="_blank">617-525-3047</a>
+                    </div>
+                </div>
         
-    
 
     	
         <footer>
@@ -260,65 +228,87 @@
                 Sunday:&nbsp	10AM–6PM<br>
             </ul>
         </footer>
-        <script language='javascript'>
-            function validate() {
-                if (document.data.firstname.value=="") {
-                    alert("Please enter your first name");
-                    document.data.firstname.focus();
-                    return false;
-                }
-                
-                if (document.data.lastname.value=="") {
-                    alert("Please enter your last name");
-                    document.data.lastname.focus();
-                    return false;
-                }
-                
-                if (document.data.email.value==""){
-                    alert("Please enter your email");
-                    document.data.email.focus();
-                    return false;
-                }
-                
-                let reg_email = new RegExp('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}$');
-                if (!(reg_email.test(document.data.email.value))) {
-                    alert("Please enter a valid email");
-                    document.data.email.focus();
-                    document.data.email.select();
-                    return false;
-                }
-                
-                if (document.data.phone.value==""){
-                    alert("Please enter your phone number");
-                    document.data.phone.focus();
-                    return false;
-                }
-                
-                let reg_phone = new RegExp('([0-9]){3}-[0-9]{3}-[0-9]{4}');
-                let reg_phone2 = new RegExp('[0-9]{10}');
-                if (!(reg_phone.test(document.data.phone.value))
-                    && !(reg_phone2.test(document.data.phone.value))) 
-                {
-                    alert("Please enter a valid phone number in the form (123)-456-7890 or 1234567890");
-                    document.data.phone.focus();
-                    document.data.phone.select();
-                    return false;
-                }
-                
-                if ((!document.getElementById("dest1").checked)
-                    && (!document.getElementById("dest2").checked)
-                    && (!document.getElementById("dest3").checked)
-                    && (!document.getElementById("dest4").checked)
-                    && (!document.getElementById("dest5").checked)
-                    && (!document.getElementById("dest6").checked)) {
-                        alert("Please select at least one destination");
-                        return false;
-                    }
-                
-                alert('Thank you. We will be in touch soon.');
-                return true;
+    </body>
+    <script language='javascript'>
+        $(document).ready(function(){
+            if($(window).width() <= 600) {
+                $('.is-mobile').css('display', 'block');
+                $('.no-mobile').css('display', 'none');
+                $('.formDiv').css('width', '75%');
+            } else {
+                $('.is-mobile').css('display', 'none');
+            }
+        });
+        
+        $(window).on('resize', function(){
+            if($(window).width() <= 600) {
+                $('.is-mobile').css('display', 'block');
+                $('.no-mobile').css('display', 'none');
+                $('.formDiv').css('width', '75%');
+                $('.more-info').css('display', 'block');
+            } else {
+                $('.is-mobile').css('display', 'none');
+                $('.no-mobile').css('display', 'block');
+                $('.more-info').css('display', 'none');
+            }
+        });
+
+        function validate() {
+            if (document.data.firstname.value=="") {
+                alert("Please enter your first name");
+                document.data.firstname.focus();
+                return false;
             }
             
-        </script>
-    </body>
+            if (document.data.lastname.value=="") {
+                alert("Please enter your last name");
+                document.data.lastname.focus();
+                return false;
+            }
+            
+            if (document.data.email.value==""){
+                alert("Please enter your email");
+                document.data.email.focus();
+                return false;
+            }
+            
+            let reg_email = new RegExp('^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}$');
+            if (!(reg_email.test(document.data.email.value))) {
+                alert("Please enter a valid email");
+                document.data.email.focus();
+                document.data.email.select();
+                return false;
+            }
+            
+            if (document.data.phone.value==""){
+                alert("Please enter your phone number");
+                document.data.phone.focus();
+                return false;
+            }
+            
+            let reg_phone = new RegExp('([0-9]){3}-[0-9]{3}-[0-9]{4}');
+            let reg_phone2 = new RegExp('[0-9]{10}');
+            if (!(reg_phone.test(document.data.phone.value))
+                && !(reg_phone2.test(document.data.phone.value))) 
+            {
+                alert("Please enter a valid phone number in the form (123)-456-7890 or 1234567890");
+                document.data.phone.focus();
+                document.data.phone.select();
+                return false;
+            }
+            
+            if ((!document.getElementById("dest1").checked)
+                && (!document.getElementById("dest2").checked)
+                && (!document.getElementById("dest3").checked)
+                && (!document.getElementById("dest4").checked)
+                && (!document.getElementById("dest5").checked)
+                && (!document.getElementById("dest6").checked)) {
+                    alert("Please select at least one destination");
+                    return false;
+                }
+            
+            alert('Thank you. We will be in touch soon.');
+            return true;
+        }
+    </script>
 </html>
