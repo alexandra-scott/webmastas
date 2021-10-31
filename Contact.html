@@ -8,6 +8,7 @@
     <link href="travel-home.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata|Sarabun|Inter|Raleway|Lora|Bebas+Neue">
     <style>
+    
         .is-mobile {display:none;}
 
         @media (max-width: 600px) {
@@ -76,9 +77,8 @@
             font-size: inherit;
         }
         
-        #questions {
+        .questions {
         	background-color: #d76539;
-        	height: 150px;
         	font-family: "Inter", sans-serif;
         	text-align: center;
         	color: #FFFFFF;
@@ -112,6 +112,23 @@
         
         .form-text {
             text-transform: none;
+        }
+        
+        .is-mobile p {
+            font-size: 4vw;
+        }
+        
+        .is-mobile .questions{
+            font-size: 4vw;
+        	font-family: "Inter", sans-serif;
+        	text-align: center;
+        	color: #FFFFFF;
+        	padding: 20px 0px;
+        }
+        
+        .is-mobile .questions a {
+            margin-bottom: 20px;
+            font-size: 4vw;
         }
         
     </style>
@@ -164,15 +181,14 @@
                         <input type="submit" value="Submit" >
                     </form>
                 </div>
-            </div>
-            <section id="questions">
-                <h2 id="contact">Talk to One of Our Agents today.</h2>
-                <p>Call or Email us to start planning your trip.</p>
+                <div class="questions">
+                    <h2 id="contact">Talk to One of Our Agents today.</h2>
+                    <p>Call or Email us to start planning your trip.</p>
 
-                <a class="contact-buttons" href="mailto:agents@maketravel.com" target="_blank">agents@maketravel.com</a>
-                <a class="contact-buttons" href="tel:6175253047" target="_blank">617-525-3047</a>
-            </section>
-            
+                    <a class="contact-buttons" href="mailto:agents@maketravel.com" target="_blank">agents@maketravel.com</a>
+                    <a class="contact-buttons" href="tel:6175253047" target="_blank">617-525-3047</a>
+                </div>
+            </div>
         </div>
         
         <div class="is-mobile">
@@ -200,6 +216,17 @@
                     </div>
                     <input type="submit" value="Submit" >
                 </form>
+                
+                
+            </div>
+            <div class="questions">
+                <p>Talk to One of Our Agents today.</p>
+                <p>Call or Email us to start planning your trip.</p>
+
+                <a class="contact-buttons" href="mailto:agents@maketravel.com" target="_blank">agents@maketravel.com</a>
+                <br/>
+                <br/>
+                <a class="contact-buttons" href="tel:6175253047" target="_blank">617-525-3047</a>
             </div>
         </div>
             
