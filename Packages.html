@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 <title>MAKE Travel</title>
 	
 <link href="travel-home.css" rel="stylesheet" type="text/css">
@@ -217,6 +217,26 @@ $(document).ready(function() {
 </body>
 
 <script language='javascript'>
+    $(document).ready(function(){
+        if($(window).width() <= 600) {
+            $('.more-info').css('display', 'block');
+            $('.more-info ul').css('font-size', '4vw');
+            $('.no-mobile').css('display', 'none');
+        } else {
+            $('.more-info').css('display', 'none');
+        }
+    });
+
+    $(window).on('resize', function(){
+        if($(window).width() <= 600) {
+            $('.more-info').css('display', 'block');
+            $('.more-info ul').css('font-size', '4vw');
+            $('.no-mobile').css('display', 'none');
+        } else {
+            $('.more-info').css('display', 'none');
+        }
+    });
+	
     function showDiv(num){
         document.getElementById(num);
         s = '#' + 'more-info' + num;
