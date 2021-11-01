@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Destinations</title>
+<link href="travel-destinations.css" rel="stylesheet" type="text/css">
+<link href="index-responsive.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alata|Sarabun|Inter|Raleway|Lora|Bebas+Neue">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script language = "javascript">
+$( document ).ready(function() {
+$("#slideshow > div:gt(0)").hide();
+
+setInterval(function() { 
+  	$('#slideshow > div:first')
+  	.fadeOut(0)
+  	.next()
+  	.fadeIn(1000)
+  	.end()
+  	.appendTo('#slideshow');
+	}, 
+	3000);
+
+
+$("#img1").click(function() {
+window.open('https://alexandra-scott.github.io/webmastas/Destinations-venice.html', '_blank');
+});
+
+$("#img2").click(function() {
+window.open('https://alexandra-scott.github.io/webmastas/Destinations-berlin.html', '_blank');
+});
+
+$("#img3").click(function() {
+window.open('https://alexandra-scott.github.io/webmastas/Destinations-bangkok.html', '_blank');
+});
+
+$("#img4").click(function() {
+window.open('https://alexandra-scott.github.io/webmastas/Destinations-madrid.html', '_blank');
+});
+
+$("#img5").click(function() {
+window.open('https://alexandra-scott.github.io/webmastas/Destinations-athens.html', '_blank');
+});
+
+$("#img6").click(function() {
+window.open('https://alexandra-scott.github.io/webmastas/Destinations-cozumel.html', '_blank');
+});
+
+});
+</script>
+<style>
+	#slideshow { 
+  	margin-left: 27%; 
+  	position: relative; 
+  	width: 50%;  
+  	padding: 10px;
+	 
+	}
+h2 {
+	margin: auto;}
+
+</style>
+
+</head>
+
+<body>
+	<header>
+		<nav>		
+			<ul id="navlinks">
+				<li ><a href="index.html"><img src="travel-logo-01.png" alt="Travel Logo" width="129" height="75"></a></li>
+				<li class="text-link"><a href="index.html">Home</a></li>
+				<li class="text-link"><a href="AboutUs.html">About Us</a></li>
+				<li class="text-link"><a href="destinations.html">Destinations</a></li>
+				<li class="text-link"><a href="Packages.html">Packages</a></li>
+				<li class="contact-button"><a href="Contact.html">Contact Us</a></li>
+			</ul>
+		 </nav>
+	</header>
+	
+	<div id="hero" class="has-button">
+	<h1 class="hero-text">Destinations</h1>
+	</div><!--  end hero -->
+	<h2 style = "font-size: 40pt; text-align: center; font-weight: 1.2;">Where will you go next?</h2>
+	<h2 style = "font-size: 20pt; text-align: center; font-weight: 1.2; margin-top: 20px;">Click on an image to learn more about the destination!</h2>
+	
+	<div id="slideshow">
+  	<div>
+    	<img src="venice-1.jpg" id = "img1" width="90%" height = "30%">
+  	</div>
+  	<div>
+    	<img src="berlin-2.jpg" id = "img2" width="90%" height = "30%">
+ 	 </div>
+  	<div>
+  	  <img src="bangkok-1.jpg" id = "img3" width="90%" height = "30%">
+ 	</div>
+	 <div>
+  	  <img src="madrid-1.jpg" id = "img4" width="90%" height = "30%">
+ 	</div>
+	<div>
+  	  <img src="athens-1.jpg" id = "img5" width="90%" height = "30%">
+ 	</div>
+	<div>
+  	  <img src="cozumel-1.jpg" id = "img6" width="90%" height = "30%">
+ 	</div>
+	</div>
+	
+
+	<footer>
+		<img src="travel-logo-01.png" alt="Logo" width="211">
+		<p>Location<br><br>
+			389 Highland Ave<br>
+			Somerville, Massachusetts<br>
+			02144<br><br>
+			Email: agents@maketravel.com<br>
+			Phone: 617-525-3047
+		</p>
+		<ul>Find Us:<br>
+			<a href="https://www.instagram.com/" target="_blank"><img src="instagram.png" width="30"></a><br>
+			<a href="https://www.facebook.com/" target="_blank"><img src="facebook.png" width="30"></a><br>
+			<a href="https://www.twitter.com/" target="_blank"><img src="twitter-logo.png" width="30"></a><br>
+			<a href="https://www.youtube.com/" target="_blank"><img src="youtube.png" width="30"></a><br>
+		</ul>
+		<ul>
+			Hours<br><br>
+			Monday:&nbsp	11AM–7PM<br>
+			Tuesday:&nbsp	11AM–7PM<br>
+			Wednesday:&nbsp 11AM–7PM<br>
+			Thursday:&nbsp	11AM–7PM<br>
+			Friday:&nbsp	11AM–7PM<br>
+			Saturday:&nbsp	10AM–6PM<br>
+			Sunday:&nbsp	10AM–6PM<br>
+		</ul>
+	</footer>
+
+	
+
+</body>
+</html>
