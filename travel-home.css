@@ -29,6 +29,7 @@ header {
 	background-size: cover;
 	height: 95px;
 	background-attachment: fixed;
+	z-index: 10000000;
 }
 
 #navlinks {
