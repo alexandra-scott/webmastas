@@ -231,6 +231,8 @@ $(document).ready(function() {
     $(window).on('resize', function(){
         if($(window).width() <= 600) {
             $('.more-info').css('display', 'block');
+	    $('.more-info ul').css('font-size', '4vw');
+            $('.no-mobile').css('display', 'none');
         } else {
             $('.more-info').css('display', 'none');
         }
