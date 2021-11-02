@@ -69,18 +69,13 @@
 	}
 }
 
-@media (max-width: 520px) {
-	
-
-}
-
 @media (max-width: 460px) {
 	#news {
 		height: 195px;
 	}
 	.hero-text {
 		font-size: 60pt;
-		line-height: 55px;
+		line-height: 72px;
 	}
 	#icons {
 		flex-direction: column;
