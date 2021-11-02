@@ -8,6 +8,12 @@
 }
 
 @media (max-width: 800px) {
+	.browntext {
+		font-size: 18pt;	
+	}
+}
+
+@media (max-width: 800px) {
 	#hamburger {
 		display: inherit;
 	}
@@ -32,6 +38,9 @@
 		background-image: none;
 		background-color: #D5D5D5;
 		height: 265px;
+	}
+	.bar {
+		flex-direction: column;
 	}
 }
 
