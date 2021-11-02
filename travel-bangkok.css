@@ -15,7 +15,40 @@ a:visited {
 	color: #000000;
 }
 
-button{
+
+#hamburger {
+	background:none;
+	position: absolute;
+  	top: 20px;
+  	right: 0;
+	line-height:45px;
+  	padding:5px 15px 0px 15px;
+  	color:#000000;
+  	border:0;
+  	font-size: 17pt;
+  	font-weight: bold;
+  	cursor: pointer;
+  	outline: none;
+	display: none;
+}
+
+#cross {
+	background: none;
+	position: absolute;
+  	top: 10px;
+  	right: 0;
+	padding:10px 15px 0px 15px;
+  	color:#000000;
+  	border:0;
+  	font-size: 27pt;
+  	line-height: 65px;
+  	font-weight: bold;
+  	cursor: pointer;
+  	outline: none;
+	display: none;
+}
+
+.normal{
   background:rgb(215, 101, 57);
   color:#fff;
   border:none;
@@ -27,11 +60,11 @@ button{
   margin-left: 38%;
   margin-top:5%;
 }
-button:hover{
+.normal:hover{
   background:#fff;
   color:rgb(215, 101, 57);
 }
-button:before,button:after{
+.normal:before,.normal:after{
   content:'';
   position:absolute;
   top:0;
@@ -40,13 +73,13 @@ button:before,button:after{
   width:0;
   background: rgb(215, 101, 57);
 }
-button:after{
+.normal:after{
   right:inherit;
   top:inherit;
   left:0;
   bottom:0;
 }
-button:hover:before,button:hover:after{
+.normal:hover:before,.normal:hover:after{
   width:100%;
 }
 
