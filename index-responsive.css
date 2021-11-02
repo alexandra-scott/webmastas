@@ -42,6 +42,12 @@
 	.bar {
 		flex-direction: column;
 	}
+	.imagebar {
+		margin: 0 10px 10px 0;
+	}
+	.textbar {
+		margin: 10px;
+	}
 }
 
 
