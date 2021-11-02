@@ -87,7 +87,9 @@
 }
 
 @media (max-width: 730px) { 
-	
+	.dest p {
+		margin-right: 7.5%;
+	}
 }
 
 @media (max-width: 625px) {
