@@ -134,6 +134,7 @@ header {
 	background-image: linear-gradient(to right, rgba(0, 0, 0, 0.13),rgba(0, 0, 0, 0.16)), url("hero-travel.jpg");
 	background-size: cover;
 	height: 95px;
+	background-attachment: fixed;
 }
 
 #navlinks {
