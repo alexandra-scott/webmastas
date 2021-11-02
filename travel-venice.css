@@ -90,7 +90,8 @@ a:visited {
     	font-size: 25pt;
 	margin-bottom: 10px;
 	position: relative;
-	margin: 0 75px 20px 0;}
+	margin: 0 75px 20px 0;
+	text-align: center;}
 
 .bar {
   display: flex;
