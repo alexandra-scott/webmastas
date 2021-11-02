@@ -191,18 +191,7 @@
                         <div id="select-dest">
                         What destination(s) are you interested in getting more information about?
                         <br/>
-                            <input type="checkbox" name="check" id="dest1">
-                            <label for="dest1">Cozumel, Mexico</label><br/>
-                            <input type="checkbox" id="dest2">
-                            <label for="dest2">Venice, Italy</label><br/>
-                            <input type="checkbox" id="dest3">
-                            <label for="dest3">Athens, Greece</label><br/>
-                            <input type="checkbox" id="dest4">
-                            <label for="dest4">Madrid, Spain</label><br/>
-                            <input type="checkbox" id="dest5">
-                            <label for="dest5">Bangkok, Thailand</label><br/>
-                            <input type="checkbox" id="dest6">
-                            <label for="dest5">Berlin, Germany</label><br/>
+			<div id="result><div>
                         </div>
                         <input type="submit" value="Submit" >
                     </form>
@@ -281,6 +270,16 @@
                 $('.more-info').css('display', 'none');
             }
         });
+													    
+	dest_arr = ["Cozumel, Mexico", "Venice, Italy", "Athens, Greece", "Madrid, Spain", "Bangkok, Thailand"];
+        s = "";
+        for(i = 0; i < 6; i++) {
+            ids = "dest" + i;
+            s += "<input type='checkbox' name='check' id='" + ids + "'>";
+            s += "<label for='" + ids +"'>" + dest_arr[i] + "</label><br/>";
+        }
+        
+        document.getElementById('result').innerHTML = s;		
 
         function validate() {
             if (document.data.firstname.value=="") {
