@@ -61,7 +61,7 @@ button {
 
 button:hover {background-color: #D78B6E;}
 
-#hero {
+/* #hero {
 	background-image: linear-gradient( rgba(208, 156, 107, 0.3), rgba(208, 156, 107, 0.3) ), url("hero-travel.jpg");
 	background-size: cover;
 	margin-top: -55px;
@@ -69,4 +69,4 @@ button:hover {background-color: #D78B6E;}
 	width: 100%;
 	z-index: -100;
 	text-align: center;
-}
+} */
