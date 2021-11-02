@@ -52,6 +52,11 @@
 	#hero {
 		background-position: center;
 	}
+	.text-box {
+		width: 40%;
+    		left: 25%;
+    		bottom: 185%;
+	}
 }
 
 @media (max-width: 625px) {
@@ -66,6 +71,13 @@
 @media (max-width: 600px) {
 	#icons img {
 		width: 100px;
+	}
+	.text-box {
+		padding: 5px 5px;
+		font-size: 11pt;
+		width: 32%;
+		bottom: 173%
+		visibility: visible;		
 	}
 }
 
