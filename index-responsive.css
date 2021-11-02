@@ -90,6 +90,9 @@
 	.dest p {
 		margin-right: 7.5%;
 	}
+	.normal {
+		font-size: 16pt;
+	}
 }
 
 @media (max-width: 625px) {
