@@ -184,7 +184,8 @@ background-image: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0) ), url("ban
 	margin-bottom: 10px;
 	position: relative;
 	top: 325px;
-	margin: 0 75px 20px 0;
+	margin: 0 0px 20px 0;
+	line-height: 95px;
 }
 
 
