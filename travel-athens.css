@@ -140,7 +140,6 @@ header {
     display: flex;
 	justify-content: space-around;
 	text-justify: inter-word;
-/*    box-sizing: border-box;*/
     width: 100%;
 	font-family: "Inter", sans-serif;
     color: #000000;
