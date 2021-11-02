@@ -47,6 +47,22 @@ $("#img6").click(function() {
 window.open('https://alexandra-scott.github.io/webmastas/Destinations-cozumel.html', '_blank');
 });
 
+	
+	$("#hamburger").click(function() {
+			$(".text-link").addClass("responsive");
+			$(".contact-button").addClass("responsive");
+			$("header").addClass("long-head");
+			$("#hamburger").hide();
+			$("#cross").show();
+	});	
+	
+	$("#cross").click(function() {
+			$(".text-link").removeClass("responsive");
+			$(".contact-button").removeClass("responsive");
+			$("header").removeClass("long-head");
+			$("#cross").hide();
+			$("#hamburger").show();
+	});
 });
 </script>
 <style>
@@ -76,6 +92,8 @@ body{font-family: "Inter bold", sans-serif;}
 				<li class="text-link"><a href="Packages.html">Packages</a></li>
 				<li class="contact-button"><a href="Contact.html">Contact Us</a></li>
 			</ul>
+			<button id="hamburger">&#9776;</button>
+  			<button id="cross">&#735;</button>
 		 </nav>
 	</header>
 	
