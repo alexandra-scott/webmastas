@@ -43,7 +43,7 @@
 		flex-direction: column;
 	}
 	.imagebar {
-		margin: 20px 10px 10px 0;
+		margin: 20px 0px 10px 0;
 	}
 	.textbar {
 		margin: 10px;
@@ -116,6 +116,9 @@
 	}
 	#main p {
 		margin-bottom: 10px;
+	}
+	.imagebar img {
+		width: 300px;
 	}
 }
 
