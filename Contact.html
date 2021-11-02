@@ -271,9 +271,9 @@
             }
         });
 													    
-	dest_arr = ["Cozumel, Mexico", "Venice, Italy", "Athens, Greece", "Madrid, Spain", "Bangkok, Thailand"];
+	dest_arr = ["Athens, Greece", "Bangkok, Thailand", "Berlin, Germany", "Cozumel, Mexico", "Madrid, Spain", "Venice, Italy" ];
         s = "";
-        for(i = 0; i < 6; i++) {
+        for(i = 0; i < dest_arr.length; i++) {
             ids = "dest" + i;
             s += "<input type='checkbox' name='check' id='" + ids + "'>";
             s += "<label for='" + ids +"'>" + dest_arr[i] + "</label><br/>";
