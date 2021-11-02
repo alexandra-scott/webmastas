@@ -7,6 +7,12 @@
 	}
 }
 
+@media (max-width: 1020px) {
+	#mainpic img {
+		width: 400px;
+	}
+}
+
 @media (max-width: 850px) {
 	.browntext {
 		font-size: 18pt;	
@@ -51,6 +57,9 @@
 	.browntext {
 		margin: 0;
 	}
+	.dest p {
+		font-size: 16pt;
+	}
 }
 
 
@@ -75,6 +84,10 @@
     		left: 25%;
     		bottom: 185%;
 	}
+}
+
+@media (max-width: 730px) { 
+	
 }
 
 @media (max-width: 625px) {
@@ -118,6 +131,9 @@
 		margin-bottom: 10px;
 	}
 	.imagebar img {
+		width: 300px;
+	}
+	#mainpic img {
 		width: 300px;
 	}
 }
