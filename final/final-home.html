@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<title>MAKE Dessert</title>
+<link href="makedessert.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+<script>
+	function getdessert() {	
+		request = new XMLHttpRequest();
+		console.log("1 - request object created");
+
+		//this is an example of API call to get recipes with apples, flour, and 2 sugars
+		request.open("GET", "https://api.spoonacular.com/recipes/findByIngredients?apiKey=610bf5a8a3214453b246d41138ccf262&ingredients=apples,+flour,+sugar&number=2", true);
+		console.log("2 - opened request file");
+			
+		request.onreadystatechange = function() {
+			console.log("3 - readystatechange event fired.");
+
+			if (request.readyState == 4 && request.status == 200) {
+				var result = request.responseText;				
+				var recipes = JSON.parse(result);
+ 				
+				//here is where we need to get the important recipe stuff and assign it to a div
+
+			}
+			else if (request.readyState == 4 && request.status != 200) {
+				document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+			}
+		}
+			request.send();
+			console.log("4 - Request sent");
+		}
+				
+	</script>
+</head>
+
+<body>
+	<header><a href="final-home.html">MAKE Dessert</a></header>
+	<div id="hero">
+		<h1>Find the Perfect Recipe...</h1>
+		
+<!--		This form gets a recipe from the API with ingredients selected-->
+		<form id="search"> 
+			<input type="text" placeholder="Search for recipes by main ingredients">
+			<button><i class="fa fa-search"></i></button>
+		</form>		
+	</div>
+	<section id="wave"></section>
+	
+	
+<!--	This div accesses the API when page is loaded-->
+	<div onload="getdessert()">
+		
+<!--	This section displays 3 random recipes from API-->
+	<h2>Our Favorites</h2>
+	<div id="favs">
+		<div id="fav1">&nbsp;</div>
+		<div id="fav2">&nbsp;</div>
+		<div id="fav3">&nbsp;</div>
+	</div>
+
+<!--	This section displays recipes recommended based on the most recent ingredient search?-->
+	<h2>Recomended for You</h2>
+	<div id="recs">
+		<div id="rec1">&nbsp;</div>
+		<div id="rec2">&nbsp;</div>
+		<div id="rec3">&nbsp;</div>
+	</div>
+	</div>
+	
+<!--	Tester div-->
+	<div id="data">&nbsp;</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+@charset "UTF-8";
+/* CSS Document */
+
+header a:active, a:hover, a:visited, a:link {
+	color: #FBFBFB;
+	text-decoration: none;
+}
+
+body {
+	margin: 0 auto;
+}
+
+header {
+	font-family: "Varela Round", sans-serif;
+	text-align: center;
+	margin-top: 25px;
+	font-size: 16pt;
+	color: #FFFFFF;
+}
+
+h1 {
+	font-family: "Varela Round", sans-serif;
+	text-align: center;
+	font-size: 50pt;
+	color: #1c604e;
+	position: relative;
+	top: 445px;
+	margin-bottom: 20px;
+}
+
+#hero {
+	background-image: url("background.jpg");
+	background-size: cover;
+	width: 100%;
+	height: 900px;
+	margin-top: -400px;
+}
+
+#search {
+	text-align: center;
+	position: relative;
+	top: 445px;	
+	height: 50px;
+	display: flex;
+	align-content: center;
+	border-radius: 30px;
+	filter: drop-shadow(0px 14px 15px black);
+	justify-content: center;
+	padding: 12px 20px;
+
+}
+
+input[type=text] {
+
+	padding: 12px 20px;
+	width: 500px;
+	border-radius: 30px;
+	border:0;
+	font-family: "Varela Round", sans-serif;
+}
+
+button {
+	height: 50px;
+	margin-left: -39px;
+	border-radius: 30px;
+	border:0;
+	background-color: #FFFFFF;
+}
+
+button:hover {
+	cursor:pointer;
+}
+
+#wave {
+	background-image: url("whitewave.png");
+	margin-top: -139px;
+	background-size:cover;
+	z-index: 10000;
+	height: 150px;
+	width: 100%;
+	background-position: center;
+}
+
+h2 {
+	color: #5dad9a;
+	margin-left: 18%;
+	size: 25pt;
+	font-family: "Varela Round", sans-serif;
+}
+
+#favs, #recs {
+	display: flex;
+	justify-content: center;
+	margin-left: 18%;
+	margin-right: 18%;
+}
+
+#fav1, #fav2, #fav3, #rec1, #rec2, #rec3 {
+	width: 33%;
+	height: 150px;
+	background-color: #FFFFFF;
+	border-radius: 22px;
+	border: solid thin #5dad9a;
+	filter: drop-shadow(8px 14px 35px #c6c6c6);
+	margin: 10px;
+}
