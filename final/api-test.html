@@ -1,0 +1,164 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<title>MAKE Dessert</title>
+<link href="makedessert.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+<script>
+	/*function getdessert() {	
+		request = new XMLHttpRequest();
+		console.log("1 - request object created");
+
+		//this is an example of API call to get recipes with apples, flour, and 2 sugars
+		request.open("GET", "https://api.spoonacular.com/recipes/random?apiKey=ea611df652354b86954189a8fb801f11&number=3&tags=vegetarian,dessert", true);
+		//request.open("GET", "https://api.spoonacular.com/recipes/findByIngredients?apiKey=610bf5a8a3214453b246d41138ccf262&ingredients=apples,+flour,+sugar&number=4", true);
+        console.log("2 - opened request file");
+			
+		request.onreadystatechange = function() {
+			console.log("3 - readystatechange event fired.");
+
+			if (request.readyState == 4 && request.status == 200) {
+				var result = request.responseText;				
+				var data = JSON.parse(result);
+                console.log(data.recipes[0])
+ 				
+				strHTML = "<ul style='list-style-type: none; font-family: 'Varela Round';'>";
+				strHTML2 = "<ul style='list-style-type: none;'>";
+				strHTML3 = "<ul style='list-style-type: none;'>";
+//						data.forEach(function(data) { 
+//					for (int i = 0; i < 4; i++) {
+							strHTML += data.recipes[0].title + "<br/>";
+							strHTML += "Total Time: " + data.recipes[0].readyInMinutes + "<br/>";
+							strHTML += "Servings: " + data.recipes[0].servings;
+				
+							strHTML2 += data.recipes[1].title + "<br/>";;
+//						}) 
+//					}
+					strHTML += "</ul>";
+				
+					document.getElementById("rec1").innerHTML = strHTML;
+					document.getElementById("rec2").innerHTML = strHTML2;
+//					document.getElementById("fav3").innerHTML = strHTML3;
+
+			}
+			else if (request.readyState == 4 && request.status != 200) {
+				document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+			}
+		}
+			request.send();
+			console.log("4 - Request sent");
+		}*/
+				
+	</script>
+</head>
+
+<!--body onload="getdessert()"-->
+<body>
+	<header><a href="final-home.html">MAKE Dessert</a></header>
+	<div id="hero">
+		<h1>Find the Perfect Recipe...</h1>
+		
+<!--		This form gets a recipe from the API with ingredients selected-->
+
+<!-- alexandra changed this, note: must add #res and #res1, #res2, #res2 to css-->
+
+		<form id="search" onsubmit="return findrecipes()"> 
+			<input id="input" type="text" placeholder="Search for recipes by main ingredients">
+			<button><i class="fa fa-search"></i></button>
+		</form>		
+	</div>
+
+    <script>
+        function findrecipes() {
+            user_ingred = document.getElementById("input").value;
+            num_res = 3; // update this with user selection?
+            
+            // removes all commas from user-entered ingredients
+            ingred_no_comma = user_ingred.replace(/,/g, "");
+            
+            // separates ingredients based on whitespace 
+            ingred_Arr = ingred_no_comma.split(" ");
+            
+            // makes string of form ingred1,+ingred2,+ingred3
+            ingred_query = ingred_Arr.join(",+");          
+            
+            
+            document.getElementById("search-results").style.display = "block";
+            query_string = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=610bf5a8a3214453b246d41138ccf262&ingredients="
+            query_string += ingred_query + "&number=" + num_res;
+            
+            request = new XMLHttpRequest();
+            console.log("1 - request object created");
+            
+
+    		request.open("GET", query_string, true);
+            console.log("2 - opened request file");
+            request.onreadystatechange = function() {
+    			console.log("3 - readystatechange event fired.");
+
+    			if (request.readyState == 4 && request.status == 200) {
+    				var result = request.responseText;				
+    				var data = JSON.parse(result);
+                    
+                    // access and display results, currently writes title w/out formatting
+                    
+                    document.getElementById("res1").innerHTML += data[0].title;
+                    document.getElementById("res2").innerHTML += data[1].title;
+                    document.getElementById("res3").innerHTML += data[2].title;
+                    
+                    
+
+    			}
+    			else if (request.readyState == 4 && request.status != 200) {
+    				document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+    			}
+    		}
+    			request.send();
+    			console.log("4 - Request sent");
+                
+                return false;
+    		
+        }
+    </script>
+    
+	<section id="wave"></section>
+    <div id="search-results" style="display:none">
+        <h2>Search Results</h2>
+        <div id="res">
+            <div id="res1">&nbsp;</div>
+            <div id="res2">&nbsp;</div>
+            <div id="res3">&nbsp;</div>
+        </div>
+    </div>
+    
+<!-- end alexandra changes -->
+	
+<!--	This div accesses the API when page is loaded-->
+	<div>
+        
+
+		
+<!--	This section displays 3 random recipes from API-->
+	<h2>Our Favorites</h2>
+	<div id="favs">
+		<div id="fav1">&nbsp;</div>
+		<div id="fav2">&nbsp;</div>
+		<div id="fav3">&nbsp;</div>
+	</div>
+
+<!--	This section displays recipes recommended based on the most recent ingredient search?-->
+	<h2>Recomended for You</h2>
+	<div id="recs">
+		<div id="rec1">&nbsp;</div>
+		<div id="rec2">&nbsp;</div>
+		<div id="rec3">&nbsp;</div>
+	</div>
+	</div>
+	
+<!--	Tester div-->
+	<div id="data">&nbsp;</div>
+</body>
+</html>
