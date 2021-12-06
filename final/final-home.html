@@ -72,12 +72,86 @@
 		<h1>Find the Perfect Recipe...</h1>
 		
 <!--		This form gets a recipe from the API with ingredients selected-->
+		<form id="search" onsubmit="return findrecipes()"> 
+			<input id="input" type="text" placeholder="Search for recipes by main ingredients">
+			<button><i class="fa fa-search"></i></button>
+		</form>		
+	</div>
+
+    <script>
+        function findrecipes() {
+            user_ingred = document.getElementById("input").value;
+            num_res = 3; // update this with user selection?
+            
+            // removes all commas from user-entered ingredients
+            ingred_no_comma = user_ingred.replace(/,/g, "");
+            
+            // separates ingredients based on whitespace 
+            ingred_Arr = ingred_no_comma.split(" ");
+            
+            // makes string of form ingred1,+ingred2,+ingred3
+            ingred_query = ingred_Arr.join(",+");          
+            
+            
+            document.getElementById("search-results").style.display = "block";
+            query_string = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=610bf5a8a3214453b246d41138ccf262&ingredients="
+            query_string += ingred_query + "&number=" + num_res;
+            
+            request = new XMLHttpRequest();
+            console.log("1 - request object created");
+            
+
+    		request.open("GET", query_string, true);
+            console.log("2 - opened request file");
+            request.onreadystatechange = function() {
+    			console.log("3 - readystatechange event fired.");
+
+    			if (request.readyState == 4 && request.status == 200) {
+    				var result = request.responseText;				
+    				var data = JSON.parse(result);
+                    
+                    // access and display results, currently writes title w/out formatting
+                    
+                    document.getElementById("res1").innerHTML += data[0].title;
+                    document.getElementById("res2").innerHTML += data[1].title;
+                    document.getElementById("res3").innerHTML += data[2].title;
+                    
+                    
+
+    			}
+    			else if (request.readyState == 4 && request.status != 200) {
+    				document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+    			}
+    		}
+    			request.send();
+    			console.log("4 - Request sent");
+                
+                return false;
+    		
+        }
+    </script>
+    
+	<section id="wave"></section>
+    <div id="search-results" style="display:none">
+        <h2>Search Results</h2>
+        <div id="res">
+            <div id="res1">&nbsp;</div>
+            <div id="res2">&nbsp;</div>
+            <div id="res3">&nbsp;</div>
+        </div>
+    </div>
+		
+		
+		
+		
+<!--
 		<form id="search"> 
 			<input type="text" placeholder="Search for recipes by main ingredients">
 			<button><i class="fa fa-search"></i></button>
 		</form>		
 	</div>
 	<section id="wave"></section>
+-->
 	
 	
 <!--	This div accesses the API when page is loaded-->
