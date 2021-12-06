@@ -13,7 +13,7 @@
 		console.log("1 - request object created");
 
 		//this is an example of API call to get recipes with apples, flour, and 2 sugars
-		request.open("GET", "https://api.spoonacular.com/recipes/findByIngredients?apiKey=610bf5a8a3214453b246d41138ccf262&ingredients=apples,+flour,+sugar&number=2", true);
+		request.open("GET", "https://api.spoonacular.com/recipes/random?apiKey=610bf5a8a3214453b246d41138ccf262&number=3&tags=vegetarian,dessert", true);
 		console.log("2 - opened request file");
 			
 		request.onreadystatechange = function() {
