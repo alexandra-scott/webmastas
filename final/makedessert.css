@@ -97,11 +97,33 @@ h2 {
 
 #fav1, #fav2, #fav3, #rec1, #rec2, #rec3 {
 	width: 33%;
-	height: 150px;
+	height: 245px;
 	background-color: #FFFFFF;
 	border-radius: 22px;
 	border: solid thin #5dad9a;
 	filter: drop-shadow(8px 14px 35px #c6c6c6);
 	margin: 10px;
 	text-align: center;
+	font-family: "Varela Round", sans-serif;
+	padding: 10px;
+}
+
+ul {
+	padding-left: 0;
+	margin: 10px;
+	text-align: left;
+	font-size: 12pt;
+}
+
+.divtitle {
+	font-size: 15pt;
+	color: #5dad9a;
+	text-align: left;
+	margin-left: 10px;
+}
+
+img {
+	width: 100px;
+	height: 100px;
+	shape-inside: circle();
 }

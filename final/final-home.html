@@ -22,24 +22,37 @@
 			if (request.readyState == 4 && request.status == 200) {
 				var result = request.responseText;				
 				var data = JSON.parse(result);
- 				
-				strHTML = "<ul style='list-style-type: none; font-family: 'Varela Round';'>";
+ 						
+				title1 = "<h3 class='divtitle'>" + data.recipes[0].title + "</h3>";
+				image1 = "<img src=" + data.recipes[0].image+"/>";
+				
+				title2 = "<h3 class='divtitle'>" + data.recipes[1].title + "</h3>";
+				image2 = "<img src=" + data.recipes[1].image+"/>";
+				
+				title3 = "<h3 class='divtitle'>" + data.recipes[2].title + "</h3>";
+				image3 = "<img src=" + data.recipes[2].image+"/>";
+					
+				
+				strHTML = "<ul style='list-style-type: none;'>";
 				strHTML2 = "<ul style='list-style-type: none;'>";
 				strHTML3 = "<ul style='list-style-type: none;'>";
-//						data.forEach(function(data) { 
-//					for (int i = 0; i < 4; i++) {
-							strHTML += data.recipes[0].title + "<br/>";
-							strHTML += "Total Time: " + data.recipes[0].readyInMinutes + "<br/>";
-							strHTML += "Servings: " + data.recipes[0].servings;
+
+				strHTML += "Make Time: " + data.recipes[0].readyInMinutes + " mins<br/>";
+				strHTML += "Servings: " + data.recipes[0].servings;
 				
-							strHTML2 += data.recipes[1].title + "<br/>";;
-//						}) 
-//					}
-					strHTML += "</ul>";
+				strHTML2 += "Make Time: " + data.recipes[1].readyInMinutes + " mins<br/>";
+				strHTML2 += "Servings: " + data.recipes[1].servings;
 				
-					document.getElementById("rec1").innerHTML = strHTML;
-					document.getElementById("rec2").innerHTML = strHTML2;
-//					document.getElementById("fav3").innerHTML = strHTML3;
+				strHTML3 += "Make Time: " + data.recipes[2].readyInMinutes + " mins<br/>";
+				strHTML3 += "Servings: " + data.recipes[2].servings;
+					
+				strHTML += "</ul>";
+				strHTML2 += "</ul>";
+				strHTML3 += "</ul>";
+				
+				document.getElementById("rec1").innerHTML = image1 + title1 + strHTML; 
+				document.getElementById("rec2").innerHTML = image2 + title2 + strHTML2;
+				document.getElementById("rec3").innerHTML = image3+ title3 + strHTML3;
 
 			}
 			else if (request.readyState == 4 && request.status != 200) {
