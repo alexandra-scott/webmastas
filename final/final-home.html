@@ -94,8 +94,8 @@
             
             
             document.getElementById("search-results").style.display = "block";
-            query_string = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=610bf5a8a3214453b246d41138ccf262&ingredients="
-            query_string += ingred_query + "&number=" + num_res + "&tags=dessert";
+            query_string = "https://api.spoonacular.com/recipes/complexSearch?apiKey=610bf5a8a3214453b246d41138ccf262&includeIngredients="
+            query_string += ingred_query + "&number=" + num_res + "&type=dessert";
             
             request = new XMLHttpRequest();
             console.log("1 - request object created");
