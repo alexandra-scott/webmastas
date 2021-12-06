@@ -64,7 +64,7 @@ button {
 	margin-left: -39px;
 	border-radius: 30px;
 	border:0;
-	background-color: #FFFFFF;
+	background-color: transparent;
 }
 
 button:hover {
@@ -103,4 +103,5 @@ h2 {
 	border: solid thin #5dad9a;
 	filter: drop-shadow(8px 14px 35px #c6c6c6);
 	margin: 10px;
+	text-align: center;
 }

@@ -21,9 +21,25 @@
 
 			if (request.readyState == 4 && request.status == 200) {
 				var result = request.responseText;				
-				var recipes = JSON.parse(result);
+				var data = JSON.parse(result);
  				
-				//here is where we need to get the important recipe stuff and assign it to a div
+				strHTML = "<ul style='list-style-type: none; font-family: 'Varela Round';'>";
+				strHTML2 = "<ul style='list-style-type: none;'>";
+				strHTML3 = "<ul style='list-style-type: none;'>";
+//						data.forEach(function(data) { 
+//					for (int i = 0; i < 4; i++) {
+							strHTML += data.recipes[0].title + "<br/>";
+							strHTML += "Total Time: " + data.recipes[0].readyInMinutes + "<br/>";
+							strHTML += "Servings: " + data.recipes[0].servings;
+				
+							strHTML2 += data.recipes[1].title + "<br/>";;
+//						}) 
+//					}
+					strHTML += "</ul>";
+				
+					document.getElementById("rec1").innerHTML = strHTML;
+					document.getElementById("rec2").innerHTML = strHTML2;
+//					document.getElementById("fav3").innerHTML = strHTML3;
 
 			}
 			else if (request.readyState == 4 && request.status != 200) {
@@ -37,7 +53,7 @@
 	</script>
 </head>
 
-<body>
+<body onload="getdessert()">
 	<header><a href="final-home.html">MAKE Dessert</a></header>
 	<div id="hero">
 		<h1>Find the Perfect Recipe...</h1>
@@ -52,7 +68,7 @@
 	
 	
 <!--	This div accesses the API when page is loaded-->
-	<div onload="getdessert()">
+	<div>
 		
 <!--	This section displays 3 random recipes from API-->
 	<h2>Our Favorites</h2>
