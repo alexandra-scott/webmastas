@@ -22,7 +22,8 @@ h1 {
 	font-family: "Varela Round", sans-serif;
 	text-align: center;
 	font-size: 50pt;
-	color: #1c604e;
+	color: #06392B;
+/*	color: #1c604e;*/
 	position: relative;
 	top: 445px;
 	margin-bottom: 20px;
@@ -88,24 +89,24 @@ h2 {
 	font-family: "Varela Round", sans-serif;
 }
 
-#favs, #recs {
+#favs, #recs, #res {
 	display: flex;
 	justify-content: center;
 	margin-left: 18%;
 	margin-right: 18%;
 }
 
-#fav1, #fav2, #fav3, #rec1, #rec2, #rec3 {
+#fav1, #fav2, #fav3, #rec1, #rec2, #rec3, #res1, #res2, #res3, #rec4, #rec5, #rec6 {
 	width: 33%;
-	height: 270px;
+	height: 295px;
 	background-color: #FFFFFF;
 	border-radius: 22px;
 	border: solid thin #5dad9a;
-	filter: drop-shadow(8px 14px 35px #c6c6c6);
+	filter: drop-shadow(4px 16px 35px #c6c6c6);	
 	margin: 10px;
 	text-align: center;
 	font-family: "Varela Round", sans-serif;
-	padding: 10px;
+	padding: 20px 10px 10px 10px;
 }
 
 ul {
@@ -116,14 +117,31 @@ ul {
 }
 
 .divtitle {
-	font-size: 15pt;
+	font-size: 13pt;
 	color: #5dad9a;
 	text-align: left;
 	margin-left: 10px;
 }
 
 img {
-	width: 100px;
-	height: 100px;
-	shape-inside: circle();
+	width: 125px;
+	height: 125px;
+	border-radius: 50%;
+}
+
+i {
+	color: #B7B7B7;
+	cursor: pointer;
+}
+
+.chevron {
+	display: inline-flex;
+}
+
+#left {
+	margin-right: 15px;
+}
+
+#right {
+	margin-left: 15px;
 }

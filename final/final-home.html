@@ -7,13 +7,55 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
+	
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script language="javascript">	
+
+$(document).ready(function() {
+	$("#rec4").hide();
+	$("#rec5").hide();
+	$("#rec6").hide();
+	$("#left").hide();
+	
+	$("#right").click(function() {
+		$("#right").hide();
+		$("#left").show();
+		$("#rec1").hide();
+		$("#rec2").hide();
+		$("#rec3").hide();
+		$("#rec4").show();
+		$("#rec5").show();
+		$("#rec6").show();
+	});	
+	
+	$("#left").click(function() {
+		$("#left").hide();
+		$("#right").show();
+		$("#rec1").show();
+		$("#rec2").show();
+		$("#rec3").show();
+		$("#rec4").hide();
+		$("#rec5").hide();
+		$("#rec6").hide();
+	});
+	
+	
+	$("button").click(function() {	
+		$([document.documentElement, document.body]).animate({
+        	scrollTop: $("#wave").offset().top
+    	}, 800);
+	});	
+	
+});
+</script>
+	
 <script>
 	function getdessert() {	
 		request = new XMLHttpRequest();
 		console.log("1 - request object created");
 
 		//this is an example of API call to get recipes with apples, flour, and 2 sugars
-		request.open("GET", "https://api.spoonacular.com/recipes/random?apiKey=610bf5a8a3214453b246d41138ccf262&number=3&tags=vegetarian,dessert", true);
+		request.open("GET", "https://api.spoonacular.com/recipes/random?apiKey=793e9467a3d04dd4b75c0e12cdcbe489&number=6&tags=dessert", true);
 		console.log("2 - opened request file");
 			
 		request.onreadystatechange = function() {
@@ -24,18 +66,30 @@
 				var data = JSON.parse(result);
  						
 				title1 = "<h3 class='divtitle'>" + data.recipes[0].title + "</h3>";
-				image1 = "<img src=" + data.recipes[0].image+"/>";
+				image1 = "<img src=" + data.recipes[0].image+">";
 				
 				title2 = "<h3 class='divtitle'>" + data.recipes[1].title + "</h3>";
-				image2 = "<img src=" + data.recipes[1].image+"/>";
+				image2 = "<img src=" + data.recipes[1].image+">";
 				
 				title3 = "<h3 class='divtitle'>" + data.recipes[2].title + "</h3>";
-				image3 = "<img src=" + data.recipes[2].image+"/>";
+				image3 = "<img src=" + data.recipes[2].image+">";
 					
+				title4 = "<h3 class='divtitle'>" + data.recipes[3].title + "</h3>";
+				image4 = "<img src=" + data.recipes[3].image+">";
+				
+				title5 = "<h3 class='divtitle'>" + data.recipes[4].title + "</h3>";
+				image5 = "<img src=" + data.recipes[4].image+">";
+				
+				title6 = "<h3 class='divtitle'>" + data.recipes[5].title + "</h3>";
+				image6 = "<img src=" + data.recipes[5].image+">";
 				
 				strHTML = "<ul style='list-style-type: none;'>";
 				strHTML2 = "<ul style='list-style-type: none;'>";
 				strHTML3 = "<ul style='list-style-type: none;'>";
+				strHTML4 = "<ul style='list-style-type: none;'>";
+				strHTML5 = "<ul style='list-style-type: none;'>";
+				strHTML6 = "<ul style='list-style-type: none;'>";
+
 
 				strHTML += "Make Time: " + data.recipes[0].readyInMinutes + " mins<br/>";
 				strHTML += "Servings: " + data.recipes[0].servings;
@@ -45,15 +99,30 @@
 				
 				strHTML3 += "Make Time: " + data.recipes[2].readyInMinutes + " mins<br/>";
 				strHTML3 += "Servings: " + data.recipes[2].servings;
+				
+				strHTML4 += "Make Time: " + data.recipes[3].readyInMinutes + " mins<br/>";
+				strHTML4 += "Servings: " + data.recipes[3].servings;
+				
+				strHTML5+= "Make Time: " + data.recipes[4].readyInMinutes + " mins<br/>";
+				strHTML5 += "Servings: " + data.recipes[4].servings;
+				
+				strHTML6 += "Make Time: " + data.recipes[5].readyInMinutes + " mins<br/>";
+				strHTML6 += "Servings: " + data.recipes[5].servings;
 					
 				strHTML += "</ul>";
 				strHTML2 += "</ul>";
 				strHTML3 += "</ul>";
+				strHTML4 += "</ul>";
+				strHTML5 += "</ul>";
+				strHTML6 += "</ul>";
 				
 				document.getElementById("rec1").innerHTML = image1 + title1 + strHTML; 
 				document.getElementById("rec2").innerHTML = image2 + title2 + strHTML2;
 				document.getElementById("rec3").innerHTML = image3+ title3 + strHTML3;
-
+				document.getElementById("rec4").innerHTML = image4+ title4 + strHTML4;
+				document.getElementById("rec5").innerHTML = image5+ title5 + strHTML5;
+				document.getElementById("rec6").innerHTML = image6+ title6 + strHTML6;
+				
 			}
 			else if (request.readyState == 4 && request.status != 200) {
 				document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
@@ -94,8 +163,8 @@
             
             
             document.getElementById("search-results").style.display = "block";
-            query_string = "https://api.spoonacular.com/recipes/complexSearch?apiKey=610bf5a8a3214453b246d41138ccf262&includeIngredients="
-            query_string += ingred_query + "&number=" + num_res + "&type=dessert";
+				query_string = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=793e9467a3d04dd4b75c0e12cdcbe489&ingredients="
+				query_string += ingred_query + "&number=" + num_res;
             
             request = new XMLHttpRequest();
             console.log("1 - request object created");
@@ -112,12 +181,13 @@
                     
                     // access and display results, currently writes title w/out formatting
                     
-                    document.getElementById("res1").innerHTML += data[0].title;
-                    document.getElementById("res2").innerHTML += data[1].title;
-                    document.getElementById("res3").innerHTML += data[2].title;
+                    document.getElementById("res1").innerHTML += "<img src=" + data[0].image + "><h3 class='divtitle'>" + data[0].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[0].readyInMinutes + " mins<br/>Servings: " + data[0].servings;
+					
+					document.getElementById("res2").innerHTML += "<img src=" + data[1].image + "><h3 class='divtitle'>" + data[1].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[1].readyInMinutes + " mins<br/>Servings: " + data[1].servings;
+					
+					document.getElementById("res3").innerHTML += "<img src=" + data[2].image + "><h3 class='divtitle'>" + data[2].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[2].readyInMinutes + " mins<br/>Servings: " + data[2].servings;
+										
                     
-                    
-
     			}
     			else if (request.readyState == 4 && request.status != 200) {
     				document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
@@ -140,24 +210,9 @@
             <div id="res3">&nbsp;</div>
         </div>
     </div>
-		
-		
-		
-		
-<!--
-		<form id="search"> 
-			<input type="text" placeholder="Search for recipes by main ingredients">
-			<button><i class="fa fa-search"></i></button>
-		</form>		
-	</div>
-	<section id="wave"></section>
--->
-	
-	
-<!--	This div accesses the API when page is loaded-->
-	<div>
-		
-<!--	This section displays 3 random recipes from API-->
+
+	<div>	
+<!--	This section displays 3 recipes from database-->
 	<h2>Our Favorites</h2>
 	<div id="favs">
 		<div id="fav1">&nbsp;</div>
@@ -168,10 +223,16 @@
 <!--	This section displays recipes recommended based on the most recent ingredient search?-->
 	<h2>Recomended for You</h2>
 	<div id="recs">
+		<div id="left" class="chevron"><i class="fa fa-chevron-left" style="display: inline-flex; align-items: center"></i></div>
 		<div id="rec1">&nbsp;</div>
 		<div id="rec2">&nbsp;</div>
 		<div id="rec3">&nbsp;</div>
+		<div id="rec4">&nbsp;</div>
+		<div id="rec5">&nbsp;</div>
+		<div id="rec6">&nbsp;</div>
+		<div id="right" class="chevron"><i class="fa fa-chevron-right" style="display: inline-flex; align-items: center"></i></div>
 	</div>
+		
 	</div>
 	
 <!--	Tester div-->
