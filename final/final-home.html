@@ -181,11 +181,11 @@ $(document).ready(function() {
                     
                     // access and display results, currently writes title w/out formatting
                     
-                    document.getElementById("res1").innerHTML += "<img src=" + data[0].image + "><h3 class='divtitle'>" + data[0].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[0].readyInMinutes + " mins<br/>Servings: " + data[0].servings;
+                    document.getElementById("res1").innerHTML += "<img src=" + data[0].image + "><h3 class='divtitle'>" + data[0].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[0].maxReadyTime + " mins<br/>Servings: " + data[0].servings;
 					
-					document.getElementById("res2").innerHTML += "<img src=" + data[1].image + "><h3 class='divtitle'>" + data[1].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[1].readyInMinutes + " mins<br/>Servings: " + data[1].servings;
+					document.getElementById("res2").innerHTML += "<img src=" + data[1].image + "><h3 class='divtitle'>" + data[1].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[1].maxReadyTime + " mins<br/>Servings: " + data[1].servings;
 					
-					document.getElementById("res3").innerHTML += "<img src=" + data[2].image + "><h3 class='divtitle'>" + data[2].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[2].readyInMinutes + " mins<br/>Servings: " + data[2].servings;
+					document.getElementById("res3").innerHTML += "<img src=" + data[2].image + "><h3 class='divtitle'>" + data[2].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[2].maxReadyTime + " mins<br/>Servings: " + data[2].servings;
 										
                     
     			}
