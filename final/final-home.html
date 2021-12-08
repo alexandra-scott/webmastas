@@ -40,7 +40,7 @@ $(document).ready(function() {
 	});
 	
 	$("#rec1, #rec2, #rec3, #rec4, #rec5, #rec6, #res1, #res2, #res3").click(function() {
-  		window.location = $(this).find("a").attr("href"); 
+		window.open($(this).find("a").attr("href"), '_blank'); 
   		return false;
 	});
 	
