@@ -159,7 +159,35 @@ $(document).ready(function() {
 		</form>		
 	</div>
 
-    <script>
+        <script>
+        function updateDiv(id, index) {
+            query_string = "https://api.spoonacular.com/recipes/" + id + "/information?apiKey=901356756a6744de802859039d129502"
+            
+            let new_request = new XMLHttpRequest();
+            console.log("1 - request object created");
+
+            new_request.open("GET", query_string, true);
+            console.log("2 - opened request file");
+            new_request.onreadystatechange = function() {
+                console.log("3 - readystatechange event fired.");
+
+                
+                if (new_request.readyState == 4 && new_request.status == 200) {
+                    var result = new_request.responseText;
+                    var data = JSON.parse(result);
+                    
+                    document.getElementById("res" + (index + 1)).innerHTML +=  data.readyInMinutes + " mins<br/>Servings: " + data.servings;
+                    document.getElementById("res" + (index + 1)).innerHTML += "<a href=" + data.sourceUrl + "></a>";
+    
+                }
+                else if (new_request.readyState == 4 && new_request.status != 200) {
+                    document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+                }
+            }
+                new_request.send();
+                console.log("4 - Request sent");
+        }
+        
         function findrecipes() {
             user_ingred = document.getElementById("input").value;
             num_res = 3; // update this with user selection?
@@ -173,37 +201,41 @@ $(document).ready(function() {
             // makes string of form ingred1,+ingred2,+ingred3
             ingred_query = ingred_Arr.join(",+");          
             
-            
+            const id_arr = [];
             document.getElementById("search-results").style.display = "block";
-		query_string = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=793e9467a3d04dd4b75c0e12cdcbe489&ingredients="
-				query_string += ingred_query + "&number=" + num_res;
+		    //query_string = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=793e9467a3d04dd4b75c0e12cdcbe489&ingredients=apple&number=3"
+            query_string = "https://api.spoonacular.com/recipes/complexSearch?apiKey=901356756a6744de802859039d129502&type=dessert&number="
+            query_string += num_res + "&includeIngredients=" + ingred_query;
+			
             
             request = new XMLHttpRequest();
             console.log("1 - request object created");
             
 
-    		request.open("GET", query_string, true);
+    	    request.open("GET", query_string, true);
             console.log("2 - opened request file");
             request.onreadystatechange = function() {
     			console.log("3 - readystatechange event fired.");
 
+                
     			if (request.readyState == 4 && request.status == 200) {
-    				var result = request.responseText;				
-    				var data = JSON.parse(result);
+    				var result = request.responseText;	
+    				var data = JSON.parse(result);                
                     
-                    // access and display results, currently writes title w/out formatting
-				
-		    // reset form divs
-		    document.getElementById("res1").innerHTML = "";
-                    document.getElementById("res2").innerHTML = "";
-                    document.getElementById("res3").innerHTML = "";
                     
-                    document.getElementById("res1").innerHTML += "<img src=" + data[0].image + "><h3 class='divtitle'>" + data[0].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[0].readyInMinutes + " mins<br/>Servings: " + data[0].servings;
-					
-					document.getElementById("res2").innerHTML += "<img src=" + data[1].image + "><h3 class='divtitle'>" + data[1].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[1].readyInMinutes + " mins<br/>Servings: " + data[1].servings;
-					
-					document.getElementById("res3").innerHTML += "<img src=" + data[2].image + "><h3 class='divtitle'>" + data[2].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[2].readyInMinutes + " mins<br/>Servings: " + data[2].servings;
-										
+                    for (let i = 0; i < data.results.length; i++) {
+                            
+                        document.getElementById("res" + (i + 1)).innerHTML = "";
+                        document.getElementById("res" + (i + 1)).innerHTML += "<img src=" + data.results[i].image + "><h3 class='divtitle'>" + data.results[i].title + "</h3><ul style='list-style-type: none;'>Make Time: "; // + data.results[i].readyInMinutes + " mins<br/>Servings: " + data.results[i].servings;
+                        
+                    }
+                    
+                    for (let i = 0; i < data.results.length; i++) {
+                        updateDiv(data.results[i].id, i);
+                    }
+                    
+                    
+                    
                     
     			}
     			else if (request.readyState == 4 && request.status != 200) {
@@ -212,10 +244,11 @@ $(document).ready(function() {
     		}
     			request.send();
     			console.log("4 - Request sent");
-                
+
                 return false;
     		
         }
+        
     </script>
     
 	<section id="wave"></section>
