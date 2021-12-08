@@ -2,7 +2,7 @@
 /* CSS Document */
 
 header a:active, a:hover, a:visited, a:link {
-	color: #FBFBFB;
+	color: #1c604e;
 	text-decoration: none;
 }
 
@@ -15,14 +15,17 @@ header {
 	text-align: center;
 	margin-top: 25px;
 	font-size: 16pt;
-	color: #FFFFFF;
+/*	color: #FFFFFF;*/
+	color: #1c604e;
 }
 
 h1 {
 	font-family: "Varela Round", sans-serif;
 	text-align: center;
 	font-size: 50pt;
-	color: #06392B;
+	color: #FFFFFF;
+	filter: drop-shadow(2px 4px 6px #1c604e);
+/*	color: #06392B;*/
 /*	color: #1c604e;*/
 	position: relative;
 	top: 445px;
@@ -101,12 +104,13 @@ h2 {
 	height: 295px;
 	background-color: #FFFFFF;
 	border-radius: 22px;
-	border: solid thin #5dad9a;
+/*	border: solid thin #5dad9a;*/
 	filter: drop-shadow(4px 16px 35px #c6c6c6);	
 	margin: 10px;
 	text-align: center;
 	font-family: "Varela Round", sans-serif;
 	padding: 20px 10px 10px 10px;
+	cursor: pointer;
 }
 
 ul {

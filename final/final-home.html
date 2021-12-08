@@ -39,6 +39,11 @@ $(document).ready(function() {
 		$("#rec6").hide();
 	});
 	
+	$("#rec1, #rec2, #rec3, #rec4, #rec5, #rec6, #res1, #res2, #res3").click(function() {
+  		window.location = $(this).find("a").attr("href"); 
+  		return false;
+	});
+	
 	
 	$("button").click(function() {	
 		$([document.documentElement, document.body]).animate({
@@ -123,6 +128,13 @@ $(document).ready(function() {
 				document.getElementById("rec5").innerHTML = image5+ title5 + strHTML5;
 				document.getElementById("rec6").innerHTML = image6+ title6 + strHTML6;
 				
+				
+				document.getElementById("rec1").innerHTML += "<a href=" + data.recipes[0].sourceUrl + "></a>";
+				document.getElementById("rec2").innerHTML += "<a href=" + data.recipes[1].sourceUrl + "></a>";
+				document.getElementById("rec3").innerHTML += "<a href=" + data.recipes[2].sourceUrl + "></a>";
+				document.getElementById("rec4").innerHTML += "<a href=" + data.recipes[3].sourceUrl + "></a>";
+				document.getElementById("rec5").innerHTML += "<a href=" + data.recipes[4].sourceUrl + "></a>";
+				document.getElementById("rec6").innerHTML += "<a href=" + data.recipes[5].sourceUrl + "></a>";
 			}
 			else if (request.readyState == 4 && request.status != 200) {
 				document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
