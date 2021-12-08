@@ -192,6 +192,11 @@ $(document).ready(function() {
     				var data = JSON.parse(result);
                     
                     // access and display results, currently writes title w/out formatting
+				
+		    // reset form divs
+		    document.getElementById("res1").innerHTML = "";
+                    document.getElementById("res2").innerHTML = "";
+                    document.getElementById("res3").innerHTML = "";
                     
                     document.getElementById("res1").innerHTML += "<img src=" + data[0].image + "><h3 class='divtitle'>" + data[0].title + "</h3><ul style='list-style-type: none;'>Make Time: " + data[0].readyInMinutes + " mins<br/>Servings: " + data[0].servings;
 					
