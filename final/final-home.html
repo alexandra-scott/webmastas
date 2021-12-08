@@ -175,8 +175,8 @@ $(document).ready(function() {
             
             
             document.getElementById("search-results").style.display = "block";
-				query_string = "https://api.spoonacular.com/recipes/complexSearch?apiKey=610bf5a8a3214453b246d41138ccf262&includeIngredients="
-            query_string += ingred_query + "&number=" + num_res + "&type=dessert";
+		query_string = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=793e9467a3d04dd4b75c0e12cdcbe489&ingredients="
+				query_string += ingred_query + "&number=" + num_res;
             
             request = new XMLHttpRequest();
             console.log("1 - request object created");
