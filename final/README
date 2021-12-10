@@ -1,0 +1,74 @@
+        /* changes for emily - replace the one open line with these three, note the https is different since it's hosted using rapidapi instead of spoonacular directly */
+        
+		    request.open("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=dessert&number=6", true);
+        request.setRequestHeader("x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
+        request.setRequestHeader("x-rapidapi-key", "65a81ab948mshfbdee5e492692cfp15fcafjsn972187b795b9");
+          
+        /* end changes */
+        
+        
+        
+        /*** changes in alexandra's script section */
+        
+        
+        function findrecipes() {
+            user_ingred = document.getElementById("input").value;
+            num_res = 3; // update this with user selection?
+            
+            // removes all commas from user-entered ingredients
+            ingred_no_comma = user_ingred.replace(/,/g, "");
+            
+            // separates ingredients based on whitespace 
+            ingred_Arr = ingred_no_comma.split(" ");
+            
+            // makes string of form ingred1,+ingred2,+ingred3
+            ingred_query = ingred_Arr.join(",+");          
+            
+            const id_arr = [];
+            document.getElementById("search-results").style.display = "block";
+		        query_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?limitLicense=false&offset=0&type=dessert&addRecipeInformation=true&number="
+            query_string += num_res + "&includeIngredients=" + ingred_query;
+            
+			query_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex?limitLicense=false&offset=0&number=";
+            query_string += num_res + "&addRecipeInformation=true&includeIngredients=" + ingred_query + "&type=dessert";
+            
+            request = new XMLHttpRequest();
+            console.log("1 - request object created");
+            request.open("GET", query_string, true);
+            request.setRequestHeader("x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
+            request.setRequestHeader("x-rapidapi-key", "65a81ab948mshfbdee5e492692cfp15fcafjsn972187b795b9");
+            
+
+            console.log("2 - opened request file");
+            request.onreadystatechange = function() {
+    			console.log("3 - readystatechange event fired.");
+
+                
+    			if (request.readyState == 4 && request.status == 200) {
+    				var result = request.responseText;	
+    				var data = JSON.parse(result);                
+                    
+                    if (data.results.length == 0) {
+                        console.log("this is very sad, there are no results")
+                    } 
+                    for (let i = 0; i < data.results.length; i++) {
+                            
+                        document.getElementById("res" + (i + 1)).innerHTML = "";
+                        document.getElementById("res" + (i + 1)).innerHTML += "<img src=" + data.results[i].image + "><h3 class='divtitle'>" + data.results[i].title;
+                        document.getElementById("res" + (i + 1)).innerHTML += "</h3><ul style='list-style-type: none;'>Make Time: " + data.results[i].readyInMinutes + " mins<br/>Servings: " + data.results[i].servings;
+                        document.getElementById("res" + (i + 1)).innerHTML += "<a href=" + data.results[i].sourceUrl + "></a>";
+        
+                    }
+                    
+                    
+    			}
+    			else if (request.readyState == 4 && request.status != 200) {
+    				document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+    			}
+    		}
+    			request.send();
+    			console.log("4 - Request sent");
+
+                return false;
+    		
+        }
