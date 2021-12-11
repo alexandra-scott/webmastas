@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Trending Recipes</title>
+<link href="makedessert.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
+	
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script language="javascript">	
+
+$(document).ready(function() {
+	$("#num1, #num2, #num3, #num4, #num5, #num6, #num7, #num8, #num9, #num10").click(function() {
+		window.open($(this).find("a").attr("href"), '_blank'); 
+  		return false;
+	});	
+	
+});
+</script>
+
+</head>
+
+<body>
+	<header>
+		<ul id="nav">
+			<a style="margin-right:4%" href="final-home.html">Recipe Finder</a>
+			<a class="onpage" href="trending.html">Trending Recipes</a>
+		</ul>
+	</header>
+	
+	<div id="hero" style="margin-top: -300px">
+		<h1 id="trend-head">Trending Recipes</h1>
+	</div>
+	
+	<section id="wave"></section>
+	
+<!--	access database and get top 10 most liked recipes-->
+	<div id="top10">
+		<div id="num1">&nbsp;</div>
+		<div id="num2">&nbsp;</div>
+		<div id="num3">&nbsp;</div>
+		<div id="num4">&nbsp;</div>
+		<div id="num5">&nbsp;</div>
+		<div id="num6">&nbsp;</div>
+		<div id="num7">&nbsp;</div>
+		<div id="num8">&nbsp;</div>
+		<div id="num9">&nbsp;</div>
+		<div id="num10">&nbsp;</div>
+	</div>
+	<div id="data">&nbsp;</div>
+</body>
+</html>

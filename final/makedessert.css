@@ -49,6 +49,14 @@ h1 {
 	margin-bottom: 20px;
 }
 
+#trend-head {
+	text-align: left;
+	margin-left: 18%;
+	top: 365px;
+	color: #1c604e;
+	filter: drop-shadow(2px 4px 6px #FFFFFF);
+}
+
 #hero {
 	background-image: url("background.jpg");
 	background-size: cover;
@@ -65,7 +73,7 @@ h1 {
 	display: flex;
 	align-content: center;
 	border-radius: 30px;
-	filter: drop-shadow(0px 14px 15px black);
+	filter: drop-shadow(0px 14px 15px #FFFFFF);
 	justify-content: center;
 	padding: 12px 20px;
 
@@ -180,12 +188,20 @@ i {
 }
 
 #top10 {
+	height: 1200px;
+	position: relative;
+	top: -440px;
+	margin-top: 10px;
+	margin-bottom: 100px;
+}
+
+#num1, #num2, #num3, #num4, #num5, #num6, #num7, #num8, #num9, #num10 {
 	margin-right: 18%;
 	margin-left: 18%;
-	border-radius: 9%;
-	position: relative;
-	top: -320px;
+	border-radius: 31px;
 	background-color: #FFFFFF;
-	height: 1000px;
-	filter: drop-shadow(4px 16px 35px #c6c6c6);	
+	height: 150px;
+	filter: drop-shadow(0px 14px 15px #1c604e);
+	margin-bottom: 1.5%;
+	cursor: pointer;
 }
