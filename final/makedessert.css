@@ -12,11 +12,30 @@ body {
 
 header {
 	font-family: "Varela Round", sans-serif;
-	text-align: center;
+	text-align: left;
 	margin-top: 25px;
 	font-size: 16pt;
-/*	color: #FFFFFF;*/
 	color: #1c604e;
+}
+
+.onpage {
+	padding: 11px 15px;
+	background-color: #FFFFFF;
+	border-radius: 21px;
+	filter: drop-shadow(0px 8px 4px rgba(43,149,121,0.71));
+}
+
+#nav a:hover {
+	cursor: pointer;
+}
+
+#nav {
+	display: flex;
+	justify-content: flex-start;
+	margin-left: 4%;
+	margin-right: 4%;
+	font-size: 13pt;
+	align-items: center;
 }
 
 h1 {
@@ -25,8 +44,6 @@ h1 {
 	font-size: 50pt;
 	color: #FFFFFF;
 	filter: drop-shadow(2px 4px 6px #1c604e);
-/*	color: #06392B;*/
-/*	color: #1c604e;*/
 	position: relative;
 	top: 445px;
 	margin-bottom: 20px;
@@ -101,10 +118,9 @@ h2 {
 
 #fav1, #fav2, #fav3, #rec1, #rec2, #rec3, #res1, #res2, #res3, #rec4, #rec5, #rec6 {
 	width: 33%;
-	height: 295px;
+	height: 350px;
 	background-color: #FFFFFF;
 	border-radius: 22px;
-/*	border: solid thin #5dad9a;*/
 	filter: drop-shadow(4px 16px 35px #c6c6c6);	
 	margin: 10px;
 	text-align: center;
@@ -117,7 +133,7 @@ ul {
 	padding-left: 0;
 	margin: 10px;
 	text-align: left;
-	font-size: 11pt;
+	font-size: 12pt;
 }
 
 .divtitle {
@@ -138,6 +154,19 @@ i {
 	cursor: pointer;
 }
 
+.fa-heart {
+/*	color: #E0A7A8;*/
+	font-size: 20pt;
+}
+
+.fa-heart:hover {
+	color: #F7ACAD;
+}
+
+.pinkheart {
+	color: #E0A7A8;
+}
+
 .chevron {
 	display: inline-flex;
 }
@@ -148,4 +177,15 @@ i {
 
 #right {
 	margin-left: 15px;
+}
+
+#top10 {
+	margin-right: 18%;
+	margin-left: 18%;
+	border-radius: 9%;
+	position: relative;
+	top: -320px;
+	background-color: #FFFFFF;
+	height: 1000px;
+	filter: drop-shadow(4px 16px 35px #c6c6c6);	
 }

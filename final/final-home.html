@@ -39,17 +39,29 @@ $(document).ready(function() {
 		$("#rec6").hide();
 	});
 	
+//	$(".fa-heart").click(function() {	
+//		alert("here");
+////		 $(".fa-heart").addClass("pinkheart");
+//	});
+	
 	$("#rec1, #rec2, #rec3, #rec4, #rec5, #rec6, #res1, #res2, #res3").click(function() {
 		window.open($(this).find("a").attr("href"), '_blank'); 
   		return false;
 	});
-	
-	
+
 	$("button").click(function() {	
 		$([document.documentElement, document.body]).animate({
         	scrollTop: $("#wave").offset().top
     	}, 800);
 	});	
+	
+	function changecolor() {
+		alert("here");
+		document.getElementById("#heart").style.color = "purple";
+        return false;
+	}
+	
+	
 	
 });
 </script>
@@ -60,7 +72,9 @@ $(document).ready(function() {
 		console.log("1 - request object created");
 
 		//this is an example of API call to get recipes with apples, flour, and 2 sugars
-		request.open("GET", "https://api.spoonacular.com/recipes/random?apiKey=793e9467a3d04dd4b75c0e12cdcbe489&number=6&tags=dessert", true);
+		request.open("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=dessert&number=6", true);
+        request.setRequestHeader("x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
+        request.setRequestHeader("x-rapidapi-key", "65a81ab948mshfbdee5e492692cfp15fcafjsn972187b795b9");
 		console.log("2 - opened request file");
 			
 		request.onreadystatechange = function() {
@@ -114,12 +128,12 @@ $(document).ready(function() {
 				strHTML6 += "Make Time: " + data.recipes[5].readyInMinutes + " mins<br/>";
 				strHTML6 += "Servings: " + data.recipes[5].servings;
 					
-				strHTML += "</ul>";
-				strHTML2 += "</ul>";
-				strHTML3 += "</ul>";
-				strHTML4 += "</ul>";
-				strHTML5 += "</ul>";
-				strHTML6 += "</ul>";
+				strHTML += "<br/><br/><i id='heart' class='fa fa-heart fa-lg' onclick='changecolor()'></ul>";
+				strHTML2 += "<br/><br/><i class='fa fa-heart fa-lg'></ul>";
+				strHTML3 += "<br/><br/><i class='fa fa-heart fa-lg'></ul>";
+				strHTML4 += "<br/><br/><i class='fa fa-heart fa-lg'></ul>";
+				strHTML5 += "<br/><br/><i class='fa fa-heart fa-lg'></ul>";
+				strHTML6 += "<br/><br/><i class='fa fa-heart fa-lg'></ul>";
 				
 				document.getElementById("rec1").innerHTML = image1 + title1 + strHTML; 
 				document.getElementById("rec2").innerHTML = image2 + title2 + strHTML2;
@@ -129,12 +143,13 @@ $(document).ready(function() {
 				document.getElementById("rec6").innerHTML = image6+ title6 + strHTML6;
 				
 				
-				document.getElementById("rec1").innerHTML += "<a href=" + data.recipes[0].sourceUrl + "></a>";
+				document.getElementById("rec1").innerHTML += "<a href=" + data.recipes[0].sourceUrl + "></i></a>";
 				document.getElementById("rec2").innerHTML += "<a href=" + data.recipes[1].sourceUrl + "></a>";
 				document.getElementById("rec3").innerHTML += "<a href=" + data.recipes[2].sourceUrl + "></a>";
 				document.getElementById("rec4").innerHTML += "<a href=" + data.recipes[3].sourceUrl + "></a>";
 				document.getElementById("rec5").innerHTML += "<a href=" + data.recipes[4].sourceUrl + "></a>";
 				document.getElementById("rec6").innerHTML += "<a href=" + data.recipes[5].sourceUrl + "></a>";
+				
 			}
 			else if (request.readyState == 4 && request.status != 200) {
 				document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
@@ -148,7 +163,13 @@ $(document).ready(function() {
 </head>
 
 <body onload="getdessert()">
-	<header><a href="final-home.html">MAKE Dessert</a></header>
+	<header>
+		<ul id="nav">
+			<a class="onpage" href="final-home.html" style="margin-right:4%">Recipe Finder</a>
+			<a href="trending.html">Trending Recipes</a>
+		</ul>
+	</header>
+	
 	<div id="hero">
 		<h1>Find the Perfect Recipe...</h1>
 		
@@ -158,10 +179,10 @@ $(document).ready(function() {
 			<button><i class="fa fa-search"></i></button>
 		</form>		
 	</div>
-
-        <script>
+	
+ <script>
         function updateDiv(id, index) {
-            query_string = "https://api.spoonacular.com/recipes/" + id + "/information?apiKey=901356756a6744de802859039d129502"
+            query_string = "https://api.spoonacular.com/recipes/" + id + "/information?apiKey=793e9467a3d04dd4b75c0e12cdcbe489"
             
             let new_request = new XMLHttpRequest();
             console.log("1 - request object created");
@@ -188,7 +209,7 @@ $(document).ready(function() {
                 console.log("4 - Request sent");
         }
         
-        function findrecipes() {
+	 	function findrecipes() {
             user_ingred = document.getElementById("input").value;
             num_res = 3; // update this with user selection?
             
@@ -203,16 +224,19 @@ $(document).ready(function() {
             
             const id_arr = [];
             document.getElementById("search-results").style.display = "block";
-		    //query_string = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=793e9467a3d04dd4b75c0e12cdcbe489&ingredients=apple&number=3"
-            query_string = "https://api.spoonacular.com/recipes/complexSearch?apiKey=901356756a6744de802859039d129502&type=dessert&number="
+		        query_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?limitLicense=false&offset=0&type=dessert&addRecipeInformation=true&number="
             query_string += num_res + "&includeIngredients=" + ingred_query;
-			
+            
+			query_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex?limitLicense=false&offset=0&number=";
+            query_string += num_res + "&addRecipeInformation=true&includeIngredients=" + ingred_query + "&type=dessert";
             
             request = new XMLHttpRequest();
             console.log("1 - request object created");
+            request.open("GET", query_string, true);
+            request.setRequestHeader("x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
+            request.setRequestHeader("x-rapidapi-key", "65a81ab948mshfbdee5e492692cfp15fcafjsn972187b795b9");
             
 
-    	    request.open("GET", query_string, true);
             console.log("2 - opened request file");
             request.onreadystatechange = function() {
     			console.log("3 - readystatechange event fired.");
@@ -222,19 +246,17 @@ $(document).ready(function() {
     				var result = request.responseText;	
     				var data = JSON.parse(result);                
                     
-                    
+                    if (data.results.length == 0) {
+                        console.log("this is very sad, there are no results")
+                    } 
                     for (let i = 0; i < data.results.length; i++) {
                             
                         document.getElementById("res" + (i + 1)).innerHTML = "";
-                        document.getElementById("res" + (i + 1)).innerHTML += "<img src=" + data.results[i].image + "><h3 class='divtitle'>" + data.results[i].title + "</h3><ul style='list-style-type: none;'>Make Time: "; // + data.results[i].readyInMinutes + " mins<br/>Servings: " + data.results[i].servings;
-                        
+                        document.getElementById("res" + (i + 1)).innerHTML += "<img src=" + data.results[i].image + "><h3 class='divtitle'>" + data.results[i].title;
+                        document.getElementById("res" + (i + 1)).innerHTML += "</h3><ul style='list-style-type: none;'>Make Time: " + data.results[i].readyInMinutes + " mins<br/>Servings: " + data.results[i].servings;
+                        document.getElementById("res" + (i + 1)).innerHTML += "<a href=" + data.results[i].sourceUrl + "></a>";
+        
                     }
-                    
-                    for (let i = 0; i < data.results.length; i++) {
-                        updateDiv(data.results[i].id, i);
-                    }
-                    
-                    
                     
                     
     			}
@@ -250,7 +272,7 @@ $(document).ready(function() {
         }
         
     </script>
-    
+
 	<section id="wave"></section>
     <div id="search-results" style="display:none">
         <h2>Search Results</h2>
@@ -263,12 +285,14 @@ $(document).ready(function() {
 
 	<div>	
 <!--	This section displays 3 recipes from database-->
+<!--
 	<h2>Our Favorites</h2>
 	<div id="favs">
 		<div id="fav1">&nbsp;</div>
 		<div id="fav2">&nbsp;</div>
 		<div id="fav3">&nbsp;</div>
 	</div>
+-->
 
 <!--	This section displays recipes recommended based on the most recent ingredient search?-->
 	<h2>Recomended for You</h2>
