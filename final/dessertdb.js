@@ -49,6 +49,7 @@ if (req.url != '/favicon.ico') {
 	else 
     	{
     	for (i=0; i<items.length; i++){
+	/HTML THAT DISPLAYS IS BELOW
 	res.write('<img src='+items[i].image+' style= "max-width: 200px;"></br><a href='+items[i].link+'>' + items[i].name + '</a></br><p2>Make Time: ' + items[i].time + 
 		'</p2></br><p3>Servings: ' + items[i].servings + '</p3></br></br>');
 	db.close();
@@ -61,14 +62,3 @@ if (req.url != '/favicon.ico') {
 }
 }).listen(6060);
 
-
-
-
-	//res.write(
-	//'<div>' +
-	//obj1.name +
-	//obj1.servings +
-	//obj1.time +
-	//obj1.link +
-	//'</div>'
-	//);
