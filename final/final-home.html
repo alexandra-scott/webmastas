@@ -73,8 +73,8 @@ $(document).ready(function() {
 
 		//this is an example of API call to get recipes with apples, flour, and 2 sugars
 		request.open("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=dessert&number=6", true);
-        request.setRequestHeader("x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
-        request.setRequestHeader("x-rapidapi-key", "65a81ab948mshfbdee5e492692cfp15fcafjsn972187b795b9");
+        //request.setRequestHeader("x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
+        //request.setRequestHeader("x-rapidapi-key", "65a81ab948mshfbdee5e492692cfp15fcafjsn972187b795b9");
 		console.log("2 - opened request file");
 			
 		request.onreadystatechange = function() {
@@ -306,6 +306,27 @@ $(document).ready(function() {
 		<div id="rec6">&nbsp;</div>
 		<div id="right" class="chevron"><i class="fa fa-chevron-right" style="display: inline-flex; align-items: center"></i></div>
 	</div>
+		
+		
+	<form method='get'  action='http://localhost:6060/process' style = "margin-left: 40px;"><!-------------------------change action when we go to Heroku-------------------->
+      <h3>Add your own recipe! (THIS NEEDS TO BE STYLED)</h3>
+	Name of dessert:
+      <input type ="text" id = 'name' name="name">
+      <br><br>
+	Number of servings:
+      <input type ="text" id = 'servings' name="servings">
+      <br><br>
+	Link to image:
+      <input type ="text" id = 'image' name="image">
+      <br><br>
+	Link to full recipe:
+      <input type ="text" id = 'link' name="link">
+      <br><br>
+	Time to prepare:
+      <input type ="text" id = 'time' name="time">
+      <br><br>
+      <button type ="submit">Create</button>
+  	</form>
 		
 	</div>
 	
