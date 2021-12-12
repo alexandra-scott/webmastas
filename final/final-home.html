@@ -73,8 +73,8 @@ $(document).ready(function() {
 
 		//this is an example of API call to get recipes with apples, flour, and 2 sugars
 		request.open("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=dessert&number=6", true);
-        //request.setRequestHeader("x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
-        //request.setRequestHeader("x-rapidapi-key", "65a81ab948mshfbdee5e492692cfp15fcafjsn972187b795b9");
+        request.setRequestHeader("x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
+        request.setRequestHeader("x-rapidapi-key", "65a81ab948mshfbdee5e492692cfp15fcafjsn972187b795b9");
 		console.log("2 - opened request file");
 			
 		request.onreadystatechange = function() {
