@@ -23,19 +23,19 @@
 	
 <form id = "top10" method='get'  action='https://make-desserts.herokuapp.com/'><!-------------------------change when we go to Heroku-------------------->
 	Name of dessert:
-      <input type ="text" id = 'name' name="name">
+      <input type ="text" id = 'name' name="name" required>
       <br><br>
 	Number of servings:
-      <input type ="text" id = 'servings' name="servings">
+      <input type ="text" id = 'servings' name="servings" required>
       <br><br>
-	Link to image:
+	Link to image (optional):
       <input type ="text" id = 'image' name="image">
       <br><br>
-	Link to full recipe:
+	Link to full recipe (optional):
       <input type ="text" id = 'link' name="link">
       <br><br>
 	Time to prepare:
-      <input type ="text" id = 'time' name="time">
+      <input type ="text" id = 'time' name="time" required>
       <br><br>
       <button type ="submit" id = "nav">Create</button>
   </form>
