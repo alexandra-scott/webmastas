@@ -36,6 +36,7 @@ if (req.url != '/favicon.ico') {
 
 
 	/////////////////////INSERT
+	if ((dName != null)&&(dName != null)&&(dName != null)&&(dName != null)&&(dName != null)){
 	if (dName != ""){
 	var newData = {"name": dName, "servings": dServings, "image": dImg, "link": dLink, "time": dTime};
 	coll.insertOne(newData, function(err, res) {
@@ -43,7 +44,8 @@ if (req.url != '/favicon.ico') {
     	//console.log("new document inserted");
 	});
 	}; 
-
+	};
+		
 	////////////////////////////QUERY   	
 	theQuery = {};
     	coll.find(theQuery).toArray(function(err, items) {
