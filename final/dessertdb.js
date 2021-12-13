@@ -35,11 +35,13 @@ if (req.url != '/favicon.ico') {
 
 
 	/////////////////////INSERT
+	if (dName != ""){
 	var newData = {"name": dName, "servings": dServings, "image": dImg, "link": dLink, "time": dTime};
-	//coll.insertOne(newData, function(err, res) {
+	coll.insertOne(newData, function(err, res) {
     	if (err) throw err;
     	//console.log("new document inserted");
-	//}); 
+	});
+	}; 
 
 	////////////////////////////QUERY   	
 	theQuery = {};
@@ -75,7 +77,7 @@ if (req.url != '/favicon.ico') {
 	if (items[i].image == ""){items[i].image = "https://www.nicepng.com/png/full/54-547519_covered-clipart-plate-food-plate-clip-art.png"};
 
 	res.write('<div id = "top10"><div class = "column"><img src='+items[i].image+'></div><div class = column><div id = "namer"><a href='+items[i].link+'>' + 
-	items[i].name + '</div></a></br><p2></div><div class = column>Make Time: ' + items[i].time + 
+	items[i].name + '</div></a></br></div><p2><div class = column>Make Time: ' + items[i].time + 
 	'</p2></br><p3>Servings: ' + items[i].servings + '</p3></br></br></div></div>');
 	
 
@@ -88,6 +90,7 @@ if (req.url != '/favicon.ico') {
 
 });
 }
+//}).listen(6060);
 }).listen(port);
 
 
