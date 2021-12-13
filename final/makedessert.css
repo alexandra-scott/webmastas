@@ -19,7 +19,7 @@ header {
 }
 
 .onpage {
-	padding: 11px 15px;
+	padding: 9px 9px;
 	background-color: #FFFFFF;
 	border-radius: 21px;
 	filter: drop-shadow(0px 8px 4px rgba(43,149,121,0.71));
@@ -117,16 +117,27 @@ h2 {
 	font-family: "Varela Round", sans-serif;
 }
 
-#favs, #recs, #res {
+#favs, #recs, #res, #nofavs{
 	display: flex;
 	justify-content: center;
 	margin-left: 18%;
 	margin-right: 18%;
 }
 
-#fav1, #fav2, #fav3, #rec1, #rec2, #rec3, #res1, #res2, #res3, #rec4, #rec5, #rec6 {
+#nofavs {
+	height: 100px;
+	background-color: #FFFFFF;
+	border-radius: 22px;
+	filter: drop-shadow(4px 16px 35px #c6c6c6);	
+	text-align: center;
+	font-family: "Varela Round", sans-serif;
+	color: #B9B9B9;
+	align-items: center;
+}
+
+#fav1, #fav2, #fav3, #fav4, #fav5, #fav6, #rec1, #rec2, #rec3, #res1, #res2, #res3, #rec4, #rec5, #rec6 {
 	width: 33%;
-	height: 350px;
+	height: 375px;
 	background-color: #FFFFFF;
 	border-radius: 22px;
 	filter: drop-shadow(4px 16px 35px #c6c6c6);	
@@ -163,16 +174,29 @@ i {
 }
 
 .fa-heart {
-/*	color: #E0A7A8;*/
-	font-size: 20pt;
+	position: relative;
+	left: -5%;
+	bottom: -50%;	
 }
 
-.fa-heart:hover {
+.like {
+	position: relative;
+	left: -8%;
+	bottom: -89%;
+	color: #9C9C9C;
+	font-size: 11pt;
+}
+
+.like:hover {
+	color: #F7ACAD;
+}
+
+.like:hover .fa-heart {
 	color: #F7ACAD;
 }
 
 .pinkheart {
-	color: #E0A7A8;
+	color: #FA5A5B;
 }
 
 .chevron {

@@ -12,6 +12,36 @@
 <script language="javascript">	
 
 $(document).ready(function() {
+//	localStorage.clear();
+	
+	$("#nofavs").hide();
+	$("#fav4").hide();
+	$("#fav5").hide();
+	$("#fav6").hide();
+
+	for (i=1; i < 7; i++) {
+		if (localStorage.getItem("recipe_title"+i) != null) {
+			makeFavorite(i);
+		}
+		else {
+			$("#nofavs").show();
+			$("#fav1").hide();
+			$("#fav2").hide();
+			$("#fav3").hide();	
+			$("#left2").hide();
+			$("#right2").hide();
+		}
+	}
+	
+	function makeFavorite(i) {
+		fav_title = "<h3 class='divtitle'>" + localStorage.getItem("recipe_title"+i) + "</h3>";
+		fav_list = "<ul style='list-style-type: none;'>" + localStorage.getItem("recipe_facts"+i) + "</ul>";
+		fav_pic = "<img src=" + localStorage.getItem("recipe_pic"+i) + ">";
+		fav_link = "<a href=" + localStorage.getItem("recipe_link"+i) + "></a>";
+			
+		document.getElementById("fav"+i).innerHTML = fav_pic + fav_title + fav_list + fav_link;
+	}
+	
 	$("#rec4").hide();
 	$("#rec5").hide();
 	$("#rec6").hide();
@@ -39,15 +69,46 @@ $(document).ready(function() {
 		$("#rec6").hide();
 	});
 	
-//	$(".fa-heart").click(function() {	
-//		alert("here");
-////		 $(".fa-heart").addClass("pinkheart");
-//	});
+	$("#right2").click(function() {
+		$("#right2").hide();
+		$("#left2").show();
+		$("#fav1").hide();
+		$("#fav2").hide();
+		$("#fav3").hide();
+		$("#fav4").show();
+		$("#fav5").show();
+		$("#fav6").show();
+	});	
 	
-	$("#rec1, #rec2, #rec3, #rec4, #rec5, #rec6, #res1, #res2, #res3").click(function() {
+	$("#left2").click(function() {
+		$("#left2").hide();
+		$("#right2").show();
+		$("#fav1").show();
+		$("#fav2").show();
+		$("#fav3").show();
+		$("#fav4").hide();
+		$("#fav5").hide();
+		$("#fav6").hide();
+	});
+		
+	
+	$("#rec1, #rec2, #rec3, #rec4, #rec5, #rec6, #res1, #res2, #res3, #fav1, #fav2, #fav3, #fav4, #fav5, #fav6").click(function() {
+		if ($(event.target).is('.like')){
+        	event.stopPropagation();
+			document.getElementById($(this).attr('id')).querySelectorAll('div')[0].style.color = "#FA5A5B";
+			document.getElementById($(this).attr('id')).querySelectorAll('i')[0].style.color = "#FA5A5B";
+        	return;
+    	}
+		if ($(event.target).is('.fa-heart')){
+        	event.stopPropagation();
+			document.getElementById($(this).attr('id')).querySelectorAll('div')[0].style.color = "#FA5A5B";
+			document.getElementById($(this).attr('id')).querySelectorAll('i')[0].style.color = "#FA5A5B";
+        	return;
+    	}
 		window.open($(this).find("a").attr("href"), '_blank'); 
   		return false;
 	});
+
 
 	$("button").click(function() {	
 		$([document.documentElement, document.body]).animate({
@@ -55,15 +116,44 @@ $(document).ready(function() {
     	}, 800);
 	});	
 	
-	function changecolor() {
-		alert("here");
-		document.getElementById("#heart").style.color = "purple";
-        return false;
+});
+	
+	function setCookie(div_id) {	
+			if (localStorage.favcount == 6) {
+				alert("You have run out of space for your favorite recipes. In order to save another recipe, please remove one from your current list.")
+				return;
+			}
+			if (localStorage.favcount) {
+				localStorage.favcount = Number(localStorage.favcount)+1;
+			} else {
+				localStorage.favcount = 1;
+			}
+//			alert("after: " + localStorage.favcount);
+		
+			if (localStorage.favcount == 1) {
+				$("#nofavs").hide();
+				$("#fav1").show();
+				$("#fav2").show();
+				$("#fav3").show();	
+				$("#right2").show();
+			}
+			
+			localStorage.setItem("recipe_title"+localStorage.favcount, document.getElementById(div_id).querySelectorAll('h3')[0].innerHTML);
+			localStorage.setItem("recipe_facts"+localStorage.favcount, document.getElementById(div_id).querySelectorAll('ul')[0].innerHTML);
+			localStorage.setItem("recipe_pic"+localStorage.favcount, document.getElementById(div_id).querySelectorAll('img')[0].getAttribute('src'));
+			localStorage.setItem("recipe_link"+localStorage.favcount, document.getElementById(div_id).querySelectorAll('a')[0].getAttribute('href'));
+			makeFavorite(localStorage.favcount);
 	}
 	
+	function makeFavorite(i) {
+		fav_title = "<h3 class='divtitle'>" + localStorage.getItem("recipe_title"+i) + "</h3>";
+		fav_list = "<ul style='list-style-type: none;'>" + localStorage.getItem("recipe_facts"+i) + "</ul>";
+		fav_pic = "<img src=" + localStorage.getItem("recipe_pic"+i) + ">";
+		fav_link = "<a href=" + localStorage.getItem("recipe_link"+i) + "></a>";
+			
+		document.getElementById("fav"+i).innerHTML = fav_pic + fav_title + fav_list + fav_link;
+	}
 	
-	
-});
 </script>
 	
 <script>
@@ -128,22 +218,22 @@ $(document).ready(function() {
 				strHTML6 += "Make Time: " + data.recipes[5].readyInMinutes + " mins<br/>";
 				strHTML6 += "Servings: " + data.recipes[5].servings;
 					
-				strHTML += "<br/><br/><i id='heart' class='fa fa-heart fa-lg' onclick='changecolor()'></ul>";
-				strHTML2 += "<br/><br/><i class='fa fa-heart fa-lg'></ul>";
-				strHTML3 += "<br/><br/><i class='fa fa-heart fa-lg'></ul>";
-				strHTML4 += "<br/><br/><i class='fa fa-heart fa-lg'></ul>";
-				strHTML5 += "<br/><br/><i class='fa fa-heart fa-lg'></ul>";
-				strHTML6 += "<br/><br/><i class='fa fa-heart fa-lg'></ul>";
+				strHTML += "</ul>";
+				strHTML2 += "</ul>";
+				strHTML3 += "</ul>";
+				strHTML4 += "</ul>";
+				strHTML5 += "</ul>";
+				strHTML6 += "</ul>";
 				
-				document.getElementById("rec1").innerHTML = image1 + title1 + strHTML; 
-				document.getElementById("rec2").innerHTML = image2 + title2 + strHTML2;
-				document.getElementById("rec3").innerHTML = image3+ title3 + strHTML3;
-				document.getElementById("rec4").innerHTML = image4+ title4 + strHTML4;
-				document.getElementById("rec5").innerHTML = image5+ title5 + strHTML5;
-				document.getElementById("rec6").innerHTML = image6+ title6 + strHTML6;
+				document.getElementById("rec1").innerHTML += image1 + title1 + strHTML; 
+				document.getElementById("rec2").innerHTML += image2 + title2 + strHTML2;
+				document.getElementById("rec3").innerHTML += image3+ title3 + strHTML3;
+				document.getElementById("rec4").innerHTML += image4+ title4 + strHTML4;
+				document.getElementById("rec5").innerHTML += image5+ title5 + strHTML5;
+				document.getElementById("rec6").innerHTML += image6+ title6 + strHTML6;
 				
 				
-				document.getElementById("rec1").innerHTML += "<a href=" + data.recipes[0].sourceUrl + "></i></a>";
+				document.getElementById("rec1").innerHTML += "<a href=" + data.recipes[0].sourceUrl + "></a>";
 				document.getElementById("rec2").innerHTML += "<a href=" + data.recipes[1].sourceUrl + "></a>";
 				document.getElementById("rec3").innerHTML += "<a href=" + data.recipes[2].sourceUrl + "></a>";
 				document.getElementById("rec4").innerHTML += "<a href=" + data.recipes[3].sourceUrl + "></a>";
@@ -166,7 +256,7 @@ $(document).ready(function() {
 	<header>
 		<ul id="nav">
 			<a class="onpage" href="final-home.html" style="margin-right:4%">Recipe Finder</a>
-			<a href="trending.html">Trending Recipes</a>
+			<a href="usercreated.html">Add Your Own Recipe</a>
 		</ul>
 	</header>
 	
@@ -251,7 +341,7 @@ $(document).ready(function() {
                     } 
                     for (let i = 0; i < data.results.length; i++) {
                             
-                        document.getElementById("res" + (i + 1)).innerHTML = "";
+                        document.getElementById("res" + (i + 1)).innerHTML += "";
                         document.getElementById("res" + (i + 1)).innerHTML += "<img src=" + data.results[i].image + "><h3 class='divtitle'>" + data.results[i].title;
                         document.getElementById("res" + (i + 1)).innerHTML += "</h3><ul style='list-style-type: none;'>Make Time: " + data.results[i].readyInMinutes + " mins<br/>Servings: " + data.results[i].servings;
                         document.getElementById("res" + (i + 1)).innerHTML += "<a href=" + data.results[i].sourceUrl + "></a>";
@@ -277,60 +367,45 @@ $(document).ready(function() {
     <div id="search-results" style="display:none">
         <h2>Search Results</h2>
         <div id="res">
-            <div id="res1">&nbsp;</div>
-            <div id="res2">&nbsp;</div>
-            <div id="res3">&nbsp;</div>
+            <div id="res1"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg' ></i>Save to Favorites</div></div>
+            <div id="res2"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg' ></i>Save to Favorites</div></div>
+            <div id="res3"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg' ></i>Save to Favorites</div></div>
         </div>
     </div>
 
 	<div>	
-<!--	This section displays 3 recipes from database-->
-<!--
-	<h2>Our Favorites</h2>
-	<div id="favs">
-		<div id="fav1">&nbsp;</div>
-		<div id="fav2">&nbsp;</div>
-		<div id="fav3">&nbsp;</div>
-	</div>
--->
 
 <!--	This section displays recipes recommended based on the most recent ingredient search?-->
 	<h2>Recomended for You</h2>
 	<div id="recs">
 		<div id="left" class="chevron"><i class="fa fa-chevron-left" style="display: inline-flex; align-items: center"></i></div>
-		<div id="rec1">&nbsp;</div>
-		<div id="rec2">&nbsp;</div>
-		<div id="rec3">&nbsp;</div>
-		<div id="rec4">&nbsp;</div>
-		<div id="rec5">&nbsp;</div>
-		<div id="rec6">&nbsp;</div>
+		<div id="rec1"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
+		<div id="rec2"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
+		<div id="rec3"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
+		<div id="rec4"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
+		<div id="rec5"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
+		<div id="rec6"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
 		<div id="right" class="chevron"><i class="fa fa-chevron-right" style="display: inline-flex; align-items: center"></i></div>
 	</div>
 		
-		
-	<form method='get'  action='http://localhost:6060/process' style = "margin-left: 40px;"><!-------------------------change action when we go to Heroku-------------------->
-      <h3>Add your own recipe! (THIS NEEDS TO BE STYLED)</h3>
-	Name of dessert:
-      <input type ="text" id = 'name' name="name">
-      <br><br>
-	Number of servings:
-      <input type ="text" id = 'servings' name="servings">
-      <br><br>
-	Link to image:
-      <input type ="text" id = 'image' name="image">
-      <br><br>
-	Link to full recipe:
-      <input type ="text" id = 'link' name="link">
-      <br><br>
-	Time to prepare:
-      <input type ="text" id = 'time' name="time">
-      <br><br>
-      <button type ="submit">Create</button>
-  	</form>
+	<!--	This section displays 3 recipes from database-->
+	<h2>Your Favorites</h2>
+	<div id="favs">
+		<div id="left2" class="chevron"><i class="fa fa-chevron-left" style="display: inline-flex; align-items: center"></i></div>
+		<div id="fav1">&nbsp;</div>
+		<div id="fav2">&nbsp;</div>
+		<div id="fav3">&nbsp;</div>
+		<div id="fav4">&nbsp;</div>
+		<div id="fav5">&nbsp;</div>
+		<div id="fav6">&nbsp;</div>
+		<div id="right2" class="chevron"><i class="fa fa-chevron-right" style="display: inline-flex; align-items: center"></i></div>
+	</div>	
+	<div id="nofavs">You don't have any favorites yet! If you click "Save to Favorites", the recipe will show up here</div>
 		
 	</div>
 	
 <!--	Tester div-->
 	<div id="data">&nbsp;</div>
+
 </body>
 </html>
