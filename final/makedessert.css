@@ -173,18 +173,31 @@ i {
 	cursor: pointer;
 }
 
-.fa-heart {
+.fa-heart, .fa-times {
 	position: relative;
 	left: -5%;
 	bottom: -50%;	
 }
 
-.like {
+.like, .remove {
 	position: relative;
 	left: -8%;
 	bottom: -89%;
 	color: #9C9C9C;
 	font-size: 11pt;
+	padding: 5px;
+}
+
+.remove {
+	display: none;
+}
+
+.remove:hover {
+	color: #000000;
+}
+
+.remove:hover .fa-times {
+	color: #000000;
 }
 
 .like:hover {

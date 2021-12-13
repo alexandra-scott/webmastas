@@ -14,24 +14,33 @@
 $(document).ready(function() {
 //	localStorage.clear();
 	
-	$("#nofavs").hide();
+	
+	$("#nofavs").show();
+	$("#fav1").hide();
+	$("#fav2").hide();
+	$("#fav3").hide();	
 	$("#fav4").hide();
 	$("#fav5").hide();
-	$("#fav6").hide();
+	$("#fav6").hide();	
+	$("#left2").hide();
+	$("#right2").hide();
+//	alert(localStorage.favcount);
+	
 
 	for (i=1; i < 7; i++) {
 		if (localStorage.getItem("recipe_title"+i) != null) {
 			makeFavorite(i);
-		}
-		else {
-			$("#nofavs").show();
-			$("#fav1").hide();
-			$("#fav2").hide();
-			$("#fav3").hide();	
-			$("#left2").hide();
-			$("#right2").hide();
+				$("#nofavs").hide();
+				$("#fav1").show();
+				$("#fav2").show();
+				$("#fav3").show();	
+				$("#fav4").hide();
+				$("#fav5").hide();
+				$("#fav6").hide();
+				$("#right2").show();
 		}
 	}
+
 	
 	function makeFavorite(i) {
 		fav_title = "<h3 class='divtitle'>" + localStorage.getItem("recipe_title"+i) + "</h3>";
@@ -39,8 +48,12 @@ $(document).ready(function() {
 		fav_pic = "<img src=" + localStorage.getItem("recipe_pic"+i) + ">";
 		fav_link = "<a href=" + localStorage.getItem("recipe_link"+i) + "></a>";
 			
-		document.getElementById("fav"+i).innerHTML = fav_pic + fav_title + fav_list + fav_link;
+		document.getElementById("fav"+i).innerHTML += fav_pic + fav_title + fav_list + fav_link;
+		
+		document.getElementById("fav"+i).querySelectorAll('div')[0].style.display = "block";
 	}
+	
+	$("left2").hide();
 	
 	$("#rec4").hide();
 	$("#rec5").hide();
@@ -105,6 +118,14 @@ $(document).ready(function() {
 			document.getElementById($(this).attr('id')).querySelectorAll('i')[0].style.color = "#FA5A5B";
         	return;
     	}
+		if ($(event.target).is('.remove')){
+			event.stopPropagation();
+        	return;		
+		}
+		if ($(event.target).is('.fa-times')){
+			event.stopPropagation();
+        	return;		
+		}
 		window.open($(this).find("a").attr("href"), '_blank'); 
   		return false;
 	});
@@ -128,7 +149,6 @@ $(document).ready(function() {
 			} else {
 				localStorage.favcount = 1;
 			}
-//			alert("after: " + localStorage.favcount);
 		
 			if (localStorage.favcount == 1) {
 				$("#nofavs").hide();
@@ -151,8 +171,68 @@ $(document).ready(function() {
 		fav_pic = "<img src=" + localStorage.getItem("recipe_pic"+i) + ">";
 		fav_link = "<a href=" + localStorage.getItem("recipe_link"+i) + "></a>";
 			
-		document.getElementById("fav"+i).innerHTML = fav_pic + fav_title + fav_list + fav_link;
+		document.getElementById("fav"+i).innerHTML += fav_pic + fav_title + fav_list + fav_link;
+		
+		document.getElementById("fav"+i).querySelectorAll('div')[0].style.display = "block";
 	}
+	
+	function removeFav(name) {
+		var i = name.charAt(name.length-1);
+		localStorage.removeItem("recipe_title"+i);
+		localStorage.removeItem("recipe_facts"+i);
+		localStorage.removeItem("recipe_pic"+i);
+		localStorage.removeItem("recipe_link"+i);
+		moveFavorite(i);
+	}
+	
+	function moveFavorite(i) {
+		j = parseInt(i);
+		
+		new_num = j + 1;
+
+		//set new recipe title stuff
+		if (localStorage.getItem('recipe_title'+new_num) != null) {
+//			for (k=j; k < 6; k++) {
+			localStorage.setItem("recipe_title"+j, localStorage.getItem('recipe_title'+new_num));
+			localStorage.setItem("recipe_facts"+j, localStorage.getItem('recipe_facts'+new_num));
+			localStorage.setItem("recipe_pic"+j, localStorage.getItem('recipe_pic'+new_num));
+			localStorage.setItem("recipe_link"+j, localStorage.getItem('recipe_link'+new_num));
+//			}
+				
+				
+			localStorage.removeItem("recipe_title"+new_num);
+			localStorage.removeItem("recipe_facts"+new_num);
+			localStorage.removeItem("recipe_pic"+new_num);
+			localStorage.removeItem("recipe_link"+new_num);
+			fav_title = "<h3 class='divtitle'>" + localStorage.getItem("recipe_title"+j) + "</h3>";
+			fav_list = "<ul style='list-style-type: none;'>" + localStorage.getItem("recipe_facts"+j) + "</ul>";
+			fav_pic = "<img src=" + localStorage.getItem("recipe_pic"+j) + ">";
+			fav_link = "<a href=" + localStorage.getItem("recipe_link"+j) + "></a>";
+			
+			fav_rem = "<div class='remove' onclick='removeFav(this.parentNode.id)'><i class='fa fa-times fa-lg'</i>Remove Favorite</div>";
+			
+			document.getElementById("fav"+j).innerHTML = fav_pic + fav_title + fav_list + fav_link + fav_rem;
+			clearDiv(new_num);
+		}
+		else {
+			clearDiv(j);
+		}
+		
+
+		
+//		document.getElementById("fav"+j).innerHTML = fav_pic + fav_title + fav_list + fav_link;
+//		clearDiv(new_num);
+		
+		if (localStorage.favcount > 0) {
+			localStorage.favcount--;
+		}	
+	}
+	
+	function clearDiv(new_num) {
+		document.getElementById("fav"+new_num).innerHTML = "";
+	}
+	
+	
 	
 </script>
 	
@@ -393,12 +473,12 @@ $(document).ready(function() {
 	<h2>Your Favorites</h2>
 	<div id="favs">
 		<div id="left2" class="chevron"><i class="fa fa-chevron-left" style="display: inline-flex; align-items: center"></i></div>
-		<div id="fav1">&nbsp;</div>
-		<div id="fav2">&nbsp;</div>
-		<div id="fav3">&nbsp;</div>
-		<div id="fav4">&nbsp;</div>
-		<div id="fav5">&nbsp;</div>
-		<div id="fav6">&nbsp;</div>
+		<div id="fav1"><div class="remove" onclick="removeFav(this.parentNode.id)"><i class="fa fa-times fa-lg"></i>Remove Favorite</div></div>
+		<div id="fav2"><div class="remove" onclick="removeFav(this.parentNode.id)"><i class="fa fa-times fa-lg"></i>Remove Favorite</div></div>
+		<div id="fav3"><div class="remove" onclick="removeFav(this.parentNode.id)"><i class="fa fa-times fa-lg"></i>Remove Favorite</div></div>
+		<div id="fav4"><div class="remove" onclick="removeFav(this.parentNode.id)"><i class="fa fa-times fa-lg"></i>Remove Favorite</div></div>
+		<div id="fav5"><div class="remove" onclick="removeFav(this.parentNode.id)"><i class="fa fa-times fa-lg"></i>Remove Favorite</div></div>
+		<div id="fav6"><div class="remove" onclick="removeFav(this.parentNode.id)"><i class="fa fa-times fa-lg"></i>Remove Favorite</div></div>
 		<div id="right2" class="chevron"><i class="fa fa-chevron-right" style="display: inline-flex; align-items: center"></i></div>
 	</div>	
 	<div id="nofavs">You don't have any favorites yet! If you click "Save to Favorites", the recipe will show up here</div>
