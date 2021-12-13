@@ -45,6 +45,12 @@ if (req.url != '/favicon.ico') {
 	});
 	}; 
 	};
+	////////////////////////////DELETE
+	var theQuery = { name: null };
+	coll.deleteMany(theQuery, function(err, obj) {
+	if (err) throw err;
+	console.log("document deleted");
+	});
 		
 	////////////////////////////QUERY   	
 	theQuery = {};
