@@ -8,6 +8,7 @@ var port = process.env.PORT || 3000;
 http.createServer(function (req, res) {
 res.writeHead(200, {'Content-Type': 'text/html'});
 if (req.url != '/favicon.ico') {
+	var dName = "";
 	var MongoClient = mongo.MongoClient;
 	var qobj = adr.parse(req.url, true).query;
 	
