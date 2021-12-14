@@ -60,7 +60,8 @@ if (req.url != '/favicon.ico') {
     	} 
 	else 
     	{
-	res.write('<style> body { margin: 0 auto; } #hero { background-image: url("https://raw.githubusercontent.com/alexandra-scott/webmastas/main/final/background.jpg"); background-size: cover; width: 100%; height: 900px; margin-top: -400px; }'+
+	res.write('<style>'+
+	' body { margin: 0 auto; } #hero { background-image: url("https://raw.githubusercontent.com/alexandra-scott/webmastas/main/final/background.jpg"); background-size: cover; width: 100%; height: 900px; margin-top: -400px; }'+
 	'img { width: 125px; height: 125px; border-radius: 50%; margin-top:12px; margin-left:10px; padding-right: 10;}'+
 	'#top10 { margin-right: 18%; margin-left: 18%; border-radius: 31px; background-color: #FFFFFF; height: 150px; filter: drop-shadow(0px 14px 15px #1c604e); margin-bottom: 1.5%; position: relative; top: -440px; margin-top: 10px;}'+
 	'#wave { background-image: url("https://raw.githubusercontent.com/alexandra-scott/webmastas/main/final/whitewave.png"); margin-top: -139px; background-size:cover; z-index: 10000; height: 150px; width: 100%; background-position: center; }'+	
@@ -71,6 +72,8 @@ if (req.url != '/favicon.ico') {
 	'#namer {font-family: "Varela Round", sans-serif;font-size: 270%; color: #FFFFFF; margin-left:20px; margin-top: 45px; position: relative;float: centerl}'+
 	'.column {float: left; padding-right: 0px;}'+
 	'p2 {float: right; font-family: "Varela Round", sans-serif; font-size: 20pt; margin-right: 7%; margin-top: 40px;}'+
+	'@media (max-width: 1525px) { #namer { font-size: 200%; } }'+
+	'@media (max-width: 1525px) { p2 { font-size: 16pt; } }'+
 	
 
 	'</style>' + 
