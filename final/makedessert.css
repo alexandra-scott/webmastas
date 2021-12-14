@@ -234,11 +234,10 @@ i {
 	margin-bottom: 100px;
 }
 
-#userform {
+.userform {
     padding: 9px 9px;
-	background-color: #FFFFFF;
-	border-radius: 21px;
-	
+    background-color: #FFFFFF;
+    border-radius: 21px;
     filter: drop-shadow(0px 8px 4px rgba(43,149,121,0.21));
 }
 
