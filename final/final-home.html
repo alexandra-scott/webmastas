@@ -106,7 +106,7 @@ $(document).ready(function() {
 		
 	
 	$("#rec1, #rec2, #rec3, #rec4, #rec5, #rec6, #res1, #res2, #res3, #fav1, #fav2, #fav3, #fav4, #fav5, #fav6").click(function() {
-		if ($(event.target).is('.like')){
+		if ($(event.target).is('.like') || $(event.target).is('.reslike') ){
         	event.stopPropagation();
 			document.getElementById($(this).attr('id')).querySelectorAll('div')[0].style.color = "#FA5A5B";
 			document.getElementById($(this).attr('id')).querySelectorAll('i')[0].style.color = "#FA5A5B";
@@ -171,9 +171,11 @@ $(document).ready(function() {
 		fav_pic = "<img src=" + localStorage.getItem("recipe_pic"+i) + ">";
 		fav_link = "<a href=" + localStorage.getItem("recipe_link"+i) + "></a>";
 			
-		document.getElementById("fav"+i).innerHTML += fav_pic + fav_title + fav_list + fav_link;
+		fav_rem = "<div class='remove2' style='font-family: Varela Round' onclick='removeFav(this.parentNode.id)'><i class='fa fa-times fa-lg'</i>Remove Favorite</div>";
 		
-		document.getElementById("fav"+i).querySelectorAll('div')[0].style.display = "block";
+		document.getElementById("fav"+i).innerHTML += fav_pic + fav_title + fav_list + fav_link + fav_rem;
+		
+//		document.getElementById("fav"+i).querySelectorAll('div')[0].style.display = "block";
 	}
 	
 	function removeFav(name) {
@@ -209,7 +211,8 @@ $(document).ready(function() {
 			fav_pic = "<img src=" + localStorage.getItem("recipe_pic"+j) + ">";
 			fav_link = "<a href=" + localStorage.getItem("recipe_link"+j) + "></a>";
 			
-			fav_rem = "<div class='remove' onclick='removeFav(this.parentNode.id)'><i class='fa fa-times fa-lg'</i>Remove Favorite</div>";
+			fav_rem = "<div class='remove2' onclick='removeFav(this.parentNode.id)'><i class='fa fa-times fa-lg'</i>Remove Favorite</div>";
+			
 			
 			document.getElementById("fav"+j).innerHTML = fav_pic + fav_title + fav_list + fav_link + fav_rem;
 			clearDiv(new_num);
@@ -422,11 +425,13 @@ $(document).ready(function() {
                     } 
                     for (let i = 0; i < data.results.length; i++) {
                             
-                        document.getElementById("res" + (i + 1)).innerHTML += "";
+                        document.getElementById("res" + (i + 1)).innerHTML = "";
                         document.getElementById("res" + (i + 1)).innerHTML += "<img src=" + data.results[i].image + "><h3 class='divtitle'>" + data.results[i].title;
                         document.getElementById("res" + (i + 1)).innerHTML += "</h3><ul style='list-style-type: none;'>Make Time: " + data.results[i].readyInMinutes + " mins<br/>Servings: " + data.results[i].servings;
                         document.getElementById("res" + (i + 1)).innerHTML += "<a href=" + data.results[i].sourceUrl + "></a>";
-        
+						
+						document.getElementById("res" + (i + 1)).innerHTML += "<div class='reslike' onclick='setCookie(this.parentNode.id)'><i class='fa fa-heart fa-lg'></i>Save to Favorites</div>";
+        			
                     }
                     
                     
@@ -457,7 +462,7 @@ $(document).ready(function() {
 	<div>	
 
 <!--	This section displays recipes recommended based on the most recent ingredient search?-->
-	<h2>Recomended for You</h2>
+	<h2>Popular Recipes</h2>
 	<div id="recs">
 		<div id="left" class="chevron"><i class="fa fa-chevron-left" style="display: inline-flex; align-items: center"></i></div>
 		<div id="rec1"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
