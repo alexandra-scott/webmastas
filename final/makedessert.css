@@ -26,14 +26,6 @@ header {
 }
 
 
-.userform {
-    padding: 9px 9px;
-	background-color: #FFFFFF;
-	border-radius: 21px;
-	filter: drop-shadow(0px 8px 4px rgba(43,149,121,0.71));
-    filter: drop-shadow(0px 8px 4px rgba(43,149,121,0.21));
-}
-
 
 #nav a:hover {
 	cursor: pointer;
@@ -240,6 +232,14 @@ i {
 	top: -440px;
 	margin-top: 10px;
 	margin-bottom: 100px;
+}
+
+#userform {
+    padding: 9px 9px;
+	background-color: #FFFFFF;
+	border-radius: 21px;
+	filter: drop-shadow(0px 8px 4px rgba(43,149,121,0.71));
+    filter: drop-shadow(0px 8px 4px rgba(43,149,121,0.21));
 }
 
 #num1, #num2, #num3, #num4, #num5, #num6, #num7, #num8, #num9, #num10 {
