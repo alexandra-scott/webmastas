@@ -91,7 +91,8 @@ if (req.url == "/"){
 	'@media (max-width: 1525px) { p2 { font-size: 16pt; } }'+
 	
 
-	'</style>' + 
+	'</style>' + '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">' 
+    + '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">' + 
 	
 	'<header> <ul id="nav"> <a style="margin-right:4%" href="https://make-desserts.herokuapp.com/">Go Back</a></header>'+
 	'<div id="hero" style="margin-top: -300px"><h1 id="trend-head">User-Made Recipes</h1></div>' + 
