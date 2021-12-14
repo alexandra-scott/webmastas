@@ -340,7 +340,7 @@ $(document).ready(function() {
 	<header>
 		<ul id="nav">
 			<a class="onpage" href="final-home.html" style="margin-right:4%">Recipe Finder</a>
-			<a href="https://make-desserts.herokuapp.com/user" style="margin-right:4%">View User-Made Recipes</a>
+			<a href="https://make-desserts.herokuapp.com/user" style="margin-right:4%">View User-Submitted Recipes</a>
 			<a href="usercreated.html">Add Your Own Recipe</a>
 		</ul>
 	</header>
@@ -350,11 +350,13 @@ $(document).ready(function() {
 		
 <!--		This form gets a recipe from the API with ingredients selected-->
 		<form id="search" onsubmit="return findrecipes()"> 
-			<input id="input" type="text" placeholder="Search for recipes by main ingredients">
+            <input id="input" type="text" placeholder="Search for recipes by main ingredients">
 			<button><i class="fa fa-search"></i></button>
 		</form>		
+        
 	</div>
-	
+    
+    
  <script>
         function updateDiv(id, index) {
             query_string = "https://api.spoonacular.com/recipes/" + id + "/information?apiKey=793e9467a3d04dd4b75c0e12cdcbe489"
@@ -398,7 +400,7 @@ $(document).ready(function() {
             ingred_query = ingred_Arr.join(",+");          
             
             const id_arr = [];
-            document.getElementById("search-results").style.display = "block";
+            
 		        query_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?limitLicense=false&offset=0&type=dessert&addRecipeInformation=true&number="
             query_string += num_res + "&includeIngredients=" + ingred_query;
             
@@ -419,8 +421,10 @@ $(document).ready(function() {
     				var data = JSON.parse(result);                
                     
                     if (data.results.length == 0) {
-                        console.log("this is very sad, there are no results")
+                        alert("No results! Check your spelling or include fewer ingredients");
+                        return false;
                     } 
+                    document.getElementById("search-results").style.display = "block";
                     for (let i = 0; i < data.results.length; i++) {
                             
                         document.getElementById("res" + (i + 1)).innerHTML = "";
@@ -448,6 +452,7 @@ $(document).ready(function() {
     </script>
 
 	<section id="wave"></section>
+    
     <div id="search-results" style="display:none">
         <h2>Search Results</h2>
         <div id="res">

@@ -75,7 +75,7 @@ if (req.url == "/"){
     	} 
 	else 
     	{
-	res.write('<style>'+
+	res.write('<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">'+'<style>'+
 	' body { margin: 0 auto; } #hero { background-image: url("https://raw.githubusercontent.com/alexandra-scott/webmastas/main/final/background.jpg"); background-size: cover; width: 100%; height: 900px; margin-top: -400px; }'+
 	'img { width: 125px; height: 125px; border-radius: 50%; margin-top:12px; margin-left:10px; padding-right: 10;}'+
 	'#top10 { margin-right: 18%; margin-left: 18%; border-radius: 31px; background-color: #FFFFFF; height: 150px; filter: drop-shadow(0px 14px 15px #1c604e); margin-bottom: 1.5%; position: relative; top: -440px; margin-top: 10px;}'+
@@ -95,7 +95,7 @@ if (req.url == "/"){
     + '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">' + 
 	
 	'<header> <ul id="nav"> <a style="margin-right:4%" href="https://make-desserts.herokuapp.com/">Go Back</a></header>'+
-	'<div id="hero" style="margin-top: -300px"><h1 id="trend-head">User-Made Recipes</h1></div>' + 
+	'<div id="hero" style="margin-top: -300px"><h1 id="trend-head">User-Submitted Recipes</h1></div>' + 
 	'<section id="wave"></section>');
 
     	
