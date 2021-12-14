@@ -7,7 +7,22 @@ var qs = require('querystring');
 var port = process.env.PORT || 3000;
 http.createServer(function (req, res) {
 res.writeHead(200, {'Content-Type': 'text/html'});
-if (req.url != '/favicon.ico') {
+
+if (req.url == "/"){
+    file="final-home.html";
+    fs.readFile(file, function(err, txt) {
+        res.writeHead(200, {'Content-Type' : 'text/html'});
+        res.write(txt);
+        res.end();
+    });
+} else if (req.url == "/usercreated.html") {
+    file="usercreated.html";
+    fs.readFile(file, function(err, txt) {
+        res.writeHead(200, {'Content-Type' : 'text/html'});
+        res.write(txt);
+        res.end();
+    });
+} else if (req.url != '/favicon.ico') {
 	var dName = "";
 	var MongoClient = mongo.MongoClient;
 	var qobj = adr.parse(req.url, true).query;
@@ -78,7 +93,7 @@ if (req.url != '/favicon.ico') {
 
 	'</style>' + 
 	
-	'<header> <ul id="nav"> <a style="margin-right:4%" href="https://alexandra-scott.github.io/webmastas/final/final-home.html">Go Back</a></header>'+
+	'<header> <ul id="nav"> <a style="margin-right:4%" href="https://make-desserts.herokuapp.com/">Go Back</a></header>'+
 	'<div id="hero" style="margin-top: -300px"><h1 id="trend-head">User-Made Recipes</h1></div>' + 
 	'<section id="wave"></section>');
 
@@ -88,7 +103,7 @@ if (req.url != '/favicon.ico') {
 	for (i=0; i<items.length; i++){
 	if (items[i].image == ""){items[i].image = "https://www.nicepng.com/png/full/54-547519_covered-clipart-plate-food-plate-clip-art.png"};
 
-	res.write('<div id = "top10"><div class = "column"><img src='+items[i].image+'></div><div class = column><div id = "namer"><a href='+items[i].link+'>' + 
+	res.write('<div id = "top10"><div class = "column"><img src='+items[i].image+'></div><div class = column><div id = "namer"><a href='+items[i].link+'" target="_blank">' + 
 	items[i].name + '</div></a></br></div><p2><div class = column>Make Time: ' + items[i].time + 
 	'</p2></br>Servings: ' + items[i].servings + '</p2></br></br></div></div>');
 	
