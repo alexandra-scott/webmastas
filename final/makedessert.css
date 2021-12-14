@@ -214,6 +214,10 @@ i {
 	color: #000000;
 }
 
+.remove2:hover .fa-times {
+	color: #000000;
+}
+
 .remove:hover .fa-times {
 	color: #000000;
 }

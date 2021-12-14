@@ -118,7 +118,7 @@ $(document).ready(function() {
 			document.getElementById($(this).attr('id')).querySelectorAll('i')[0].style.color = "#FA5A5B";
         	return;
     	}
-		if ($(event.target).is('.remove')){
+		if ($(event.target).is('.remove') || $(event.target).is('.remove2')){
 			event.stopPropagation();
         	return;		
 		}
@@ -171,7 +171,7 @@ $(document).ready(function() {
 		fav_pic = "<img src=" + localStorage.getItem("recipe_pic"+i) + ">";
 		fav_link = "<a href=" + localStorage.getItem("recipe_link"+i) + "></a>";
 			
-		fav_rem = "<div class='remove2' style='font-family: Varela Round' onclick='removeFav(this.parentNode.id)'><i class='fa fa-times fa-lg'</i>Remove Favorite</div>";
+		fav_rem = "<div class='remove2' style='font-family: Varela Round' onclick='removeFav(this.parentNode.id)'><i class='fa fa-times fa-lg'></i>Remove Favorite</div>";
 		
 		document.getElementById("fav"+i).innerHTML += fav_pic + fav_title + fav_list + fav_link + fav_rem;
 		
@@ -211,7 +211,8 @@ $(document).ready(function() {
 			fav_pic = "<img src=" + localStorage.getItem("recipe_pic"+j) + ">";
 			fav_link = "<a href=" + localStorage.getItem("recipe_link"+j) + "></a>";
 			
-			fav_rem = "<div class='remove2' onclick='removeFav(this.parentNode.id)'><i class='fa fa-times fa-lg'</i>Remove Favorite</div>";
+			fav_rem = "<div class='remove2' onclick='removeFav(this.parentNode.id)'><i class='fa fa-times fa-lg'></i>Remove Favorite</div>";
+			
 			
 			
 			document.getElementById("fav"+j).innerHTML = fav_pic + fav_title + fav_list + fav_link + fav_rem;
