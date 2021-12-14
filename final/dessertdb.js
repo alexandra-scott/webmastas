@@ -7,7 +7,22 @@ var qs = require('querystring');
 var port = process.env.PORT || 3000;
 http.createServer(function (req, res) {
 res.writeHead(200, {'Content-Type': 'text/html'});
-if (req.url != '/favicon.ico') {
+
+if (req.url == "/"){
+    file="final-home.html";
+    fs.readFile(file, function(err, txt) {
+        res.writeHead(200, {'Content-Type' : 'text/html'});
+        res.write(txt);
+        res.end();
+    });
+} else if (req.url == "/usercreated.html") {
+    file="usercreated.html";
+    fs.readFile(file, function(err, txt) {
+        res.writeHead(200, {'Content-Type' : 'text/html'});
+        res.write(txt);
+        res.end();
+    });
+} else if (req.url != '/favicon.ico') {
 	var dName = "";
 	var MongoClient = mongo.MongoClient;
 	var qobj = adr.parse(req.url, true).query;
@@ -60,7 +75,7 @@ if (req.url != '/favicon.ico') {
     	} 
 	else 
     	{
-	res.write('<style>'+
+	res.write('<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">'+'<style>'+
 	' body { margin: 0 auto; } #hero { background-image: url("https://raw.githubusercontent.com/alexandra-scott/webmastas/main/final/background.jpg"); background-size: cover; width: 100%; height: 900px; margin-top: -400px; }'+
 	'img { width: 125px; height: 125px; border-radius: 50%; margin-top:12px; margin-left:10px; padding-right: 10;}'+
 	'#top10 { margin-right: 18%; margin-left: 18%; border-radius: 31px; background-color: #FFFFFF; height: 150px; filter: drop-shadow(0px 14px 15px #1c604e); margin-bottom: 1.5%; position: relative; top: -440px; margin-top: 10px;}'+
@@ -71,15 +86,16 @@ if (req.url != '/favicon.ico') {
 	'header a:active, a:hover, a:visited, a:link { color: #1c604e; text-decoration: none; }'+
 	'#namer {font-family: "Varela Round", sans-serif;font-size: 270%; color: #FFFFFF; position: absolute;float: center; max-width:500px; margin-left:2%; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);}'+
 	'.column {float: left; padding-right: 0px;}'+
-	'p2 {float: right; font-family: "Varela Round", sans-serif; font-size: 20pt; margin-top: 40px; max-width: 325px; min-width: 325px;}'+
+    'p2 {float: right; font-family: "Varela Round", sans-serif; font-size: 18pt; margin-top: 40px; max-width: 325px; min-width: 325px;}'+
 	'@media (max-width: 1540px) { #namer { font-size: 200%; max-width: 350px; } }'+
 	'@media (max-width: 1540px) { p2 { font-size: 16pt; } }'+
 	
 
-	'</style>' + 
+	'</style>' + '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">'  
+    + '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">' + 
 	
-	'<header> <ul id="nav"> <a style="margin-right:4%" href="https://alexandra-scott.github.io/webmastas/final/final-home.html">Go Back</a></header>'+
-	'<div id="hero" style="margin-top: -300px"><h1 id="trend-head">User-Made Recipes</h1></div>' + 
+	'<header> <ul id="nav"> <a style="margin-right:4%" href="https://make-desserts.herokuapp.com/">Go Back</a></header>'+
+	'<div id="hero" style="margin-top: -300px"><h1 id="trend-head">User-Submitted Recipes</h1></div>' + 
 	'<section id="wave"></section>');
 
     	
@@ -87,8 +103,8 @@ if (req.url != '/favicon.ico') {
 ////////////////////////////////////////////////////////LOOP//////////////////////////
 	for (i=0; i<items.length; i++){
 	if (items[i].image == ""){items[i].image = "https://www.nicepng.com/png/full/54-547519_covered-clipart-plate-food-plate-clip-art.png"};
-
-	res.write('<div id = "top10"><div class = "column"><img src='+items[i].image+'></div><div class = column><div id = "namer"><a href='+items[i].link+'>' + 
+    
+	res.write('<div id = "top10"><div class = "column"><img src='+items[i].image+'></div><div class = column><div id = "namer"><a href='+items[i].link+'" target="_blank">' + 
 	items[i].name + '</div></a></br></div><p2><div class = column>Make Time: ' + items[i].time + 
 	'</p2></br>Servings: ' + items[i].servings + '</p2></br></br></div></div>');
 	
