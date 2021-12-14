@@ -27,9 +27,9 @@
 	</div>
 	<section id="wave"></section>
     
-<div style="padding-top:200px; margin:auto; width:50%;">
-<form id = "top10" method='get' action='https://make-desserts.herokuapp.com/user' style="filter: margin: auto;
-  background-color: rgb(220,220,220, 0.85);padding: 20px;right: 20px; margin-right: 20px;padding-botton:20px;margin-bottom:10px; height:450px;top: -440px;
+<div style="padding-top:200px; margin:auto; width:50%; height:100px; padding-bottom:0px">
+<form id = "top10" method='get' action='https://make-desserts.herokuapp.com/user' style="height:450px;filter: margin: auto;
+  background-color: rgb(220,220,220, 0.93); padding: 20px; margin:auto; top: -640px;
   border-radius:21px;">
     <div>Name of Dessert:</div>
       <input style="width: 90%" class="userform" type ="text" id = 'name' name="name" required>
@@ -40,14 +40,18 @@
 	<div>Link to image (optional):</div>
       <input style="width: 90%" class="userform" type ="text" id = 'image' name="image">
       <br><br>
-	<div>Link to full recipe (optional):</div>
-      <input style="width: 90%" class="userform" type ="text" id = 'link' name="link">
+	<div>Link to full recipe:*</div>
+      <input style="width: 90%" class="userform" type ="text" id = 'link' name="link" required>
       <br><br>
 	<div>Time to prepare:</div>
       <input style="width: 90%" class="userform" type ="text" id = 'time' name="time" required>
       <br><br>
-      <button style="margin:auto; padding:10px;filter: drop-shadow(0px 10px 6px rgba(255, 255, 255,0.71)); background-color: rgba(43,149,121,0.71)" type ="submit" id = "nav">Create</button>
+      <button style="color:#000000; margin:auto; padding:10px;filter: drop-shadow(0px 10px 6px rgba(255, 255, 255,0.71)); background-color: rgba(43,149,121,0.71)" type ="submit" id = "nav">Create</button>
   </form>
-</body>
+  <div style="padding-bottom:20px;margin:0;position:relative; top:-600px;">
+  *Please note, if you would like to submit a recipe that is not from an online source, please use <a href="https://www.google.com/drive/" target="_blank">Google Drive</a>
+  to create a new document and submit the "view only" link. For assistance, please see <a href="https://support.google.com/drive/answer/2494822?hl=en&co=GENIE.Platform%3DDesktop"target="_blank">Google Drive Support</a>.
 </div>
+</div>
+</body>
 </html>
