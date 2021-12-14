@@ -339,7 +339,7 @@ $(document).ready(function() {
 <body onload="getdessert()">
 	<header>
 		<ul id="nav">
-			<a class="onpage" href="final-home.html" style="margin-right:4%">Recipe Finder</a>
+			<a class="onpage" href="https://make-desserts.herokuapp.com/" style="margin-right:4%">Recipe Finder</a>
 			<a href="https://make-desserts.herokuapp.com/user" style="margin-right:4%">View User-Submitted Recipes</a>
 			<a href="usercreated.html">Add Your Own Recipe</a>
 		</ul>
@@ -349,7 +349,7 @@ $(document).ready(function() {
 		<h1>Find the Perfect Recipe...</h1>
 		
 <!--		This form gets a recipe from the API with ingredients selected-->
-		<form id="search" onsubmit="return findrecipes()"> 
+		<form id="search" onsubmit="return findrecipes(0, 0)"> 
             <input id="input" type="text" placeholder="Search for recipes by main ingredients">
 			<button><i class="fa fa-search"></i></button>
 		</form>		
@@ -386,8 +386,19 @@ $(document).ready(function() {
                 console.log("4 - Request sent");
         }
         
-	 	function findrecipes() {
-            user_ingred = document.getElementById("input").value;
+	 	function findrecipes(offset, new_search) {
+            
+            if(new_search == 1){
+                offset_count = parseInt(document.getElementById("num_search").innerHTML) * offset;
+                var num_search = parseInt(document.getElementById("num_search").innerHTML) + 1;
+                document.getElementById("num_search").innerHTML = num_search;
+            } else {
+                offset_count = 0;
+                document.getElementById("num_search").innerHTML = 1;
+            }
+            
+            user_ingred = document.getElementById("input").value; 
+            
             num_res = 3; // update this with user selection?
             
             // removes all commas from user-entered ingredients
@@ -397,12 +408,14 @@ $(document).ready(function() {
             ingred_Arr = ingred_no_comma.split(" ");
             
             // makes string of form ingred1,+ingred2,+ingred3
-            ingred_query = ingred_Arr.join(",+");          
+            ingred_query = ingred_Arr.join("%2C%20");          
             
             const id_arr = [];
             
-		        query_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?limitLicense=false&offset=0&type=dessert&addRecipeInformation=true&number="
-            query_string += num_res + "&includeIngredients=" + ingred_query;
+		        query_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex?limitLicense=false" 
+                query_string += "&offset=" + offset_count +"&type=dessert" + "&addRecipeInformation=true&number="
+                query_string += num_res + "&includeIngredients=" + ingred_query;
+                
             
             request = new XMLHttpRequest();
             console.log("1 - request object created");
@@ -431,10 +444,12 @@ $(document).ready(function() {
                         document.getElementById("res" + (i + 1)).innerHTML += "<img src=" + data.results[i].image + "><h3 class='divtitle'>" + data.results[i].title;
                         document.getElementById("res" + (i + 1)).innerHTML += "</h3><ul style='list-style-type: none;'>Make Time: " + data.results[i].readyInMinutes + " mins<br/>Servings: " + data.results[i].servings;
                         document.getElementById("res" + (i + 1)).innerHTML += "<a href=" + data.results[i].sourceUrl + "></a>";
-						
+						//alert(data.results[i].usedIngredientCount)
 						document.getElementById("res" + (i + 1)).innerHTML += "<div class='reslike' onclick='setCookie(this.parentNode.id)'><i class='fa fa-heart fa-lg'></i>Save to Favorites</div>";
         			
                     }
+                    
+                    
                     
                     
     			}
@@ -460,7 +475,12 @@ $(document).ready(function() {
             <div id="res2"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg' ></i>Save to Favorites</div></div>
             <div id="res3"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg' ></i>Save to Favorites</div></div>
         </div>
+        <div id="num_search" style="display:none">0</div>
+        <div style="margin:auto;border:0;">
+        <button onclick="findrecipes(3, 1)" class="onpage" style="margin:auto; margin-left:40px;">Show New Results</button>
+        </div>
     </div>
+    
 
 	<div>	
 
