@@ -1,0 +1,500 @@
+<!doctype html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<title>MAKE Dessert</title>
+<link href="https://alexandra-scott.github.io/webmastas/final/makedessert.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script language="javascript">	
+
+$(document).ready(function() {
+//	localStorage.clear();
+	
+	
+	$("#nofavs").show();
+	$("#fav1").hide();
+	$("#fav2").hide();
+	$("#fav3").hide();	
+	$("#fav4").hide();
+	$("#fav5").hide();
+	$("#fav6").hide();	
+	$("#left2").hide();
+	$("#right2").hide();
+//	alert(localStorage.favcount);
+	
+
+	for (i=1; i < 7; i++) {
+		if (localStorage.getItem("recipe_title"+i) != null) {
+			makeFavorite(i);
+				$("#nofavs").hide();
+				$("#fav1").show();
+				$("#fav2").show();
+				$("#fav3").show();	
+				$("#fav4").hide();
+				$("#fav5").hide();
+				$("#fav6").hide();
+				$("#right2").show();
+		}
+	}
+
+	
+	function makeFavorite(i) {
+		fav_title = "<h3 class='divtitle'>" + localStorage.getItem("recipe_title"+i) + "</h3>";
+		fav_list = "<ul style='list-style-type: none;'>" + localStorage.getItem("recipe_facts"+i) + "</ul>";
+		fav_pic = "<img src=" + localStorage.getItem("recipe_pic"+i) + ">";
+		fav_link = "<a href=" + localStorage.getItem("recipe_link"+i) + "></a>";
+			
+		document.getElementById("fav"+i).innerHTML += fav_pic + fav_title + fav_list + fav_link;
+		
+		document.getElementById("fav"+i).querySelectorAll('div')[0].style.display = "block";
+	}
+	
+	$("left2").hide();
+	
+	$("#rec4").hide();
+	$("#rec5").hide();
+	$("#rec6").hide();
+	$("#left").hide();
+	
+	$("#right").click(function() {
+		$("#right").hide();
+		$("#left").show();
+		$("#rec1").hide();
+		$("#rec2").hide();
+		$("#rec3").hide();
+		$("#rec4").show();
+		$("#rec5").show();
+		$("#rec6").show();
+	});	
+	
+	$("#left").click(function() {
+		$("#left").hide();
+		$("#right").show();
+		$("#rec1").show();
+		$("#rec2").show();
+		$("#rec3").show();
+		$("#rec4").hide();
+		$("#rec5").hide();
+		$("#rec6").hide();
+	});
+	
+	$("#right2").click(function() {
+		$("#right2").hide();
+		$("#left2").show();
+		$("#fav1").hide();
+		$("#fav2").hide();
+		$("#fav3").hide();
+		$("#fav4").show();
+		$("#fav5").show();
+		$("#fav6").show();
+	});	
+	
+	$("#left2").click(function() {
+		$("#left2").hide();
+		$("#right2").show();
+		$("#fav1").show();
+		$("#fav2").show();
+		$("#fav3").show();
+		$("#fav4").hide();
+		$("#fav5").hide();
+		$("#fav6").hide();
+	});
+		
+	
+	$("#rec1, #rec2, #rec3, #rec4, #rec5, #rec6, #res1, #res2, #res3, #fav1, #fav2, #fav3, #fav4, #fav5, #fav6").click(function() {
+		if ($(event.target).is('.like') || $(event.target).is('.reslike') ){
+        	event.stopPropagation();
+			document.getElementById($(this).attr('id')).querySelectorAll('div')[0].style.color = "#FA5A5B";
+			document.getElementById($(this).attr('id')).querySelectorAll('i')[0].style.color = "#FA5A5B";
+        	return;
+    	}
+		if ($(event.target).is('.fa-heart')){
+        	event.stopPropagation();
+			document.getElementById($(this).attr('id')).querySelectorAll('div')[0].style.color = "#FA5A5B";
+			document.getElementById($(this).attr('id')).querySelectorAll('i')[0].style.color = "#FA5A5B";
+        	return;
+    	}
+		if ($(event.target).is('.remove') || $(event.target).is('.remove2')){
+			event.stopPropagation();
+        	return;		
+		}
+		if ($(event.target).is('.fa-times')){
+			event.stopPropagation();
+        	return;		
+		}
+		window.open($(this).find("a").attr("href"), '_blank'); 
+  		return false;
+	});
+
+
+	$("button").click(function() {	
+		$([document.documentElement, document.body]).animate({
+        	scrollTop: $("#wave").offset().top
+    	}, 800);
+	});	
+	
+});
+	
+	function setCookie(div_id) {	
+			if (localStorage.favcount == 6) {
+				alert("You have run out of space for your favorite recipes. In order to save another recipe, please remove one from your current list.")
+				return;
+			}
+			if (localStorage.favcount) {
+				localStorage.favcount = Number(localStorage.favcount)+1;
+			} else {
+				localStorage.favcount = 1;
+			}
+		
+			if (localStorage.favcount == 1) {
+				$("#nofavs").hide();
+				$("#fav1").show();
+				$("#fav2").show();
+				$("#fav3").show();	
+				$("#right2").show();
+			}
+			
+			localStorage.setItem("recipe_title"+localStorage.favcount, document.getElementById(div_id).querySelectorAll('h3')[0].innerHTML);
+			localStorage.setItem("recipe_facts"+localStorage.favcount, document.getElementById(div_id).querySelectorAll('ul')[0].innerHTML);
+			localStorage.setItem("recipe_pic"+localStorage.favcount, document.getElementById(div_id).querySelectorAll('img')[0].getAttribute('src'));
+			localStorage.setItem("recipe_link"+localStorage.favcount, document.getElementById(div_id).querySelectorAll('a')[0].getAttribute('href'));
+			makeFavorite(localStorage.favcount);
+	}
+	
+	function makeFavorite(i) {
+		fav_title = "<h3 class='divtitle'>" + localStorage.getItem("recipe_title"+i) + "</h3>";
+		fav_list = "<ul style='list-style-type: none;'>" + localStorage.getItem("recipe_facts"+i) + "</ul>";
+		fav_pic = "<img src=" + localStorage.getItem("recipe_pic"+i) + ">";
+		fav_link = "<a href=" + localStorage.getItem("recipe_link"+i) + "></a>";
+			
+		fav_rem = "<div class='remove2' style='font-family: Varela Round' onclick='removeFav(this.parentNode.id)'><i class='fa fa-times fa-lg'></i>Remove Favorite</div>";
+		
+		document.getElementById("fav"+i).innerHTML += fav_pic + fav_title + fav_list + fav_link + fav_rem;
+		
+//		document.getElementById("fav"+i).querySelectorAll('div')[0].style.display = "block";
+	}
+	
+	function removeFav(name) {
+		var i = name.charAt(name.length-1);
+		localStorage.removeItem("recipe_title"+i);
+		localStorage.removeItem("recipe_facts"+i);
+		localStorage.removeItem("recipe_pic"+i);
+		localStorage.removeItem("recipe_link"+i);
+		moveFavorite(i);
+	}
+	
+	function moveFavorite(i) {
+		j = parseInt(i);
+		
+		new_num = j + 1;
+
+		//set new recipe title stuff
+		if (localStorage.getItem('recipe_title'+new_num) != null) {
+//			for (k=j; k < 6; k++) {
+			localStorage.setItem("recipe_title"+j, localStorage.getItem('recipe_title'+new_num));
+			localStorage.setItem("recipe_facts"+j, localStorage.getItem('recipe_facts'+new_num));
+			localStorage.setItem("recipe_pic"+j, localStorage.getItem('recipe_pic'+new_num));
+			localStorage.setItem("recipe_link"+j, localStorage.getItem('recipe_link'+new_num));
+//			}
+				
+				
+			localStorage.removeItem("recipe_title"+new_num);
+			localStorage.removeItem("recipe_facts"+new_num);
+			localStorage.removeItem("recipe_pic"+new_num);
+			localStorage.removeItem("recipe_link"+new_num);
+			fav_title = "<h3 class='divtitle'>" + localStorage.getItem("recipe_title"+j) + "</h3>";
+			fav_list = "<ul style='list-style-type: none;'>" + localStorage.getItem("recipe_facts"+j) + "</ul>";
+			fav_pic = "<img src=" + localStorage.getItem("recipe_pic"+j) + ">";
+			fav_link = "<a href=" + localStorage.getItem("recipe_link"+j) + "></a>";
+			
+			fav_rem = "<div class='remove2' onclick='removeFav(this.parentNode.id)'><i class='fa fa-times fa-lg'></i>Remove Favorite</div>";
+			
+			
+			
+			document.getElementById("fav"+j).innerHTML = fav_pic + fav_title + fav_list + fav_link + fav_rem;
+			clearDiv(new_num);
+		}
+		else {
+			clearDiv(j);
+		}
+		
+
+		
+//		document.getElementById("fav"+j).innerHTML = fav_pic + fav_title + fav_list + fav_link;
+//		clearDiv(new_num);
+		
+		if (localStorage.favcount > 0) {
+			localStorage.favcount--;
+		}	
+	}
+	
+	function clearDiv(new_num) {
+		document.getElementById("fav"+new_num).innerHTML = "";
+	}
+	
+	
+	
+</script>
+	
+<script>
+	function getdessert() {	
+		request = new XMLHttpRequest();
+		console.log("1 - request object created");
+
+		//this is an example of API call to get recipes with apples, flour, and 2 sugars
+		request.open("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random?tags=dessert&number=6", true);
+        request.setRequestHeader("x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
+        request.setRequestHeader("x-rapidapi-key", "65a81ab948mshfbdee5e492692cfp15fcafjsn972187b795b9");
+		console.log("2 - opened request file");
+			
+		request.onreadystatechange = function() {
+			console.log("3 - readystatechange event fired.");
+
+			if (request.readyState == 4 && request.status == 200) {
+				var result = request.responseText;				
+				var data = JSON.parse(result);
+ 						
+				title1 = "<h3 class='divtitle'>" + data.recipes[0].title + "</h3>";
+				image1 = "<img src=" + data.recipes[0].image+">";
+				
+				title2 = "<h3 class='divtitle'>" + data.recipes[1].title + "</h3>";
+				image2 = "<img src=" + data.recipes[1].image+">";
+				
+				title3 = "<h3 class='divtitle'>" + data.recipes[2].title + "</h3>";
+				image3 = "<img src=" + data.recipes[2].image+">";
+					
+				title4 = "<h3 class='divtitle'>" + data.recipes[3].title + "</h3>";
+				image4 = "<img src=" + data.recipes[3].image+">";
+				
+				title5 = "<h3 class='divtitle'>" + data.recipes[4].title + "</h3>";
+				image5 = "<img src=" + data.recipes[4].image+">";
+				
+				title6 = "<h3 class='divtitle'>" + data.recipes[5].title + "</h3>";
+				image6 = "<img src=" + data.recipes[5].image+">";
+				
+				strHTML = "<ul style='list-style-type: none;'>";
+				strHTML2 = "<ul style='list-style-type: none;'>";
+				strHTML3 = "<ul style='list-style-type: none;'>";
+				strHTML4 = "<ul style='list-style-type: none;'>";
+				strHTML5 = "<ul style='list-style-type: none;'>";
+				strHTML6 = "<ul style='list-style-type: none;'>";
+
+
+				strHTML += "Make Time: " + data.recipes[0].readyInMinutes + " mins<br/>";
+				strHTML += "Servings: " + data.recipes[0].servings;
+				
+				strHTML2 += "Make Time: " + data.recipes[1].readyInMinutes + " mins<br/>";
+				strHTML2 += "Servings: " + data.recipes[1].servings;
+				
+				strHTML3 += "Make Time: " + data.recipes[2].readyInMinutes + " mins<br/>";
+				strHTML3 += "Servings: " + data.recipes[2].servings;
+				
+				strHTML4 += "Make Time: " + data.recipes[3].readyInMinutes + " mins<br/>";
+				strHTML4 += "Servings: " + data.recipes[3].servings;
+				
+				strHTML5+= "Make Time: " + data.recipes[4].readyInMinutes + " mins<br/>";
+				strHTML5 += "Servings: " + data.recipes[4].servings;
+				
+				strHTML6 += "Make Time: " + data.recipes[5].readyInMinutes + " mins<br/>";
+				strHTML6 += "Servings: " + data.recipes[5].servings;
+					
+				strHTML += "</ul>";
+				strHTML2 += "</ul>";
+				strHTML3 += "</ul>";
+				strHTML4 += "</ul>";
+				strHTML5 += "</ul>";
+				strHTML6 += "</ul>";
+				
+				document.getElementById("rec1").innerHTML += image1 + title1 + strHTML; 
+				document.getElementById("rec2").innerHTML += image2 + title2 + strHTML2;
+				document.getElementById("rec3").innerHTML += image3+ title3 + strHTML3;
+				document.getElementById("rec4").innerHTML += image4+ title4 + strHTML4;
+				document.getElementById("rec5").innerHTML += image5+ title5 + strHTML5;
+				document.getElementById("rec6").innerHTML += image6+ title6 + strHTML6;
+				
+				
+				document.getElementById("rec1").innerHTML += "<a href=" + data.recipes[0].sourceUrl + "></a>";
+				document.getElementById("rec2").innerHTML += "<a href=" + data.recipes[1].sourceUrl + "></a>";
+				document.getElementById("rec3").innerHTML += "<a href=" + data.recipes[2].sourceUrl + "></a>";
+				document.getElementById("rec4").innerHTML += "<a href=" + data.recipes[3].sourceUrl + "></a>";
+				document.getElementById("rec5").innerHTML += "<a href=" + data.recipes[4].sourceUrl + "></a>";
+				document.getElementById("rec6").innerHTML += "<a href=" + data.recipes[5].sourceUrl + "></a>";
+				
+			}
+			else if (request.readyState == 4 && request.status != 200) {
+				document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+			}
+		}
+			request.send();
+			console.log("4 - Request sent");
+		}
+				
+	</script>
+</head>
+
+<body onload="getdessert()">
+	<header>
+		<ul id="nav">
+			<a class="onpage" href="https://make-desserts.herokuapp.com/" style="margin-right:4%">Recipe Finder</a>
+			<a href="https://make-desserts.herokuapp.com/user" style="margin-right:4%">View User-Submitted Recipes</a>
+			<a href="usercreated.html">Add Your Own Recipe</a>
+		</ul>
+	</header>
+	
+	<div id="hero">
+		<h1>Find the Perfect Recipe...</h1>
+		
+<!--		This form gets a recipe from the API with ingredients selected-->
+		<form id="search" onsubmit="return findrecipes()"> 
+            <input id="input" type="text" placeholder="Search for recipes by main ingredients">
+			<button><i class="fa fa-search"></i></button>
+		</form>		
+        
+	</div>
+    
+    
+ <script>
+        function updateDiv(id, index) {
+            query_string = "https://api.spoonacular.com/recipes/" + id + "/information?apiKey=793e9467a3d04dd4b75c0e12cdcbe489"
+            
+            let new_request = new XMLHttpRequest();
+            console.log("1 - request object created");
+
+            new_request.open("GET", query_string, true);
+            console.log("2 - opened request file");
+            new_request.onreadystatechange = function() {
+                console.log("3 - readystatechange event fired.");
+
+                
+                if (new_request.readyState == 4 && new_request.status == 200) {
+                    var result = new_request.responseText;
+                    var data = JSON.parse(result);
+                    
+                    document.getElementById("res" + (index + 1)).innerHTML +=  data.readyInMinutes + " mins<br/>Servings: " + data.servings;
+                    document.getElementById("res" + (index + 1)).innerHTML += "<a href=" + data.sourceUrl + "></a>";
+    
+                }
+                else if (new_request.readyState == 4 && new_request.status != 200) {
+                    document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+                }
+            }
+                new_request.send();
+                console.log("4 - Request sent");
+        }
+        
+	 	function findrecipes() {
+            user_ingred = document.getElementById("input").value;
+            num_res = 3; // update this with user selection?
+            
+            // removes all commas from user-entered ingredients
+            ingred_no_comma = user_ingred.replace(/,/g, "");
+            
+            // separates ingredients based on whitespace 
+            ingred_Arr = ingred_no_comma.split(" ");
+            
+            // makes string of form ingred1,+ingred2,+ingred3
+            ingred_query = ingred_Arr.join(",+");          
+            
+            const id_arr = [];
+            
+		        query_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?limitLicense=false&offset=0&type=dessert&addRecipeInformation=true&number="
+            query_string += num_res + "&includeIngredients=" + ingred_query;
+            
+            request = new XMLHttpRequest();
+            console.log("1 - request object created");
+            request.open("GET", query_string, true);
+            request.setRequestHeader("x-rapidapi-host", "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com");
+            request.setRequestHeader("x-rapidapi-key", "65a81ab948mshfbdee5e492692cfp15fcafjsn972187b795b9");
+            
+
+            console.log("2 - opened request file");
+            request.onreadystatechange = function() {
+    			console.log("3 - readystatechange event fired.");
+
+                
+    			if (request.readyState == 4 && request.status == 200) {
+    				var result = request.responseText;	
+    				var data = JSON.parse(result);                
+                    
+                    if (data.results.length == 0) {
+                        alert("No results! Check your spelling or include fewer ingredients");
+                        return false;
+                    } 
+                    document.getElementById("search-results").style.display = "block";
+                    for (let i = 0; i < data.results.length; i++) {
+                            
+                        document.getElementById("res" + (i + 1)).innerHTML = "";
+                        document.getElementById("res" + (i + 1)).innerHTML += "<img src=" + data.results[i].image + "><h3 class='divtitle'>" + data.results[i].title;
+                        document.getElementById("res" + (i + 1)).innerHTML += "</h3><ul style='list-style-type: none;'>Make Time: " + data.results[i].readyInMinutes + " mins<br/>Servings: " + data.results[i].servings;
+                        document.getElementById("res" + (i + 1)).innerHTML += "<a href=" + data.results[i].sourceUrl + "></a>";
+						
+						document.getElementById("res" + (i + 1)).innerHTML += "<div class='reslike' onclick='setCookie(this.parentNode.id)'><i class='fa fa-heart fa-lg'></i>Save to Favorites</div>";
+        			
+                    }
+                    
+                    
+    			}
+    			else if (request.readyState == 4 && request.status != 200) {
+    				document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
+    			}
+    		}
+    			request.send();
+    			console.log("4 - Request sent");
+
+                return false;
+    		
+        }
+        
+    </script>
+
+	<section id="wave"></section>
+    
+    <div id="search-results" style="display:none">
+        <h2>Search Results</h2>
+        <div id="res">
+            <div id="res1"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg' ></i>Save to Favorites</div></div>
+            <div id="res2"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg' ></i>Save to Favorites</div></div>
+            <div id="res3"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg' ></i>Save to Favorites</div></div>
+        </div>
+    </div>
+
+	<div>	
+
+<!--	This section displays recipes recommended based on the most recent ingredient search?-->
+	<h2>Popular Recipes</h2>
+	<div id="recs">
+		<div id="left" class="chevron"><i class="fa fa-chevron-left" style="display: inline-flex; align-items: center"></i></div>
+		<div id="rec1"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
+		<div id="rec2"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
+		<div id="rec3"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
+		<div id="rec4"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
+		<div id="rec5"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
+		<div id="rec6"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
+		<div id="right" class="chevron"><i class="fa fa-chevron-right" style="display: inline-flex; align-items: center"></i></div>
+	</div>
+		
+	<!--	This section displays 3 recipes from database-->
+	<h2>Your Favorites</h2>
+	<div id="favs">
+		<div id="left2" class="chevron"><i class="fa fa-chevron-left" style="display: inline-flex; align-items: center"></i></div>
+		<div id="fav1"><div class="remove" onclick="removeFav(this.parentNode.id)"><i class="fa fa-times fa-lg"></i>Remove Favorite</div></div>
+		<div id="fav2"><div class="remove" onclick="removeFav(this.parentNode.id)"><i class="fa fa-times fa-lg"></i>Remove Favorite</div></div>
+		<div id="fav3"><div class="remove" onclick="removeFav(this.parentNode.id)"><i class="fa fa-times fa-lg"></i>Remove Favorite</div></div>
+		<div id="fav4"><div class="remove" onclick="removeFav(this.parentNode.id)"><i class="fa fa-times fa-lg"></i>Remove Favorite</div></div>
+		<div id="fav5"><div class="remove" onclick="removeFav(this.parentNode.id)"><i class="fa fa-times fa-lg"></i>Remove Favorite</div></div>
+		<div id="fav6"><div class="remove" onclick="removeFav(this.parentNode.id)"><i class="fa fa-times fa-lg"></i>Remove Favorite</div></div>
+		<div id="right2" class="chevron"><i class="fa fa-chevron-right" style="display: inline-flex; align-items: center"></i></div>
+	</div>	
+	<div id="nofavs">You don't have any favorites yet! If you click "Save to Favorites", the recipe will show up here</div>
+		
+	</div>
+	
+<!--	Tester div-->
+	<div id="data">&nbsp;</div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+  <meta charset = "UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+
+  <title> USERCREATE </title>
+<link href="https://alexandra-scott.github.io/webmastas/final/makedessert.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+	body {font-family: "Varela Round", sans-serif;}
+	form {margin-left: 17%;}
+</style>
+</head>
+<body>
+	<header>
+		<ul id="nav">
+			<a style="margin-right:4%" href="https://make-desserts.herokuapp.com/">Recipe Finder</a>
+			<a href="https://make-desserts.herokuapp.com/user" style="margin-right:4%">View User-Submitted Recipes</a>
+			<a class="onpage" href="https://make-desserts.herokuapp.com/usercreated.html">Add Your Own Recipe</a>
+		</ul>
+	</header>
+	
+	<div id="hero" style="margin-top: -300px">
+	<h1 id="trend-head">Add Your Own Recipe!</h1>
+	</div>
+	<section id="wave"></section>
+    
+<div style="padding-top:200px; margin:auto; width:50%">
+<form id = "top10" method='get' action='https://make-desserts.herokuapp.com/user' style="filter: margin: auto;
+  background-color: rgb(220,220,220, 0.85);padding: 20px;right: 20px; margin-right: 20px;padding-botton:20px;margin-bottom:10px; height:450px;top: -440px;">
+    <div>Name of Dessert:</div>
+      <input style="width: 90%" class="userform" type ="text" id = 'name' name="name" required>
+      <br><br>
+	<div>Number of servings:</div>
+      <input style="width: 90%" class="userform" type ="text" id = 'servings' name="servings" required>
+      <br><br>
+	<div>Link to image (optional):</div>
+      <input style="width: 90%" class="userform" type ="text" id = 'image' name="image">
+      <br><br>
+	<div>Link to full recipe (optional):</div>
+      <input style="width: 90%" class="userform" type ="text" id = 'link' name="link">
+      <br><br>
+	<div>Time to prepare:</div>
+      <input style="width: 90%" class="userform" type ="text" id = 'time' name="time" required>
+      <br><br>
+      <button style="margin:auto; padding:10px;filter: drop-shadow(0px 10px 6px rgba(255, 255, 255,0.71)); background-color: rgba(43,149,121,0.71)" type ="submit" id = "nav">Create</button>
+  </form>
+</body>
+</div>
+</html>
