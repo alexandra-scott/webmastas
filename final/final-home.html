@@ -3,9 +3,62 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 <title>MAKE Dessert</title>
-<link href="https://alexandra-scott.github.io/webmastas/final/makedessert.css""https://make-desserts.herokuapp.com/" rel="stylesheet" type="text/css">
+<link href="https://alexandra-scott.github.io/webmastas/final/makedessert.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+<style>
+	@media (max-width: 970px) {
+		.like, .remove {
+			left: 2%;
+		}
+		#nofavs {
+			padding: 10px;
+		}
+	}
+	@media (max-width: 920px) {
+		#recs, #favs, #res {
+			flex-direction: column;
+		}
+		#fav1, #fav2, #fav3, #fav4, #fav5, #fav6, #rec1, #rec2, #rec3, #res1, #res2, #res3, #rec4, #rec5, #rec6 {
+			width: 100%;
+			height: 125px;
+			display: inline-flex;
+			align-content: flex-start;
+			padding: 25px;
+			justify-content: center;
+		}
+		.divtitle {
+			width: 40%;
+			margin-left: 20px;
+			margin-top: 10px;
+		}
+		.chevron {
+			justify-content: center;
+		}
+		
+		.reslike {
+			left: 55%;
+		}
+		.like, .remove, .remove2 {
+			position: absolute;
+			left: 55%;
+			bottom: 6%;
+		}
+	}
+	@media (max-width: 550px) {
+		#recs, #favs, #res {
+			margin-left: 10%;
+		}
+		.divtitle, ul {
+			font-size: 10pt;
+		}
+		#nofavs {
+			font-size: 10pt;
+		}
+	}
+	
+</style>
 	
 	
 <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -13,7 +66,6 @@
 
 $(document).ready(function() {
 //	localStorage.clear();
-	
 	
 	$("#nofavs").show();
 	$("#fav1").hide();
@@ -24,8 +76,6 @@ $(document).ready(function() {
 	$("#fav6").hide();	
 	$("#left2").hide();
 	$("#right2").hide();
-//	alert(localStorage.favcount);
-	
 
 	for (i=1; i < 7; i++) {
 		if (localStorage.getItem("recipe_title"+i) != null) {
@@ -145,20 +195,14 @@ $(document).ready(function() {
 				return;
 			}
 			
-//			if (localStorage.favcount > 0) {
-//				num = localStorage.favcount-1;
-//				alert(num);
-//				for (i=1; i < localStorage.favcounts; i++) {
-//					alert(i);
-//					alert(localStorage.getItem("recipe_title"+i));
-//					alert(document.getElementById(div_id).querySelectorAll('h3')[0].innerHTML);
-//					if (localStorage.getItem("recipe_title"+i) == document.getElementById(div_id).querySelectorAll('h3')[0].innerHTML) {
-//						alert("This recipe is already in Favorites!");
-//						return;
-//					}
-//				}
-//			}
-			
+			if (localStorage.favcount >= 1) {
+				for (i=1; i <= localStorage.favcount; i++) {
+					if (localStorage.getItem("recipe_title"+i) == document.getElementById(div_id).querySelectorAll('h3')[0].innerHTML) {
+						alert("This recipe is already in Favorites!");
+						return;
+					}
+				}
+			}
 			
 			if (localStorage.favcount) {
 				localStorage.favcount = Number(localStorage.favcount)+1;
@@ -189,35 +233,46 @@ $(document).ready(function() {
 			
 		fav_rem = "<div class='remove2' style='font-family: Varela Round' onclick='removeFav(this.parentNode.id)'><i class='fa fa-times fa-lg'></i>Remove Favorite</div>";
 		
-		document.getElementById("fav"+i).innerHTML += fav_pic + fav_title + fav_list + fav_link + fav_rem;
-		
-//		document.getElementById("fav"+i).querySelectorAll('div')[0].style.display = "block";
+		document.getElementById("fav"+i).innerHTML = fav_pic + fav_title + fav_list + fav_link + fav_rem;
 	}
 	
 	function removeFav(name) {
 		var i = name.charAt(name.length-1);
+		for (j=1; j<=6; j++) {
+			if (document.getElementById("rec"+j).querySelectorAll('h3')[0].innerHTML == localStorage.getItem('recipe_title'+i)) {
+				document.getElementById("rec"+j).querySelectorAll('div')[0].style.color = "#9C9C9C";
+				document.getElementById("rec"+j).querySelectorAll('i')[0].style.color = "#9C9C9C";
+			}
+		}	
 		localStorage.removeItem("recipe_title"+i);
 		localStorage.removeItem("recipe_facts"+i);
 		localStorage.removeItem("recipe_pic"+i);
 		localStorage.removeItem("recipe_link"+i);
 		moveFavorite(i);
+		if (localStorage.getItem('recipe_title'+1) == null) {
+			$("#nofavs").show();
+			$("#fav1").hide();
+			$("#fav2").hide();
+			$("#fav3").hide();	
+			$("#fav4").hide();
+			$("#fav5").hide();
+			$("#fav6").hide();	
+			$("#left2").hide();
+			$("#right2").hide();
+		}
 	}
 	
 	function moveFavorite(i) {
-		j = parseInt(i);
-		
+		j = parseInt(i);	
 		new_num = j + 1;
 
 		//set new recipe title stuff
-		if (localStorage.getItem('recipe_title'+new_num) != null) {
-//			for (k=j; k < 6; k++) {
+		while (localStorage.getItem('recipe_title'+new_num) != null) {
 			localStorage.setItem("recipe_title"+j, localStorage.getItem('recipe_title'+new_num));
 			localStorage.setItem("recipe_facts"+j, localStorage.getItem('recipe_facts'+new_num));
 			localStorage.setItem("recipe_pic"+j, localStorage.getItem('recipe_pic'+new_num));
 			localStorage.setItem("recipe_link"+j, localStorage.getItem('recipe_link'+new_num));
-//			}
-				
-				
+
 			localStorage.removeItem("recipe_title"+new_num);
 			localStorage.removeItem("recipe_facts"+new_num);
 			localStorage.removeItem("recipe_pic"+new_num);
@@ -228,21 +283,19 @@ $(document).ready(function() {
 			fav_link = "<a href=" + localStorage.getItem("recipe_link"+j) + "></a>";
 			
 			fav_rem = "<div class='remove2' onclick='removeFav(this.parentNode.id)'><i class='fa fa-times fa-lg'></i>Remove Favorite</div>";
-			
-			
-			
+				
 			document.getElementById("fav"+j).innerHTML = fav_pic + fav_title + fav_list + fav_link + fav_rem;
-			clearDiv(new_num);
+				
+			next_num = new_num+1;
+			new_num++;
+			j++;
+	
+			clearDiv(localStorage.favcount);
 		}
-		else {
+		if (localStorage.getItem('recipe_title'+new_num) == null) {
 			clearDiv(j);
 		}
-		
-
-		
-//		document.getElementById("fav"+j).innerHTML = fav_pic + fav_title + fav_list + fav_link;
-//		clearDiv(new_num);
-		
+				
 		if (localStorage.favcount > 0) {
 			localStorage.favcount--;
 		}	
@@ -251,10 +304,8 @@ $(document).ready(function() {
 	function clearDiv(new_num) {
 		document.getElementById("fav"+new_num).innerHTML = "";
 	}
-	
-	
-	
 </script>
+	
 	
 <script>
 	function getdessert() {	
@@ -347,16 +398,16 @@ $(document).ready(function() {
 		}
 			request.send();
 			console.log("4 - Request sent");
-		}
-				
+		}				
 	</script>
+	
 </head>
 
 <body onload="getdessert()">
 	<header>
 		<ul id="nav">
 			<a class="onpage" href="https://make-desserts.herokuapp.com/" style="margin-right:4%">Recipe Finder</a>
-			<a href="https://make-desserts.herokuapp.com/user" style="margin-right:4%">View User-Made Recipes</a>
+			<a href="https://make-desserts.herokuapp.com/user" style="margin-right:4%">View User-Submitted Recipes</a>
 			<a href="usercreated.html">Add Your Own Recipe</a>
 		</ul>
 	</header>
@@ -385,7 +436,7 @@ $(document).ready(function() {
             
             user_ingred = document.getElementById("input").value; 
             
-            num_res = 3; // update this with user selection?
+            num_res = 3;
             
             // removes all commas from user-entered ingredients
             ingred_no_comma = user_ingred.replace(/,/g, "");
@@ -461,15 +512,15 @@ $(document).ready(function() {
             <div id="res3"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg' ></i>Save to Favorites</div></div>
         </div>
 		<div id="num_search" style="display:none">0</div>
-        <div style="margin:auto;border:0;">
-        <button onclick="findrecipes(3, 1)" class="onpage" style="color:#fff; margin:auto; padding:10px;filter: drop-shadow(0px 10px 6px rgba(255, 255, 255,0.71)); background-color: rgba(43,149,121,0.71)">Show New Results</button>
+        <div style="margin:auto;border:0; display: flex;">
+        <button onclick="findrecipes(3, 1)" class="onpage" style="color:#fff; margin:auto; padding:5px 15px;filter: drop-shadow(0px 10px 6px rgba(255, 255, 255,0.71)); background-color: rgba(43,149,121,0.71); font-family: 'Varela Round'; height: 35pt; font-size: 12pt; margin-top: 10px;">Show New Results</button>
         </div>
     </div>
 
 	<div>	
 
 <!--	This section displays recipes recommended based on the most recent ingredient search?-->
-	<h2>Popular Recipes</h2>
+	<h2>Looking for Inspiration?</h2>
 	<div id="recs">
 		<div id="left" class="chevron"><i class="fa fa-chevron-left" style="display: inline-flex; align-items: center"></i></div>
 		<div id="rec1"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg'></i>Save to Favorites</div></div>
