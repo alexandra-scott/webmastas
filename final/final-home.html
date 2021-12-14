@@ -402,9 +402,6 @@ $(document).ready(function() {
 		        query_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/complexSearch?limitLicense=false&offset=0&type=dessert&addRecipeInformation=true&number="
             query_string += num_res + "&includeIngredients=" + ingred_query;
             
-			query_string = "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/searchComplex?limitLicense=false&offset=0&number=";
-            query_string += num_res + "&addRecipeInformation=true&includeIngredients=" + ingred_query + "&type=dessert";
-            
             request = new XMLHttpRequest();
             console.log("1 - request object created");
             request.open("GET", query_string, true);
