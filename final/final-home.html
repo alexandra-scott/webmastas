@@ -3,7 +3,7 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 <title>MAKE Dessert</title>
-<link href="https://alexandra-scott.github.io/webmastas/final/makedessert.css" rel="stylesheet" type="text/css">
+<link href="https://alexandra-scott.github.io/webmastas/final/makedessert.css""https://make-desserts.herokuapp.com/" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	
@@ -144,6 +144,22 @@ $(document).ready(function() {
 				alert("You have run out of space for your favorite recipes. In order to save another recipe, please remove one from your current list.")
 				return;
 			}
+			
+//			if (localStorage.favcount > 0) {
+//				num = localStorage.favcount-1;
+//				alert(num);
+//				for (i=1; i < localStorage.favcounts; i++) {
+//					alert(i);
+//					alert(localStorage.getItem("recipe_title"+i));
+//					alert(document.getElementById(div_id).querySelectorAll('h3')[0].innerHTML);
+//					if (localStorage.getItem("recipe_title"+i) == document.getElementById(div_id).querySelectorAll('h3')[0].innerHTML) {
+//						alert("This recipe is already in Favorites!");
+//						return;
+//					}
+//				}
+//			}
+			
+			
 			if (localStorage.favcount) {
 				localStorage.favcount = Number(localStorage.favcount)+1;
 			} else {
@@ -157,7 +173,7 @@ $(document).ready(function() {
 				$("#fav3").show();	
 				$("#right2").show();
 			}
-			
+
 			localStorage.setItem("recipe_title"+localStorage.favcount, document.getElementById(div_id).querySelectorAll('h3')[0].innerHTML);
 			localStorage.setItem("recipe_facts"+localStorage.favcount, document.getElementById(div_id).querySelectorAll('ul')[0].innerHTML);
 			localStorage.setItem("recipe_pic"+localStorage.favcount, document.getElementById(div_id).querySelectorAll('img')[0].getAttribute('src'));
@@ -340,7 +356,7 @@ $(document).ready(function() {
 	<header>
 		<ul id="nav">
 			<a class="onpage" href="https://make-desserts.herokuapp.com/" style="margin-right:4%">Recipe Finder</a>
-			<a href="https://make-desserts.herokuapp.com/user" style="margin-right:4%">View User-Submitted Recipes</a>
+			<a href="https://make-desserts.herokuapp.com/user" style="margin-right:4%">View User-Made Recipes</a>
 			<a href="usercreated.html">Add Your Own Recipe</a>
 		</ul>
 	</header>
@@ -350,42 +366,12 @@ $(document).ready(function() {
 		
 <!--		This form gets a recipe from the API with ingredients selected-->
 		<form id="search" onsubmit="return findrecipes(0, 0)"> 
-            <input id="input" type="text" placeholder="Search for recipes by main ingredients">
+			<input id="input" type="text" placeholder="Search for recipes by main ingredients">
 			<button><i class="fa fa-search"></i></button>
 		</form>		
-        
 	</div>
-    
-    
- <script>
-        function updateDiv(id, index) {
-            query_string = "https://api.spoonacular.com/recipes/" + id + "/information?apiKey=793e9467a3d04dd4b75c0e12cdcbe489"
-            
-            let new_request = new XMLHttpRequest();
-            console.log("1 - request object created");
-
-            new_request.open("GET", query_string, true);
-            console.log("2 - opened request file");
-            new_request.onreadystatechange = function() {
-                console.log("3 - readystatechange event fired.");
-
-                
-                if (new_request.readyState == 4 && new_request.status == 200) {
-                    var result = new_request.responseText;
-                    var data = JSON.parse(result);
-                    
-                    document.getElementById("res" + (index + 1)).innerHTML +=  data.readyInMinutes + " mins<br/>Servings: " + data.servings;
-                    document.getElementById("res" + (index + 1)).innerHTML += "<a href=" + data.sourceUrl + "></a>";
-    
-                }
-                else if (new_request.readyState == 4 && new_request.status != 200) {
-                    document.getElementById("data").innerHTML = "Something is wrong!  Check the logs to see where this went off the rails";
-                }
-            }
-                new_request.send();
-                console.log("4 - Request sent");
-        }
-        
+	
+ <script>     
 	 	function findrecipes(offset, new_search) {
             
             if(new_search == 1){
@@ -467,7 +453,6 @@ $(document).ready(function() {
     </script>
 
 	<section id="wave"></section>
-    
     <div id="search-results" style="display:none">
         <h2>Search Results</h2>
         <div id="res">
@@ -475,12 +460,11 @@ $(document).ready(function() {
             <div id="res2"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg' ></i>Save to Favorites</div></div>
             <div id="res3"><div class="like" onclick="setCookie(this.parentNode.id)"><i class='fa fa-heart fa-lg' ></i>Save to Favorites</div></div>
         </div>
-        <div id="num_search" style="display:none">0</div>
+		<div id="num_search" style="display:none">0</div>
         <div style="margin:auto;border:0;">
         <button onclick="findrecipes(3, 1)" class="onpage" style="color:#fff; margin:auto; padding:10px;filter: drop-shadow(0px 10px 6px rgba(255, 255, 255,0.71)); background-color: rgba(43,149,121,0.71)">Show New Results</button>
         </div>
     </div>
-    
 
 	<div>	
 
