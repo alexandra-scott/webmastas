@@ -77,15 +77,15 @@ if (req.url == "/"){
     	{
 	res.write('<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">'+'<style>'+
 	' body { margin: 0 auto; } #hero { background-image: url("https://raw.githubusercontent.com/alexandra-scott/webmastas/main/final/background.jpg"); background-size: cover; width: 100%; height: 900px; margin-top: -400px; }'+
-	'img { width: 125px; height: 125px; border-radius: 50%; margin-top:12px; margin-left:10px; padding-right: 10;}'+
+	'img { width: 125px; height: 125px; border-radius: 50%; margin-top:-13px; margin-left:30px; padding: 10PX;}'+
 	'#top10 { margin-right: 18%; margin-left: 18%; border-radius: 31px; background-color: #FFFFFF; height: 150px; filter: drop-shadow(0px 14px 15px #1c604e); margin-bottom: 1.5%; position: relative; top: -440px; margin-top: 10px;}'+
 	'#wave { background-image: url("https://raw.githubusercontent.com/alexandra-scott/webmastas/main/final/whitewave.png"); margin-top: -139px; background-size:cover; z-index: 10000; height: 150px; width: 100%; background-position: center; }'+	
 	'#trend-head { text-align: left; margin-left: 18%; top: 365px; color: #1c604e; filter: drop-shadow(2px 4px 6px #FFFFFF); }' + 
 	'h1 { font-family: "Varela Round", sans-serif; text-align: center; font-size: 50pt; color: #FFFFFF; filter: drop-shadow(2px 4px 6px #1c604e); position: relative; top: 445px; margin-bottom: 20px; }'+	
 	'#nav a:hover { cursor: pointer; } #nav { text-decoration: none; display: flex; justify-content: flex-start; margin-left: 4%; margin-right: 4%; font-size: 13pt; align-items: center; font-family: "Varela Round", sans-serif; text-align: left; margin-top: 25px; font-size: 16pt; color: #1c604e;}'+
 	'header a:active, a:hover, a:visited, a:link { color: #1c604e; text-decoration: none; }'+
-	'#namer {font-family: "Varela Round", sans-serif;font-size: 270%; color: #FFFFFF; position: absolute;float: center; max-width:500px; margin-left:2%; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);}'+
-	'.column {float: left; padding-right: 0px;}'+
+	'#namer {font-family: "Varela Round", sans-serif;font-size: 17pt; color: #FFFFFF; position: absolute;float: center; max-width:500px; margin-left:2%; top: 50%; -ms-transform: translateY(-50%); transform: translateY(-50%);}'+
+	'.column {float: left; padding-right: 0px; margin-top: 15px;}'+
     'p2 {float: right; font-family: "Varela Round", sans-serif; font-size: 18pt; margin-top: 40px; max-width: 325px; min-width: 325px;}'+
 	'@media (max-width: 1540px) { #namer { font-size: 200%; max-width: 350px; } }'+
 	'@media (max-width: 1540px) { p2 { font-size: 16pt; } }'+
