@@ -89,7 +89,9 @@ if (req.url == "/"){
     'p2 {float: right; font-family: "Varela Round", sans-serif; font-size: 18pt; margin-top: 40px; max-width: 325px; min-width: 325px;}'+
 	'@media (max-width: 1540px) { #namer { font-size: 200%; max-width: 350px; } }'+
 	'@media (max-width: 1540px) { p2 { font-size: 16pt; } }'+
-	
+	'@media (max-width: 900px) { #column { margin-top: 10%; } }'+
+	'@media (max-width: 900px) { #top10 { top: -250px; } }'+
+	'@media (max-width: 900px) { a { position: relative; top: -25px } }'+
 
 	'</style>' + '<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Varela+Round|Open+Sans">'  
     + '<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">' + 
